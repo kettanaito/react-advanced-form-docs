@@ -13,7 +13,7 @@
 Selectors are used to map the [message resolvers](messages.md#resolvers) to the relevant field\(s\).
 
 | Selector | Description |
-| --- | --- |
+| :--- | :--- |
 | `name` | Name-specific messages. |
 | `type` | Type-specific messages. |
 | `general` | General messages. Those are used as fallback values in case more specific messages are not present. |
@@ -46,7 +46,7 @@ type Message = string | ({ fieldProps, fields, form, ...extra }) => string;
 There are multiple generic states provided within each resolver by default.
 
 | Generic state | Description |
-| --- | --- |
+| :--- | :--- |
 | `missing` | Resolves for the empty required field. |
 | `invalid` | Resolvers for the field with unexpected value when there are no higher specificity resolvers present. |
 | `async` | Resolves for the [asynchronous validation](../components/field/props/asyncrule.md) of the field. |

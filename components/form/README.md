@@ -11,7 +11,7 @@ The key focus of a form design is getting rid of obscure configurations and achi
 ### General
 
 | Prop name | Type | Descripton |
-| --- | --- | --- | --- | --- |
+| :--- | :--- | :--- |
 | `ref` | `Function` | Getter for the `<Form>` component. |
 | [`innerRef`](props/innerref.md) | `Function` | Getter for the `form` element. |
 | [`action`](props/action.md) | `Function<Promise>` | Submit action handler. |
@@ -21,7 +21,7 @@ The key focus of a form design is getting rid of obscure configurations and achi
 ### Callbacks
 
 | Callback name | Descripton |
-| --- | --- | --- | --- |
+| :--- | :--- |
 | `onFirstChange` | Called when the form becomes dirty. |
 | `onReset` | Called after the form has been reset. |
 | `onSubmitStart` | Called when the submit has started. |
@@ -35,7 +35,7 @@ Read more about each prop and callback under the "Props" or "Callbacks" subsecti
 ## Methods
 
 | Method name | Type | Descripton |
-| --- | --- | --- | --- | --- |
+| :--- | :--- | :--- |
 | [`validate`](methods/validate.md) | `Function<Promise>` | Validates the form manually. |
 | [`serialize`](methods/serialize.md) | `Function<Object>` | Serializes the form manually. |
 | [`reset`](methods/reset.md) | `Function` | Resets the form. |

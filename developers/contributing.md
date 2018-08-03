@@ -105,7 +105,7 @@ Create [a new pull request](https://github.com/kettanaito/react-advanced-form/pu
 ## Commands
 
 | Command | Description |
-| --- | --- |
+| :--- | :--- |
 | `npm start` | Runs Storybook. |
 | `npm test` | Runs all the tests \(unit and integration\). |
 | `npm run cypress` | Opens Cypress GUI. |

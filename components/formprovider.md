@@ -9,7 +9,7 @@ Think of it as of a `Provider` from Redux, only for the forms. This way the form
 ## Props
 
 | Prop name | Type | Default value | Description |
-| --- | --- | --- | --- |
+| :--- | :--- | :--- | :--- |
 | `rules` | [`[ValidationRules: Object]`](../validation/rules.md) | `null` | Validation rules declaration. |
 | `messages` | [`[ValidationMessages: Object]`](../validation/messages.md) | `null` | Validation messages declaration. |
 | `withImmutable` | `boolean` | `false` | When `true`, all argument properties \(i.e. `fieldProps`, `fields`\) are going to be instances of Immutable. Always provide this property if you are familiar and using Immutable in your project. |

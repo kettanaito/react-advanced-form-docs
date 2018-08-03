@@ -6,12 +6,14 @@
 
 Passing options to the `createField()` high-order component allows to control the behavior of the created field. That is extremely useful when implementing the fields with custom logic, or integrating third-party solutions to work with React Advanced Form.
 
-You don't have to configure any of those options by default. The essential options set are configured and exposed under [Field presets](presets.md), which you provide to the `createField()`.
+{% hint style="info" %}
+You **don't have** to configure any of these options. There are sensible defaults exposed with [Field presets](presets.md), which you can provide as an argument to `createField()`.
+{% endhint %}
 
 ## Options list
 
 | Option name | Type | Description |
-| --- | --- | --- |
+| :--- | :--- | :--- |
 | `valuePropName` | `string` | A custom prop name to be treated as an updatable value during the field value change. |
 | `initialValue` | `any` | Custom initial value applied to all field instances by default. |
 | `allowMultiple` | `boolean` | Dictates whether multiple instances of the field with the same name is allowed. |
@@ -47,15 +49,17 @@ export default createField({
 
 **Default value:** `''`
 
-Allows to specify the initial value for all the field instances.
+Allows to specify the initial value for all field instances.
 
-Useful for cases when the initial value of the field is different from an empty string. For example, when implementing a datepicker you may want to specify the today's date of the expected format.
+Useful for the cases when the initial value of the field is different from an empty string. For example, when creating a Datepicker you may want to specify the today's date as the initial value for all datepickers.
 
 ## `allowMultiple: boolean`
 
 **Default value:** `false`
 
-By default, field's `name` serves as the unique identifier, preventing the registration of the fields with the same name. However, in some cases \(i.e. radio buttons\) multiple fields with the same name must be allowed.
+Allows multiple instances of the field with the same name under a single form scope.
+
+By default, field's `name` serves as the unique identifier, preventing the registration of duplicate fields. However, some field types \(i.e. radio button\) should allow multiple field instances with the same name.
 
 ## `mapPropsToField: ({ props, context, fieldRecord, valuePropName }) => Object`
 
@@ -107,11 +111,13 @@ class Checkbox extends React.Component {
 
 export default createField({
   valuePropName: 'checked',
-  enforceProps: (props, contextProps) => ({
+  enforceProps: ({ props, contextProps }) => ({
     checked: contextProps.get('checked')
   })
 })(Checkbox);
 ```
+
+> Note that `contextProps` is an instance of [Immutable Map](https://facebook.github.io/immutable-js/docs/#/Map).
 
 ## `beforeRegister: ({ fieldProps, fields }) => fieldProps`
 

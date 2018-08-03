@@ -15,7 +15,7 @@ In this part we are going to focus on how to declare the validation messages, an
 To reduce the duplication, messages have a list of keywords which correspond to the pre-defined validation statuses of the field.
 
 | Keyword | Description |
-| --- | --- |
+| :--- | :--- |
 | `missing` | Applied to empty required field. |
 | `invalid` | Applied to the field with unexpected value. |
 | `async` | Applied in case async validation of the field fails. |

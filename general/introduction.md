@@ -121,7 +121,7 @@ Starting with something new may appear challenging. There is a step-by-step inst
 ### Browser support
 
 | Chrome | Firefox | Safari | iOS Safari | Edge | Internet Explorer |
-| --- | --- |
+| :--- | :--- | :--- | :--- | :--- | :--- |
 | 65+ | 57+ | 9+ | 8+ | 41+ | – |
 
 > There is no official support for Internet Explorer. No features are tested to ensure working there. They _may_, or _may not_ work. Microsoft has stopped IE support, and so should you application.

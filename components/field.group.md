@@ -9,7 +9,7 @@ Particularly useful for the scenarios when UI representation of fields doesn't m
 ## Props
 
 | Prop name | Type | Description |
-| --- | --- | --- |
+| :--- | :--- | :--- |
 | `name` | `String` | The name of the field group. All the fields wrapped in `Field.Group` will be available by the following reference path: `[...groupNames, fieldName]`. |
 
 ## Examples

@@ -7,7 +7,7 @@ After your field component is wrapped in the `createField`, it is being exposed 
 ## Props list
 
 | Prop name | Type | Description |
-| --- | --- | --- |
+| :--- | :--- | :--- |
 | `fieldProps` | `Object` | Collection of props dedicated to the form element \("input", "select", etc.\) itself. |
 | `fieldState` | `Object` | Mirror of the field's record \(state\). |
 
@@ -20,14 +20,14 @@ A representation of the field's record has multiple properties reflecting its st
 ### General
 
 | Property | Type | Description |
-| --- | --- | --- |
+| :--- | :--- | :--- |
 | `required` | `boolean` | Indicates whether the field is required. |
 | `disabled` | `boolean` | Indicates whether the field is disabled. |
 
 ### Validation
 
 | Property | Type | Description |
-| --- | --- | --- |
+| :--- | :--- | :--- |
 | `validating` | `boolean` | Indicates whether the field is being validated at the moment. |
 | `valid` | `boolean` | Indicates whether the field has passed all the validations. |
 | `invalid` | `boolean` | Indicates whether the field has not passed all the validations. |
