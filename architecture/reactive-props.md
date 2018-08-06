@@ -26,9 +26,9 @@ For example, this is the _**wrong**_ way of declaring a prop subscription:
 <Checkbox
   required={({ get, fields }) => {
     // the WRONG way of reactive prop declaration
-    const foo = get(['fieldOne']) && get(['fieldOne', 'value']);
-    const bar = fields.fieldTwo && get(['fieldTwo', 'value']);
-    return foo && bar;
+    const foo = get(['fieldOne']) && get(['fieldOne', 'value'])
+    const bar = fields.fieldTwo && get(['fieldTwo', 'value'])
+    return foo && bar
   }} />
 ```
 
@@ -38,10 +38,10 @@ The _**correct**_ way would be much more clean and simple:
 <Checkbox
   required={({ get }) => {
     /* "get" checks if "fieldOne" exists automatically */
-    const foo = get(['fieldOne', 'value']);
-    const bar = get(['fieldTwo', 'required']);
+    const foo = get(['fieldOne', 'value'])
+    const bar = get(['fieldTwo', 'required'])
 
-    return foo && bar;
+    return foo && bar
   }}>
 ```
 
@@ -55,10 +55,10 @@ It is possible to reference multiple fields within a single reactive prop resolv
 <Checkbox
   name="termsAndConditions"
   required={({ get }) => {
-    const foo = get(['firstName', 'valid']);
-    const bar = get(['lastName', 'required']);
+    const foo = get(['firstName', 'valid'])
+    const bar = get(['lastName', 'required'])
 
-    return foo && !bar;
+    return foo && !bar
   }} />
 ```
 
@@ -101,7 +101,7 @@ To create a reactive field prop simply pass a function as its value, and use the
 ```jsx
 <FieldComponent
   required={({ get }) => {
-    return get(['path', 'to', 'field"s', 'prop']);
+    return get(['path', 'to', 'field"s', 'prop'])
   }} />
 ```
 
@@ -137,10 +137,10 @@ export default {
        * The "confirmPassword" field is valid only when its value
        * equals to "userPassword" field "value" prop.
        */
-      return value === get(['userPassword', 'value']);
+      return value === get(['userPassword', 'value'])
     }
   }
-};
+}
 ```
 
 > The syntax for type-specific validation rules is identical.

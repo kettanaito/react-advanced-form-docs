@@ -9,25 +9,25 @@ Performs a manual serialization of the current `Form`.
 ## Usage
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
-import { Input } from 'react-advanced-form-addons';
+import React from 'react'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
     handleClick = () => {
-        this.form.serialize(); // { username: "admin" }
+        this.form.serialize() // { username: "admin" }
     }
 
     render() {
         return (
             <div>
-                <Form ref={ form => this.form = form }>
+                <Form ref={form => this.form = form}>
                     <Input name="username" value="admin" />
                 </Form>
 
-                <button onClick={ this.handleClick }>Serialize</button>
+                <button onClick={this.handleClick}>Serialize</button>
             </div>
-        );
+        )
     }
 }
 ```

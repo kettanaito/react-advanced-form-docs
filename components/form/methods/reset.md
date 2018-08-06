@@ -11,9 +11,9 @@ Resets the values of the unctronolled fields of the `Form` to their initial valu
 ### Using submit callback handlers
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
-import { Input } from 'react-advanced-form-addons';
+import React from 'react'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
   handleSubmitted = ({ res, fields, form }) => {
@@ -25,7 +25,7 @@ export default class Example extends React.Component {
       <Form onSubmitted={ this.handleSubmitted }>
         <Input name="username" initialValue="admin" />
       </Form>
-    );
+    )
   }
 }
 ```

@@ -12,11 +12,11 @@ React Advanced Form is field-centric. That means that it treats each form as a c
 ## Example
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
+import React from 'react'
+import { Form } from 'react-advanced-form'
 
 /* Composite field components */
-import { Input, Checkbox } from '../components';
+import { Input, Checkbox } from '../components'
 
 export default class ExampleForm extends React.Component {
   render() {

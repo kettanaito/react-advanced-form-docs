@@ -19,15 +19,15 @@ const formMessages = {
       invalid: 'Custom message for invalid email fields of this very form'
     }
   }
-};
+}
 
 export default class Example extends React.Component {
   render() {
     return (
-      <Form messages={ formMessages }>
+      <Form messages={formMessages}>
         { /* Fields here */ }
       </Form>
-    );
+    )
   }
 }
 ```

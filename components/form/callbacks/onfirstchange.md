@@ -20,17 +20,17 @@ type OnFirstChange = ({
 ## Example
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
+import React from 'react'
+import { Form } from 'react-advanced-form'
 
 export default class Example extends React.Component {
   handleFirstChange = ({ event, prevValue, nextValue, fieldProps, fields, form }) => {
-    console.log('Field `%s` made the form dirty.', fieldProps.name);
+    console.log('Field `%s` made the form dirty.', fieldProps.name)
   }
 
   render() {
     return (
-      <Form onFirstChange={ this.handleFirstChange }>
+      <Form onFirstChange={this.handleFirstChange}>
         { /* Fields here */ }
       </Form>
     )

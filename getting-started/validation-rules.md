@@ -20,7 +20,7 @@ Let's create an empty validation schema with no rules for now:
 
 ```javascript
 // app/validation-rules.js
-export default {};
+export default {}
 ```
 
 ### Field selectors
@@ -35,13 +35,13 @@ Let's select the fields with the type `email` and provide a respective validatio
 
 ```jsx
 // app/validation-rules.js
-import isEmail from 'validator/lib/isEmail';
+import isEmail from 'validator/lib/isEmail'
 
 export default {
   type: {
     email: ({ value, fieldProps, fields, form }) => isEmail(value)
   }
-};
+}
 ```
 
 This rule automatically validates all fields with the type `email` using the provided resolver function. Notice the variety of the arguments exposed to the resolver function to craft any validation logic possible.
@@ -55,10 +55,10 @@ export default {
 
   name: {
     confirmPassword: ({ value, fieldProps, fields, form }) => {
-      return (value === fields.userPassword.value);
+      return (value === fields.userPassword.value)
     }
   }
-};
+}
 ```
 
 The rule above implies that `[name="confirmPassword"]` field is valid only when its value equals to the value of `[name="userPassword"]` field of the same form.
@@ -81,7 +81,7 @@ export default {
       minLength: ({ value }) => (value.length > 5)
     }
   }
-};
+}
 ```
 
 > Multiple validation rules of the same selector have the same priority and are applied simultaneously. Therefore, it is possible to have miltiple failing rules at the same time, reflected by multiple error messages.
@@ -98,7 +98,7 @@ We can use a `rule` prop of any field to achieve that:
 <Input
   name="userName"
   rule={({ value, fieldProps, fields, form }) => {
-    return value.test(/[a-z]/);
+    return value.test(/[a-z]/)
   }}
   required />
 ```
@@ -114,9 +114,9 @@ Similar to the [Explicit `rule` prop](validation-rules.md#explicit-rule), asynch
 To create an asynchronous rule we need to use the [`asyncRule`](../components/field/props/asyncrule.md) prop on the exact field we want to validate. As an example, let's validate the user e-mail address using asynchronous validation:
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
-import { Input } from './components';
+import React from 'react'
+import { Form } from 'react-advanced-form'
+import { Input } from './components'
 
 export default class ExampleForm extends React.Component {
   validateEmail = ({ value, fieldProps, fields, form }) => {
@@ -124,13 +124,13 @@ export default class ExampleForm extends React.Component {
       method: 'POST',
       body: JSON.stringify(value)
     }).then((res) => {
-      const valid = (res.statusCode === 'success');
+      const valid = (res.statusCode === 'success')
 
       return {
         valid,
         errorCode: res.errorCode
-      };
-    });
+      }
+    })
   }
 
   render() {
@@ -139,7 +139,7 @@ export default class ExampleForm extends React.Component {
         <Input
           name="userEmail"
           type="email"
-          asyncRule={ this.validateEmail }
+          asyncRule={this.validateEmail}
           required />
       </Form>
     );
@@ -151,7 +151,7 @@ Asynchronous validation resolver must always return a Promise, which resolves in
 
 ```typescript
 {
-  valid: boolean,
+  valid: boolean
 }
 ```
 

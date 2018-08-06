@@ -7,18 +7,18 @@ A getter function for the actual `form` HTML element rendered by the `Form` comp
 ## Example
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
+import React from 'react'
+import { Form } from 'react-advanced-form'
 
 export default class Example extends React.Component {
   componentDidMount() {
-    this.formElement; // HTMLElement
+    this.formElement // HTMLElement
   }
 
   render() {
     return (
-      <Form innerRef={ element => this.formElement = element } />
-    );
+      <Form innerRef={element => this.formElement = element} />
+    )
   }
 }
 ```

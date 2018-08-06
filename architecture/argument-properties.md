@@ -10,8 +10,8 @@ export default class Example extends React.Component {
 
   render() {
     return (
-      <Form action={ this.handleSubmit } />
-    );
+      <Form action={this.handleSubmit} />
+    )
   }
 }
 ```
@@ -66,7 +66,7 @@ function foo(...dynamicArgs) {}
 const dynamicArgs = {
   arg1: 4,
   arg2: true
-};
+}
 
 function foo(dynamicArgs) {}
 ```

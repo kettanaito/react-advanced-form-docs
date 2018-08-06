@@ -17,9 +17,9 @@ type OnInvalid = ({
 ## Usage
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
-import { Input } from 'react-advanced-form-addons';
+import React from 'react'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
     handleInvalidForm = ({ invalidFields, fields, form }) => {
@@ -28,11 +28,11 @@ export default class Example extends React.Component {
 
     render() {
         return (
-            <Form onInvalid={ this.handleInvalidForm }>
+            <Form onInvalid={this.handleInvalidForm}>
                 <Input name="username" required />
                 <button type="submit">Submit</button>
             </Form>
-        );
+        )
     }
 }
 ```

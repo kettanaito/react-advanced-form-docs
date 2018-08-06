@@ -17,20 +17,20 @@ type action = ({
 ## Example
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
+import React from 'react'
+import { Form } from 'react-advanced-form'
 
 export default class RegistrationForm extends React.Component {
   registerUser = ({ serialized, fields, form }) => {
     return fetch('...', {
       method: 'POST',
       body: JSON.stringify(serialized)
-    });
+    })
   }
 
   render() {
     return (
-      <Form action={ this.registerUser }>
+      <Form action={this.registerUser}>
         { /* ... */ }
       </Form>
     )

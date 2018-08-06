@@ -34,9 +34,9 @@ type AsyncRulePaylod = {
 ## Example
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
-import { Input } from 'react-advanced-form-addons';
+import React from 'react'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
   validateUsername = ({ value, fieldProps, fields, form }) => {
@@ -46,12 +46,12 @@ export default class Example extends React.Component {
     })
     .then(res => res.json())
     .then((res) => {
-      const { statusCode } = res;
+      const { statusCode } = res
 
       return {
         valid: (statusCode === 'SUCCESS')
-      };
-    });
+      }
+    })
   }
 
   render() {
@@ -59,7 +59,7 @@ export default class Example extends React.Component {
       <Form>
         <Input
           name="username"
-          asyncRule={ this.validateUsername } />
+          asyncRule={this.validateUsername} />
       </Form>
     );
   }

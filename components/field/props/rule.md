@@ -18,9 +18,9 @@ type rule = RegExp | ({
 ## Example
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
-import { Input } from 'react-advanced-form-addons';
+import React from 'react'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
   render() {
@@ -28,7 +28,7 @@ export default class Example extends React.Component {
       <Input
         name="username"
         rule={/^\d+/} />
-    );
+    )
   }
 }
 ```

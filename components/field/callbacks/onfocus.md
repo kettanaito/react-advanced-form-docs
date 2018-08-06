@@ -1,13 +1,13 @@
+---
+description: Event handler called when a field acquires focus.
+---
+
 # onFocus
-
-## Specification
-
-Event handler called after the field has been focused.
 
 ## Definition
 
 ```typescript
-type OnFocus = ({
+type OnFocusCallback = ({
   event: Event, // Native event reference
   fieldProps: Object|Map, // The props of the current field
   fields: Object|Map, // The state of the fields
@@ -18,9 +18,9 @@ type OnFocus = ({
 ## Usage
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
-import { Input } from 'react-advanced-form-addons';
+import React from 'react'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
     handleUsernameFocus = ({ event, fieldProps, fields, form }) => {
@@ -32,7 +32,7 @@ export default class Example extends React.Component {
             <Form>
                 <Input
                     name="username"
-                    onFocus={ this.handleUsernameFocus }
+                    onFocus={this.handleUsernameFocus}
                     required />
             </Form>
         )

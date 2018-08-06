@@ -16,19 +16,19 @@ We need to introduce a `FormProvider` on the root level of your application. Thi
 
 ```jsx
 // app/index.js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { FormProvider } from 'react-advanced-form';
-import validationRules from './validation-rules';
-import validationMessages from 'validation-messages';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { FormProvider } from 'react-advanced-form'
+import validationRules from './validation-rules'
+import validationMessages from 'validation-messages'
 
 const renderApp = () => (
-  <FormProvider rules={ validationRules } messages={ validationMessages }>
+  <FormProvider rules={validationRules} messages={validationMessages}>
     <Root />
   </FormProvider>
-);
+)
 
-ReactDOM.render(renderApp, document.getElementById('root'));
+ReactDOM.render(renderApp, document.getElementById('root'))
 ```
 
 ### Form-wide

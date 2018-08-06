@@ -31,8 +31,8 @@ Registration, or field record – is an Object of props which propagates to the 
 It is possible to affect the registraional record when creating your custom components, or integrating third-party solutions, using [`mapPropsToField`](../high-order-components/createfield/#mapPropsToField) option of the [`createField()`](../high-order-components/createfield/) high-order component:
 
 ```jsx
-import React from 'react';
-import { createField } from 'react-advanced-form';
+import React from 'react'
+import { createField } from 'react-advanced-form'
 
 class CustomField extends React.Component {}
 
@@ -41,7 +41,7 @@ export default createField({
     ...fieldRecord,
     customProp: composeByProp(props.someProp)
   })
-})(CustomField);
+})(CustomField)
 ```
 
 `fieldRecord` Object passed as the [argument property](argument-properties.md) is mutable, and changing the latter directly affects the Object of props at the registration point. Read more about this and other options in the `createField()` section of the documentation.
@@ -61,9 +61,9 @@ State updates are invoked and maintained internally within the `Form` component,
 Developer can react to the required event callbacks just as he would usually do:
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
-import { Input } from 'react-advanced-form-addons';
+import React from 'react'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
   handleFieldFocus = ({ event, fieldProps, fields, form }) => {}
@@ -77,12 +77,12 @@ export default class Example extends React.Component {
       <Form>
         <Input
           name="email"
-          onFocus={ this.handleEmailFocus }
-          onChange={ this.handleEmailChange }
-          onBlur={ this.handleFieldBlur }
+          onFocus={this.handleEmailFocus}
+          onChange={this.handleEmailChange}
+          onBlur={this.handleFieldBlur}
           required />
       </Form>
-    );
+    )
   }
 }
 ```
@@ -101,34 +101,34 @@ Developer must provide the custom event handlers during the field's declaration,
 
 ```jsx
 // src/components/Input.jsx
-import React from 'react';
-import { createField, fieldPresets } from 'react-advanced-form';
+import React from 'react'
+import { createField, fieldPresets } from 'react-advanced-form'
 
 class Input extends React.Component {
   /**
    * Custom "onChange" handler.
    */
   handleChange = (event) => {
-    const { value: nextValue } = event.target;
+    const { value: nextValue } = event.target
 
     // ...
 
     /* It is mandatory to dispatch the native RAF event handler */
-    this.props.handleFieldChange({ event });
+    this.props.handleFieldChange({ event })
   }
 
   render() {
-    const { fieldProps } = this.props;
+    const { fieldProps } = this.props
 
     return (
       <input
         { ...fieldProps }
         onChange={ this.handleChange } />
-    );
+    )
   }
 }
 
-export default createField(fieldPresets.input)(Input);
+export default createField(fieldPresets.input)(Input)
 ```
 
 When overriding the essential event handler managed by the `Form` automatically, the one must always dispatch the respective native event handler available via props:

@@ -16,26 +16,26 @@ Considering the warning note above, there are some use cases when performing man
 ## Usage
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
-import { Input } from 'react-advanced-form-addons';
+import React from 'react'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
     handleClick = () => {
         this.form.validate().then((isValid) => {
             //
-        });
+        })
     }
 
     render() {
         return (
             <div>
-                <Form ref={ form => this.form = form }>
+                <Form ref={form => this.form = form}>
                     <Input name="username" required />
                 </Form>
-                <a href="#" onClick={ this.handleClick }>Validate</a>
+                <a href="#" onClick={this.handleClick}>Validate</a>
             </div>
-        );
+        )
     }
 }
 ```

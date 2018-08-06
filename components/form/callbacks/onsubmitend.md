@@ -18,9 +18,9 @@ type OnSubmitEnd = ({
 ## Usage
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
-import { Input } from 'react-advanced-form-addons';
+import React from 'react'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
     handleSubmitEnd = ({ res, serialized, fields, form }) => {
@@ -29,11 +29,11 @@ export default class Example extends React.Component {
 
     render() {
         return (
-            <Form onSubmitEnd={ this.handleSubmitEnd }>
+            <Form onSubmitEnd={this.handleSubmitEnd}>
                 <Input name="username" required />
                 <button type="submit">Submit</button>
             </Form>
-        );
+        )
     }
 }
 ```

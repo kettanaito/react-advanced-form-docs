@@ -17,18 +17,18 @@ type Skip = boolean
 ## Example
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
-import { Input } from 'react-advanced-form-addons';
+import React from 'react'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
   handleSubmit = ({ serialized }) => {
-    console.log(serialized); // { "username": "admin", "password": "123" }
+    console.log(serialized) // { "username": "admin", "password": "123" }
   }
 
   render() {
     return (
-      <Form action={ this.handleSubmit }>
+      <Form action={this.handleSubmit}>
         <Input
           name="username"
           value="admin"
@@ -45,7 +45,7 @@ export default class Example extends React.Component {
           required
           skip />
       </Form>
-    );
+    )
   }
 }
 ```

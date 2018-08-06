@@ -48,8 +48,8 @@ Read more about each method under [Form methods](https://redd.gitbook.io/react-a
 Declaring a new form using React Advanced Form doesn't require you to configure anything, just render a `Form` component and its children [Fields](https://redd.gitbook.io/react-advanced-form/getting-started/creating-fields).
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
+import React from 'react'
+import { Form } from 'react-advanced-form'
 
 export default class Example extends React.Component {
   render() {
@@ -57,7 +57,7 @@ export default class Example extends React.Component {
       <Form>
         { /* Fields here */ }
       </Form>
-    );
+    )
   }
 }
 ```

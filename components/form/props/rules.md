@@ -9,23 +9,23 @@ Cutom validation rules schema applied to the form explicitly.
 ## Example
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
+import React from 'react'
+import { Form } from 'react-advanced-form'
 
 const formRules = {
   extend: true, // merge the current schema with the FormProvider's one
   type: {
     tel: ({ value }) => customPhoneValidationForThisFormOnly(value)
   }
-};
+}
 
 export default class Example extends React.Component {
   render() {
     return (
-      <Form rules={ formRules }>
+      <Form rules={formRules}>
         { /* Fields here */ }
       </Form>
-    );
+    )
   }
 }
 ```

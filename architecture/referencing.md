@@ -18,17 +18,17 @@ Component reference returns you the `React.Component` instance \(i.e. `<Form>` o
 ```jsx
 class MyForm extends React.Component {
   componentDidMount() {
-    console.log(this.formRef); // Form component
-    console.log(this.formRef.innerRef); // <form> element
+    console.log(this.formRef) // Form component
+    console.log(this.formRef.innerRef) // <form> element
 
-    this.formRef.validate(); // access internal methods
+    this.formRef.validate() // access internal methods
   }
 
   render() {
     return (
       <Form
-        ref={ form => this.formRef = form } />
-    );
+        ref={form => this.formRef = form} />
+    )
   }
 }
 ```
@@ -40,13 +40,13 @@ Reference the actual `<form>` element by providing the `innerRef` prop to the `F
 ```jsx
 class MyForm extends React.Component {
   componentDidMount() {
-    console.log(this.formElement); // <form> element
+    console.log(this.formElement) // <form> element
   }
 
   render() {
     return (
-      <Form innerRef={ element => this.formElement = element } />
-    );
+      <Form innerRef={element => this.formElement = element} />
+    )
   }
 }
 ```
@@ -62,14 +62,14 @@ Reference the field component by providing the `ref` prop.
 ```jsx
 class MyForm extends React.Component {
   componentDidMount() {
-    console.log(this.fieldRef); // Field component
-    console.log(this.fieldRef.innerRef); // field element (i.e. "input")
+    console.log(this.fieldRef) // Field component
+    console.log(this.fieldRef.innerRef) // field element (i.e. "input")
   }
 
   render() {
     return (
       <Form>
-        <MyField ref={ field => this.fieldRef = field } name="foo" />
+        <MyField ref={field => this.fieldRef = field} name="foo" />
       </Form>
     )
   }
@@ -108,27 +108,27 @@ When using third-party libraries which wrap the plain form components in their o
 Do so by accessing an `innerRef` prop inside your custom field component declaration:
 
 ```jsx
-import { createField } from 'react-advanced-form';
-import styled from 'styled-components';
+import { createField } from 'react-advanced-form'
+import styled from 'styled-components'
 
 /* Custom styled component */
 const StyledInput = styled.input`
   ...
-`;
+`
 
 class Input extends React.Component {
   render() {
-    const { innerRef, fieldProps } = this.props;
+    const { innerRef, fieldProps } = this.props
 
     return (
       <StyledInput
-        { ...fieldProps }
-        innerRef={ innerRef } />
-    );
+        {...fieldProps}
+        innerRef={innerRef} />
+    )
   }
 }
 
-export default createField()(Input);
+export default createField()(Input)
 ```
 
 > Do not be confused, as `StyledInput.props.innerRef` is the prop expected by `styled-components,` while `Input.props.innerRef` is the prop \(a function\) passed to the custom field component from the `createField()` wrapper. Different third-party solutions may expose different interface to accept the inner reference function.

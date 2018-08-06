@@ -42,7 +42,7 @@ export default {
   type: {
     text: ({ value }) => (value !== 'foo')
   }
-};
+}
 ```
 
 The very same syntax is used for `name` specific rules.
@@ -54,7 +54,7 @@ Resolver is a function responsible for resolving the next validity state of a fi
 ### Syntax
 
 ```typescript
-type TRuleResolver = ({ value, fieldProps, fields, form }) => boolean;
+type TRuleResolver = ({ value, fieldProps, fields, form, get }) => boolean
 ```
 
 ### Parameters
@@ -63,6 +63,7 @@ type TRuleResolver = ({ value, fieldProps, fields, form }) => boolean;
 * `fieldProps` - a reference to the field's props.
 * `fields` - a map of the sibling fields.
 * `form` - a reference to the `<Form>` component.
+* `get` - a getter function to reference [reactive props](../architecture/reactive-props.md#reactive-validation-rules).
 
 ### Return value
 
@@ -92,7 +93,7 @@ export default {
   name: {
     someField: ({ value }) => /[0-9]/.test(value)
   }
-};
+}
 ```
 
 And the next field component:
@@ -115,7 +116,7 @@ export default {
       oneNumber: ({ value }) => /[0-9]/.test(value)
     }
   }
-};
+}
 ```
 
 Apart from applying multiple rules to the same field, named rules allow to associate specific messages with each rule based on the rule name. Considering the example above, we can have separate messages for `capitalLetter` and `oneNumber` rules independently. Learn more on how to do that in [Validation messages: Named resolvers](messages.md#named-resolvers) section.
@@ -133,7 +134,7 @@ export default {
       oneNumber: ({ value }) => /[0-9]/.test(value)
     }
   }
-};
+}
 ```
 
 > **Note:** Each of the multiple validation rules _must_ be a [named rule](rules.md#named-rules).
@@ -152,7 +153,7 @@ Whenever a field is referenced in a resolver, the latter is automatically called
 {
   name: {
     confirmPassword: ({ value, fields }) => {
-      return (value === fields.password.value);
+      return (value === fields.password.value)
     }
   }
 }
@@ -170,8 +171,8 @@ const customRules = {
   name: {
       myField: ({ value }) => (value !== 'foo')
   }
-};
+}
 ```
 
-## Example
+
 

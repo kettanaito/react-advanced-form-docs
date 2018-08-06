@@ -16,45 +16,47 @@ type OnReset = ({
 ## Usage
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
-import { Input } from 'react-advanced-form-addons';
+import React from 'react'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
     constructor() {
         super();
         this.state = {
             password: ''
-        };
+        }
     }
 
     handleManualReset = (event) => {
-        event.preventDefault();
-        this.form.reset(); // resets uncontrolled fields ("username")
+        event.preventDefault()
+        this.form.reset() // resets uncontrolled fields ("username")
     }
 
     handleReset = ({ fields, form }) => {
-        this.setState({ password: '' }); // manually reset controlled fields ("password")
+        this.setState({ password: '' }) // manually reset controlled fields ("password")
     }
 
     render() {
-        const { password } = this.state;
+        const { password } = this.state
 
         return (
             <Form
-                ref={ form => this.form = form }
-                onReset={ this.handleReset }>
+                ref={form => this.form = form}
+                onReset={this.handleReset}>
                 <Input
                     name="username"
                     required />
                 <Input
                     name="password"
-                    value={ password }
-                    onChange={ ({ nextValue }) => this.setState({ password: nextValue }) }
+                    value={password}
+                    onChange={({ nextValue }) => {
+                        this.setState({ password: nextValue })
+                    }}
                     required />
-                <button onClick={ this.handleManualReset }>Reset</button>
+                <button onClick={this.handleManualReset}>Reset</button>
             </Form>
-        );
+        )
     }
 }
 ```

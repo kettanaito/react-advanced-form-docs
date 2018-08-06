@@ -34,7 +34,7 @@ export default {
     missing: 'Please provide the required field',
     invalid: 'The value you provided is invalid'
   }
-};
+}
 ```
 
 The same keywords can be applied to any selector:
@@ -55,7 +55,7 @@ export default {
       invalid: 'The passwords do not match'
     }
   }
-};
+}
 ```
 
 > Note that `missing` and `invalid` keywords are optional. In case the respective keyword is not found for the selector, it will use the closest keyword with the same type. Read more about the [Fallback system](validation-messages.md#fallbacks).
@@ -79,7 +79,7 @@ export default {
       }
     }
   }
-};
+}
 ```
 
 Rule-specific messages have the following format:
@@ -108,7 +108,7 @@ export default {
       invalid: ({ value }) => `The "${value}" is not a correct password`
     }
   }
-};
+}
 ```
 
 ### Fallbacks
@@ -129,7 +129,7 @@ export default {
       invalid: 'foo'
     }
   }
-};
+}
 ```
 
 Notice that `messages.type.password` selector doesn't have a `missing` message. That _doesn't_ mean that the invalid state of the password will not be reflected in the UI. Instead, React Advanced Form will automatically grab the closest message of the same type - which is `messages.general.missing` in this case.

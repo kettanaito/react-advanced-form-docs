@@ -61,7 +61,7 @@ Let's say we are going to add a new `fieldUtils` function to help the library to
 ```javascript
 // src/utils/fieldUtils/newMethod.js
 export default function newMethod({ fieldProps }) {
-  return fieldProps;
+  return fieldProps
 }
 ```
 
@@ -69,21 +69,22 @@ Let's export the `newMethod` so it would be available as `fieldUtils.newMethod`:
 
 ```javascript
 // src/utils/fieldUtils/index.js
-export newMethod from './newMethod';
+export newMethod from './newMethod'
 ```
 
 Now, let's create a unit test to ensure our brand-new `newMethod` is working properly:
 
 ```javascript
 // test/unit/utils/newMethod.js
-import { fieldUtils } from '../../src/utils';
-describe('newMethod', function () {
+import { fieldUtils } from '../../src/utils'
+
+describe('newMethod', () => {
   it('returns passed "fieldProps"', () => {
-    const fieldProps = { name: 'foo' };
-    const payload = fieldUtils.newMethod({ fieldProps });
-    expect(payload).to.deep.equal(fieldProps);
-  });
-});
+    const fieldProps = { name: 'foo' }
+    const payload = fieldUtils.newMethod({ fieldProps })
+    expect(payload).to.deep.equal(fieldProps)
+  })
+})
 ```
 
 > **Note:** Since we are testing an _internal_ utility function, we are importing it from source files directly. However, please test the functionality exposed in the built package by **importing the built \(**`lib`**\) package instead**.

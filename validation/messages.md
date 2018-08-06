@@ -38,7 +38,7 @@ type MessageResolver = {
   }
 }
 
-type Message = string | ({ fieldProps, fields, form, ...extra }) => string;
+type Message = string | ({ fieldProps, fields, form, ...extra }) => string
 ```
 
 ### Generic states
@@ -104,7 +104,7 @@ export default {
       }
     }
   }
-};
+}
 ```
 
 And the following component layout:
@@ -129,5 +129,5 @@ This is the priority sequence in which resolvers will attempt to resolve the val
 
 The validation message resolves as soon as the resolver returns the value. The same sequence applies for the type-specific named resolvers.
 
-## Example
+
 

@@ -11,9 +11,9 @@ Each step of the validation is meant to prepare the field for the next step of t
 To explain the sequence of the validation let's consider the example below. It is going to be the most expanded example, meaning there will be all the validation chains possible. That is solely for demonstrational purposes, you should define those validations necessary for your specific needs. On the same note, there will be no validation messages set, since those do not contribute to the validation algorithm, but are rather an outcome of the validation.
 
 ```jsx
-import React from 'react';
-import { FormProvider, Form } from 'react-advanced-form';
-import { Input } from 'react-advanced-form-addons';
+import React from 'react'
+import { FormProvider, Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 /* Application-wide validation rules */
 const validationRules = {
@@ -22,10 +22,10 @@ const validationRules = {
   },
   name: {
     username: ({ value, fieldProps, fields, form }) => {
-      return (value !== 'admin');
+      return (value !== 'admin')
     }
   }
-};
+}
 
 /* Form-specific validation rules */
 const formRules = {
@@ -38,38 +38,38 @@ const formRules = {
   extend: true,
   name: {
     username: ({ value, fieldProps, fields, form }) => {
-      return (value !== 'foo');
+      return (value !== 'foo')
     }
   }
-};
+}
 
 export default class App extends React.Component {
   validateUsername = ({ value, fieldProps, fields, form }) => {
     return fetch('https://backend.dev/user/validate', {
       method: 'POST',
       body: JSON.stringify({ username: value })
-    });
+    })
   }
 
   render() {
     return (
-      <FormProvider rules={ validationRules }>
-        <Form rules={ formRules }>
+      <FormProvider rules={validationRules}>
+        <Form rules={formRules}>
           <Input
             type="text" // default value, present for clarity
             name="username"
             rule={/[^0-9]/}
-            asyncRule={ this.validateUsername }
+            asyncRule={this.validateUsername}
             required />
           <Input
             name="firstName"
             rule={({ value, fieldProps, fields, form }) => {
               return (value !== 'foo');
             }}
-            asyncRule={ ... } />
+            asyncRule={...} />
         </Form>
       </FormProvider>
-    );
+    )
   }
 }
 ```

@@ -18,9 +18,9 @@ type OnSubmitted = ({
 ## Usage
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
-import { Input } from 'react-advanced-form-addons';
+import React from 'react'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class RegistrationForm extends React.Component {
     handleUserRegistered = ({ res, serialized, fields, form }) => {
@@ -29,11 +29,11 @@ export default class RegistrationForm extends React.Component {
 
     render() {
         return (
-            <Form onSubmitted={ this.handleUserRegistered }>
+            <Form onSubmitted={this.handleUserRegistered}>
                 <Input name="username" required />
                 <button type="submit">Submit</button>
             </Form>
-        );
+        )
     }
 }
 ```

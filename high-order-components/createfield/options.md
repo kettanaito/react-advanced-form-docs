@@ -29,20 +29,20 @@ You **don't have** to configure any of these options. There are sensible default
 Some fields update a prop different from the `value` upon the interaction with them. For example, a checkbox updates its `checked` prop. Provide the prop name to update on field's `onChange` using this option, in case it differs from `value`.
 
 ```jsx
-import React from 'react';
-import { createField } from 'react-advanced-form';
+import React from 'react'
+import { createField } from 'react-advanced-form'
 
 class Checkbox extends React.Component {
   render() {
-    const { fieldProps } = this.props;
+    const { fieldProps } = this.props
 
-    return (<input { ...fieldProps } />);
+    return (<input { ...fieldProps } />)
   }
 }
 
 export default createField({
   valuePropName: 'checked'
-})(Checkbox);
+})(Checkbox)
 ```
 
 ## `initialValue: any`
@@ -70,14 +70,14 @@ Each field has its record stored in the internal state of the `Form` component. 
 To change the initial values of the field record pass this option to the `createField` as follows:
 
 ```jsx
-import React from 'react';
-import { createField } from 'react-advanced-form';
+import React from 'react'
+import { createField } from 'react-advanced-form'
 
 class Checkbox extends React.Component {
   render() {
-    const { fieldProps } = this.props;
+    const { fieldProps } = this.props
 
-    return (<input { ...fieldProps } />);
+    return (<input { ...fieldProps } />)
   }
 }
 
@@ -88,7 +88,7 @@ export default createField({
     type: 'checkbox',
     initialValue: props.checked
   })
-})(Checkbox);
+})(Checkbox)
 ```
 
 ## `enforceProps: ({ props, contextProps }) => Object`
@@ -98,14 +98,14 @@ export default createField({
 This option allows to provide an Object of props which will override the Field's registration record within the form.
 
 ```jsx
-import React from 'react';
-import { createField } from 'react-advanced-form';
+import React from 'react'
+import { createField } from 'react-advanced-form'
 
 class Checkbox extends React.Component {
   render() {
-    const { fieldProps } = this.props;
+    const { fieldProps } = this.props
 
-    return (<input { ...fieldProps } />);
+    return (<input { ...fieldProps } />)
   }
 }
 
@@ -114,7 +114,7 @@ export default createField({
   enforceProps: ({ props, contextProps }) => ({
     checked: contextProps.get('checked')
   })
-})(Checkbox);
+})(Checkbox)
 ```
 
 > Note that `contextProps` is an instance of [Immutable Map](https://facebook.github.io/immutable-js/docs/#/Map).
@@ -126,7 +126,7 @@ export default createField({
 ```javascript
 {
   beforeRegister({ fieldProps, fields }) {
-    return fieldProps;
+    return fieldProps
   }
 }
 ```
@@ -140,8 +140,8 @@ Applies additional transformation or logic to the field right before it is regis
 ```javascript
 {
   shouldValidateOnMount({ fieldRecord, valuePropName }) {
-    const fieldValue = fieldRecord[valuePropName];
-    return isset(fieldValue) && (fieldValue !== '');
+    const fieldValue = fieldRecord[valuePropName]
+    return isset(fieldValue) && (fieldValue !== '')
   }
 }
 ```

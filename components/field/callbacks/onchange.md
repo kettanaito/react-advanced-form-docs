@@ -1,13 +1,13 @@
+---
+description: Event handler called on each field value change.
+---
+
 # onChange
-
-## Specification
-
-Event handler called after the field has been blurred out.
 
 ## Definition
 
 ```typescript
-type OnChange = ({
+type OnChangeCallback = ({
   event: Event, // Native event reference
   prevValue: any, // The previous value of the field
   nextValue: any, // The next value of the field
@@ -20,9 +20,9 @@ type OnChange = ({
 ## Usage
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
-import { Input } from 'react-advanced-form-addons';
+import React from 'react'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
     handleUsernameChange = ({ event, nextValue, prevValue, fieldProps, fields, form }) => {
@@ -34,7 +34,7 @@ export default class Example extends React.Component {
             <Form>
                 <Input
                     name="username"
-                    onChange={ this.handleUsernameChange }
+                    onChange={this.handleUsernameChange}
                     required />
             </Form>
         )
