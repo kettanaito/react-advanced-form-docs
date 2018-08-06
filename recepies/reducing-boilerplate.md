@@ -1,6 +1,6 @@
 # Reducing boilerplate
 
-React Advanced Form encourages functional programming paradigm in a form of favoring pure functions and high-order functions. However, you don't have to be a guru in functional programming to use the library.
+React Advanced Form encourages pure functions and high-order functions. Those can help you tremendously to reduce the repetition in your forms and validation rules.
 
 ## High-order validator functions
 
@@ -25,16 +25,16 @@ import minLength from './validators/minLength'
 const validationRules = {
     type: {
         tel: {
-            minLength: minLength(8) // phones must be at least 8 chars long
+            // phones must be at least 8 characters long
+            minLength: minLength(8)
         }
     },
     name: {
         firstName: {
-            minLength: minLength(2) // first name must be at least 2 chars long
+            // first name must be at least 2 chars long
+            minLength: minLength(2)
         }
     }
 }
 ```
-
-> Use this approach to create validator functions of any kind!
 
