@@ -1,10 +1,12 @@
+---
+description: Component that separates the data on a layout level.
+---
+
 # Field.Group
 
 ## Specification
 
-A component to separate the data on the layout level.
-
-Particularly useful for the scenarios when UI representation of fields doesn't match the data structure expected by the remote end-point. Field grouping affects the way you reference the field within the `fields` Object available in various callbacks methods.
+Designed for the cases when UI representation of the fields doesn't match the data structure expected by the remote end-point. Field grouping affects the way you reference the field within the `fields` Object available in various callbacks methods.
 
 ## Props
 
@@ -37,14 +39,14 @@ export default class Example extends React.Component {
 }
 ```
 
-This layout will result into the following `serialized` Object upon submit:
+The form above serializes into the following JSON:
 
 ```javascript
 {
-  city: 'London',
-  primaryInfo: {
-    username: 'admin',
-    firstName: 'John'
+  "city": 'London',
+  "primaryInfo": {
+    "username": 'admin',
+    "firstName": 'John'
   }
 }
 ```
@@ -150,5 +152,5 @@ The layout above will serialize into the following JSON:
 }
 ```
 
-This way grouping your fields dictates how their data will be handled when it comes to submit, reducing extra composition logic.
+
 
