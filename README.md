@@ -62,7 +62,7 @@ Access the field's `value`, `fieldProps`, `fields` and the `form` as the paramet
 
 Get as many data from the sibling fields as needed, and build your logic on that. Embrace the power of reactive programming, which re-evaluates a resolver function whenever the referenced field props update.
 
-* [**Field grouping**](https://kettanaito.gitbooks.io/react-advanced-form/docs/components/Field.Group.html). Control the serialized data structure on the layout level by grouping the fields. Nested and split groups are supported.
+* [**Field grouping**](https://kettanaito.gitbooks.io/react-advanced-form/docs/components/Field.Group.html). Control the serialized data structure on the layout level by grouping the fields. Split and nest groups as you wish.
 
 ```jsx
 <Field.Group name="primaryInfo">
@@ -135,7 +135,7 @@ Starting with something new may appear challenging. There is a step-by-step inst
 
 Any of your contributions are highly appreciated. See the [Contribution guidelines](https://kettanaito.gitbooks.io/react-advanced-form/docs/CONTRIBUTING.html) to get to know the process better. Moreover, development isn't the only way to contribute, there are [many more](https://kettanaito.gitbooks.io/react-advanced-form/docs/CONTRIBUTING.html#other-contributions).
 
-Found an issue? Eager to suggest a useful feature? The [Issues](https://github.com/kettanaito/react-advanced-form/issues) tab is always open for your feedback. Just make sure you're not duplicating the existing tickets. If you feel lucky, you can even submit a [Pull request](https://github.com/kettanaito/react-advanced-form/pulls) with the changes.
+Found an issue? Eager to suggest a useful feature? Use the [Issues](https://github.com/kettanaito/react-advanced-form/issues) tab for your feedback. Just make sure you're not duplicating the existing tickets. If you feel lucky, you can even submit a [Pull request](https://github.com/kettanaito/react-advanced-form/pulls) with the changes.
 
 ### License
 
