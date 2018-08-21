@@ -1,6 +1,6 @@
 # Exposed props
 
-> This topic is related to [`createField`](https://github.com/kettanaito/react-advanced-form/tree/75c444924d87ca8ff76bc096231173e42e717adc/docs/hoc/createField/basics.md) high-order component. Make sure to understand the context it is being described.
+> This section is related to [`createField`](https://github.com/kettanaito/react-advanced-form/tree/75c444924d87ca8ff76bc096231173e42e717adc/docs/hoc/createField/basics.md) high-order component. Make sure to understand the context in which it is being described.
 
 After your field component is wrapped in the `createField`, it is being exposed the props which reflect the field's internal state. Those props can be used to tailor custom logic and exquisite styling.
 

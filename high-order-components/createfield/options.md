@@ -1,6 +1,6 @@
 # Options
 
-> This topic is related to [`createField`](https://github.com/kettanaito/react-advanced-form/tree/75c444924d87ca8ff76bc096231173e42e717adc/docs/hoc/createField/basics.md) high-order component. Make sure to understand the context it is being described in.
+> This section is related to [`createField`](https://github.com/kettanaito/react-advanced-form/tree/75c444924d87ca8ff76bc096231173e42e717adc/docs/hoc/createField/basics.md) high-order component. Make sure to understand the context in which it is being described.
 
 ## Introduction
 
@@ -12,19 +12,17 @@ You **don't have** to configure any of these options. There are sensible default
 
 ## Options list
 
-| Option name | Type | Description |
-| :--- | :--- | :--- |
-| `valuePropName` | `string` | A custom prop name to be treated as an updatable value during the field value change. |
-| `initialValue` | `any` | Custom initial value applied to all field instances by default. |
-| `allowMultiple` | `boolean` | Dictates whether multiple instances of the field with the same name is allowed. |
-| `mapPropsToField` | `({ props, context, fieldRecord, valuePropName }) => Object` | A custom maping function which should return a props Object used as the initial props during the field registration. |
-| `enforceProps` | `({ props, contextProps }) => Object` | A function which should return a props Object to be enforced on the custom field. |
-| `beforeRegister` | `({ fieldProps, fields }) => fieldProps` | Applies additional transformations to the `fieldProps`, or prevents from fields registration when returns `false`. |
-| `shouldValidateOnMount` | `({ props, fieldRecord, valuePropName, context }) => boolean` | Controls the necessity of validation upon field mount. |
+* [valuePropName](options.md#valuepropname-string)
+* [initialValue](options.md#initialvalue-any)
+* [allowMultiple](options.md#allowmultiple-boolean)
+* [mapPropsToField](options.md#mappropstofield-props-context-fieldrecord-valuepropname-greater-than-object)
+* [enforceProps](options.md#enforceprops-props-contextprops-greater-than-object)
+* [beforeRegister](options.md#beforeregister-fieldprops-fields-greater-than-fieldprops)
+* [shouldValidateOnMount](options.md#shouldvalidateonmount-props-fieldrecord-valuepropname-context-greater-than-boolean)
 
 ## `valuePropName: string`
 
-**Default value:** `value`
+**Default value:** `"value"`
 
 Some fields update a prop different from the `value` upon the interaction with them. For example, a checkbox updates its `checked` prop. Provide the prop name to update on field's `onChange` using this option, in case it differs from `value`.
 
@@ -57,7 +55,7 @@ Useful for the cases when the initial value of the field is different from an em
 
 **Default value:** `false`
 
-Allows multiple instances of the field with the same name under a single form scope.
+Allows multiple instances of the field with the same name within a single form's scope. This affects both form and [Field group](../../components/field.group.md) scopes.
 
 By default, field's `name` serves as the unique identifier, preventing the registration of duplicate fields. However, some field types \(i.e. radio button\) should allow multiple field instances with the same name.
 

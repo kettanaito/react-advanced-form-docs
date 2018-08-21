@@ -29,7 +29,7 @@
 
 * [createField](high-order-components/createfield/README.md)
   * [Options](high-order-components/createfield/options.md)
-  * [Presets](high-order-components/createfield/presets.md)
+  * [Field presets](high-order-components/createfield/presets.md)
   * [Exposed props](high-order-components/createfield/exposed-props.md)
 
 ## Components
