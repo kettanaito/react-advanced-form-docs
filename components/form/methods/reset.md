@@ -17,7 +17,7 @@ import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
   handleSubmitted = ({ res, fields, form }) => {
-    form.reset(); // resets "username" field to "admin"
+    form.reset() // resets "username" field to "admin"
   }
 
   render() {
@@ -30,26 +30,60 @@ export default class Example extends React.Component {
 }
 ```
 
-### Using `Form` reference
+### Using form reference
 
 ```jsx
-import React from 'react';
-import { Form, Field } from 'react-advanced-form';
+import React from 'react'
+import { Form, Field } from 'react-advanced-form'
 
 export default class MyForm extends React.Component {
   handleButtonClick = () => {
-    this.form.reset(); // resets "username" field to "admin"
+    this.form.reset() // resets "username" field to "admin"
   }
 
   render() {
     return (
-      <div>
-        <Form ref={ form => this.form = form }>
-          <Field.Input name="username" initialValue="admin" />
-        </Form>
+      <Form ref={form => this.form = form}>
+        <Field.Input
+          name="username"
+          initialValue="admin" />
         <button onClick={ this.handleButtonClick }>Reset</button>
-      </div>
-    );
+      </Form>
+    )
+  }
+}
+```
+
+### Reset controlled fields
+
+```jsx
+import React from 'react'
+import { Form, Field } from 'react-advanced-form'
+
+export default class MyForm extends React.Component {
+  state = {
+    username: 'foo'
+  }
+  
+  handleUsernameChange = ({ nextValue }) => {
+    this.setState({ username: nextValue })
+  }
+  
+  resetForm = () => {
+    this.setState({ username: '' })
+  }
+    
+  render() {
+    const { username } = this.state
+        
+    return (
+      <Form onReset={this.resetForm}>
+        <Field.Input
+          name="username"
+          value={username}
+          onChange={this.handleUsernameChange} />
+      <Form>
+    )
   }
 }
 ```
