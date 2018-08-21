@@ -22,8 +22,6 @@ Whenever you need a flexible and powerful form for your [React](https://reactjs.
 
 We have researched various form libraries to find the one which would suit our project's needs. It sounds easy, but in reality there wasn't a single library which would take care of forms gracefully, without unnecessary boilterplate, manual state management or architectural dependencies. If you want a library which "just works", without spending a week on configuring it, React Advanced Form is exactly what you need.
 
-Read more about the [motivation and thoughts](concept.md) behind React Advanced Form and how it came to be.
-
 ### How different is it from the other solutions?
 
 * **Boilerplate-free**. There are smaller and faster form libraries than React Advanced Form, but the amount of the repetitive and, frankly, unnecessary code they force you to write is abnormal. React Advanced Form handles all the essential functionality of the form by itself, giving you a pleasure and flexbility to work with the forms.

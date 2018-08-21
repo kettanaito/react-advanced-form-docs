@@ -18,15 +18,15 @@ import { Form } from 'react-advanced-form'
 import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
-    handleSubmit = () => {
-        // Make sure to return a Promise here
-    }
+ handleSubmit = () => {
+   // Make sure to return a Promise here
+  }
 
-    handleClick = () => {
-        this.form.submit().then((submitState) => {
-            // This is called after the Promise of `this.handleSubmit` resolves/rejects
-        })
-    }
+  handleClick = () => {
+    this.form.submit().then((submitState) => {
+      // This is called after the Promise of `this.handleSubmit` resolves/rejects
+    })
+  }
 
     render() {
         return (
@@ -34,7 +34,9 @@ export default class Example extends React.Component {
                 <Form
                     ref={form => this.form = form}
                     action={this.handleSubmit}>
-                    <Input name="username" required />
+                    <Input
+                        name="username"
+                        required />
                 </Form>
 
                 <a href="#" onClick={this.handleClick}>Submit manually</a>

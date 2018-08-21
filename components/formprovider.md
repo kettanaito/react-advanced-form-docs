@@ -30,8 +30,8 @@ import React from 'react'
 import { FormProvider } from 'react-advanced-form'
 
 const App = ({ children }) => (
-  <FormProvider rules={ validationRules } messages={ validationMessages }>
-    { children }
+  <FormProvider rules={validationRules} messages={validationMessages}>
+    {children}
   </FormProvider>
 )
 ```
@@ -75,7 +75,7 @@ export default class Example extends React.Component {
       <Form>
         <Input
           name="username"
-          onChange={ this.handleUsernameChange } />
+          onChange={this.handleUsernameChange} />
       </Form>
     )
   }

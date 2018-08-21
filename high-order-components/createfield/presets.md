@@ -19,12 +19,12 @@ Presets are designed for seamless integration of common field types. For the com
 Include the presets:
 
 ```javascript
-import { fieldPresets } from 'react-advanced-form';
+import { fieldPresets } from 'react-advanced-form'
 ```
 
 Provide the needed preset instead as the argument to `createField`:
 
 ```javascript
-export default createField(fieldPresets.select)(Select);
+export default createField(fieldPresets.select)(Select)
 ```
 

@@ -9,8 +9,8 @@ Custom validation messages applied to the form explicitly.
 ## Example
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
+import React from 'react'
+import { Form } from 'react-advanced-form'
 
 const formMessages = {
   extend: true, // merge the current messages with the FormProvider's ones

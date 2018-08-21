@@ -5,7 +5,6 @@
 ## General
 
 * [Introduction](general/introduction.md)
-* [Concept](general/concept.md)
 * [FAQ](general/faq.md)
 
 ## Getting started

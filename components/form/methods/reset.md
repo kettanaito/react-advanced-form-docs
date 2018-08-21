@@ -22,8 +22,10 @@ export default class Example extends React.Component {
 
   render() {
     return (
-      <Form onSubmitted={ this.handleSubmitted }>
-        <Input name="username" initialValue="admin" />
+      <Form onSubmitted={this.handleSubmitted}>
+        <Input
+          name="username"
+          initialValue="admin" />
       </Form>
     )
   }
@@ -34,7 +36,8 @@ export default class Example extends React.Component {
 
 ```jsx
 import React from 'react'
-import { Form, Field } from 'react-advanced-form'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class MyForm extends React.Component {
   handleButtonClick = () => {
@@ -44,10 +47,10 @@ export default class MyForm extends React.Component {
   render() {
     return (
       <Form ref={form => this.form = form}>
-        <Field.Input
+        <Input
           name="username"
           initialValue="admin" />
-        <button onClick={ this.handleButtonClick }>Reset</button>
+        <button onClick={this.handleButtonClick}>Reset</button>
       </Form>
     )
   }
@@ -58,7 +61,8 @@ export default class MyForm extends React.Component {
 
 ```jsx
 import React from 'react'
-import { Form, Field } from 'react-advanced-form'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class MyForm extends React.Component {
   state = {
@@ -78,7 +82,7 @@ export default class MyForm extends React.Component {
         
     return (
       <Form onReset={this.resetForm}>
-        <Field.Input
+        <Input
           name="username"
           value={username}
           onChange={this.handleUsernameChange} />

@@ -44,19 +44,19 @@ A representation of the field's record has multiple properties reflecting its st
 Exposed props are automatically available in `this.props` of the component.
 
 ```jsx
-import React from 'react';
-import { createField } from 'react-advanced-form';
+import React from 'react'
+import { createField } from 'react-advanced-form'
 
 class CustomField extends React.Component {
   render() {
-    const { fieldProps, fieldState } = this.props;
-    const { valid, invalid, errors } = fieldState;
+    const { fieldProps, fieldState } = this.props
+    const { valid, invalid, errors } = fieldState
 
-    return (<input { ...fieldProps } />);
+    return (<input { ...fieldProps } />)
   }
 }
 
-export default createField()(CustomField);
+export default createField()(CustomField)
 ```
 
 > **Note:** The value of `withImmutable` on [`<FormProvider>`](../../components/formprovider.md) doesn't affect `fieldProps` and `fieldState`. Those are always plain Objects.

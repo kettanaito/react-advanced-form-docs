@@ -43,6 +43,8 @@ export default class Example extends React.Component {
 `Field.validate()` has asynchronous nature, being a function which returns a Promise. This means you can use it with `async/await` as well:
 
 ```javascript
-const isValid = await this.form.validate();
+const isValid = await this.form.validate()
 ```
+
+
 
