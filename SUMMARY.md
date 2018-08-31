@@ -79,5 +79,5 @@
 
 ## Recipes
 
-* [Reducing boilerplate](recepies/reducing-boilerplate.md)
+* [Utilizing functions](recepies/reducing-boilerplate.md)
 

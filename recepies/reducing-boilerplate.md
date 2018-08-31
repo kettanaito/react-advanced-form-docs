@@ -1,10 +1,10 @@
-# Reducing boilerplate
+# Utilizing functions
 
-React Advanced Form encourages pure functions and high-order functions. Those can help you tremendously to reduce the repetition in your forms and validation rules.
+React Advanced Form encourages the usage of pure and high-order functions. These concepts can help you to reduce repetition and grant super powers during your forms declaration.
 
-## High-order validator functions
+## High-order validators
 
-Consider writing a set of pure high-order validator functions that accept any custom parameters and always return a validator function expected by React Advanced Form:
+Consider writing a set of pure high-order validator functions that accept optional set of parameters and always return a validator function expected by React Advanced Form:
 
 ```javascript
 // validators/minLength.js
@@ -16,7 +16,7 @@ export default function minLength(length) {
 }
 ```
 
-Now you can use the minLength function in multiple places:
+Now you can use the `minLength` function parametrically whenever necessary:
 
 ```javascript
 // validation-rules.js
@@ -25,13 +25,11 @@ import minLength from './validators/minLength'
 const validationRules = {
     type: {
         tel: {
-            // phones must be at least 8 characters long
             minLength: minLength(8)
         }
     },
     name: {
         firstName: {
-            // first name must be at least 2 chars long
             minLength: minLength(2)
         }
     }
