@@ -4,46 +4,98 @@
 
 Action performed on the successful submit of the form.
 
+This function is called only when the form is valid.
+
 ## Definition
 
 ```typescript
-type action = ({
-  serialized: Object|Map, // Serialized fields of the form
-  fields: Object|Map, // The state of all fields
-  form: ReactComponent // Reference to the Form component
-}) => Promise
+type Action = (params) => Promise<any>
 ```
 
+## Parameters
+
+| Parameter name | Type | Description |
+| :--- | :--- | :--- |
+| `serialized` | `Object` | Serialized fields of the form. |
+| `fields` | `Object` | Reference to all fields. |
+| `form` | `Object` | Form component reference. |
+
+{% hint style="info" %}
+`action` function must always return a Promise.
+{% endhint %}
+
 ## Example
+
+### Simple example
 
 ```jsx
 import React from 'react'
 import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
 
 export default class RegistrationForm extends React.Component {
   registerUser = ({ serialized, fields, form }) => {
-    return fetch('...', {
+    return fetch('https://back.end/user', {
       method: 'POST',
-      body: JSON.stringify(serialized)
+      body: JSON.stringify(serialized),
     })
   }
 
   render() {
     return (
       <Form action={this.registerUser}>
-        { /* ... */ }
+        <Input
+          name="username"
+          label="Username"
+          required />
+        <Input
+          name="password"
+          label="Password"
+          required />
       </Form>
     )
   }
 }
 ```
 
-> **Note:** `Form.props.action` will be called **only** when the form validation resolves. In other cases this handler is completely ignored, as it should be.
+{% hint style="info" %}
+You can use [`onSerialize`](../callbacks/onserialize.md) form prop to transform the serialized fields object prior to accepting them in the `action` handler.
+{% endhint %}
 
-## Recommendations
+### Example with Redux
 
-* `action` should **always** return a `Promise`.
-* You may return Redux actions dispatchers in the `action` handler, only ensure that Redux actions return a `Promise`.
-* Name of the `action` handler should not begin with `on`, as it is not a callback handler.
-* It is recommended to name `action` handlers relatively to what form must do by its design: `registerUser` for Registration form, `createPost` for creating a new post, etc.
+```jsx
+import React from 'react'
+import { connect } from 'react-redux'
+import { Form } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
+import { registerUser } from '@store/user/actions'
+
+class RegistrationForm extends React.Component {
+  registerUser = ({ serialized, fields, form }) => {
+    return this.props.registerUser(serialized)
+  }
+
+  render() {
+    return (
+      <Form action={this.registerUser}>
+        <Input
+          name="username"
+          label="Username"
+          required />
+        <Input
+          name="password"
+          label="Password"
+          required />
+      </Form>
+    )
+  }
+}
+
+export default connect(null, { registerUser })(RegistrationForm)
+```
+
+{% hint style="info" %}
+You need to use a dedicated Redux middleware for the actions to return a Promise \(i.e. `redux-thunk` or `redux-saga`\).
+{% endhint %}
 

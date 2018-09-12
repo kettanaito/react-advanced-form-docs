@@ -12,21 +12,23 @@ Asynchronous rule of the field applied as the top priority validation _after_ it
 ## Definition
 
 ```typescript
-type AsyncRule = ({
-  value: any, // The current value of the field
-  fieldProps: Object|Map, // The props of the current field
-  fields: Object|Map, // The state of the fields
-  form: ReactComponent // Reference to the Form component
-}) => AsyncRulePayload
+type AsyncRule = (params) => AsyncRulePayload
+```
 
-type AsyncRulePaylod = {
-  valid: Boolean,
+```typescript
+type AsyncRulePayload = {
+  valid: boolean,
+  extra?: {
+    [exraKey: string]: any
+  }
 }
 ```
 
-| Argument | Type | Description |
+## Parameters
+
+| Parameter name | Type | Description |
 | :--- | :--- | :--- |
-| `value` | `mixed` | The current value of the field. |
+| `value` | `any` | The current value of the field. |
 | `fieldProps` | `Object` | Props of the current field. |
 | `fields` | `Object` | Map of all fields. |
 | `form` | `Object` | A reference to the current `Form` |
@@ -42,7 +44,7 @@ export default class Example extends React.Component {
   validateUsername = ({ value, fieldProps, fields, form }) => {
     return fetch('https://check.if/user/exists', {
       method: 'POST',
-      body: JSON.stringify(value)
+      body: JSON.stringify(value),
     })
     .then(res => res.json())
     .then((res) => {

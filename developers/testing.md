@@ -33,19 +33,8 @@ npm run cypress
 ## Unit tests
 
 * [enzyme](https://github.com/airbnb/enzyme)
-* [mocha](https://mochajs.org/)
+* jest
 * [chai](http://chaijs.com/)
-
-### Folder structure
-
-* **./test/**
-  * **common/**. Useful tools and shorthands to help in testing.
-  * **components/**. React components for Enzyme unit tests.
-  * **unit/**. Unit tests themselves.
-    * **classses/**. Unit tests for separate classes \(i.e. `Sequence`\).
-    * **components/**. Unit tests for React components.
-    * **utils/**. Unit tests for various utility functions.
-  * **jsdom.config.js**. Configuration for `jsdom`, ysed for emulating the DOM during Enzyme unit tests.
 
 ### Workflow
 

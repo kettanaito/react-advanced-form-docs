@@ -22,8 +22,8 @@ Each selector expects the map of the selector values and its [resolvers](message
 
 ```typescript
 type ValidationMessages = {
-    [selectorValue: string]: MessageResolver
-  }
+    [selectorValue: string]: MessageResolver,
+  },
 }
 ```
 
@@ -34,8 +34,8 @@ Resolver is an Object which maps the rule name to its actual message, or another
 ```typescript
 type MessageResolver = {
   rule?: {
-    [ruleName: string]: Message
-  }
+    [ruleName: string]: Message,
+  },
 }
 
 type Message = string | ({ fieldProps, fields, form, ...extra }) => string
@@ -62,10 +62,10 @@ export default {
       missing: 'Please provide the password',
       invalid: 'The passwords is invalid',
       rule: {
-        minLength: 'Password must be at least 6 characters long'
-      }
-    }
-  }
+        minLength: 'Password must be at least 6 characters long',
+      },
+    },
+  },
 }
 ```
 
@@ -89,21 +89,21 @@ Consider the following validation messages:
 ```javascript
 export default {
   general: {
-    invalid: 'General invalid message'
+    invalid: 'General invalid message',
   },
   type: {
     email: {
-      invalid: 'E-mail is invalid'
-    }
+      invalid: 'E-mail is invalid',
+    },
   },
   name: {
     userEmail: {
       invalid: 'User e-mail is invalid',
       rule: {
-        includesAt: 'E-mail must include "@" character'
-      }
-    }
-  }
+        includesAt: 'E-mail must include "@" character',
+      },
+    },
+  },
 }
 ```
 

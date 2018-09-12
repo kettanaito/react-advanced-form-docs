@@ -20,7 +20,7 @@ Whenever you need a flexible and powerful form for your [React](https://reactjs.
 
 ### Why should I switch to React Advanced Form?
 
-We have researched various form libraries to find the one which would suit our project's needs. It sounds easy, but in reality there wasn't a single library which would take care of forms gracefully, without unnecessary boilterplate, manual state management or architectural dependencies. If you want a library which "just works", without spending a week on configuring it, React Advanced Form is exactly what you need.
+We have researched various form libraries to find the one which would suit our project's needs. It sounds easy, but in reality there wasn't a single library which would take care of forms gracefully, without unnecessary boilerplate, manual state management or architectural dependencies. If you want a library which "just works", without spending a week on configuring it, React Advanced Form is your best candidate.
 
 ### How different is it from the other solutions?
 
@@ -32,7 +32,7 @@ We have researched various form libraries to find the one which would suit our p
 
 ### How does React Advanced Form work?
 
-It efficiently manages the immutable internal state using principles of reactive programming. A proper relationship between the form and the field components is achieved by using the [context](https://reactjs.org/docs/context.html) feature of React.
+It efficiently manages the immutable internal state using principles of functional and reactive programming. A proper relationship between the form and the field components is achieved by using React [context](https://reactjs.org/docs/context.html).
 
 ### Shouldn't usage of `context` be avoided?
 
@@ -42,13 +42,13 @@ Context isn't something you would want to use in your applications by yourself, 
 
 ### Do you expect me to use `context` in my application?
 
-No, never use context in your applications.
+No, we do not expect you to use context.
 
 React Advanced Form handles context safely, providing you all the necessary hooks and callbacks so you don't need to do anything with the context at all.
 
 ### Do my custom fields need to use `context`?
 
-No, never use context in your applications.
+No.
 
 You need not to access any context in order to implement beautiful custom fields. Use a native `createField` high-order component to get all the necessary props of the field you are about to style.
 

@@ -1,37 +1,35 @@
 # Exposed props
 
-> This section is related to [`createField`](https://github.com/kettanaito/react-advanced-form/tree/75c444924d87ca8ff76bc096231173e42e717adc/docs/hoc/createField/basics.md) high-order component. Make sure to understand the context in which it is being described.
-
-After your field component is wrapped in the `createField`, it is being exposed the props which reflect the field's internal state. Those props can be used to tailor custom logic and exquisite styling.
+Wrapping a React component in `createField` high-order component automatically exposes the properties listed below. These props can be used for field styling and custom logic or behavior.
 
 ## Props list
 
 | Prop name | Type | Description |
 | :--- | :--- | :--- |
-| `fieldProps` | `Object` | Collection of props dedicated to the form element \("input", "select", etc.\) itself. |
-| `fieldState` | `Object` | Mirror of the field's record \(state\). |
+| `fieldProps` | `Object` | Object of essential props for the primitive field components \(i.e. input, select, textarea, etc\). |
+| `fieldState` | `Object` | Object representing a field's state. |
 
-> `fieldProps` are compsed from the `fieldState` and are exposed separately to ease the process of props assignment to the form elements.
+> `fieldProps` are composed from the `fieldState` and are exposed separately to ease the process of props assignment to the form elements.
 
-## Field state
+## `fieldState`
 
-A representation of the field's record has multiple properties reflecting its state at the moment. Below there is a full list of the properties available under `fieldState` object.
+Object representing a field's state.
 
 ### General
 
-| Property | Type | Description |
+| Prop name | Type | Description |
 | :--- | :--- | :--- |
 | `required` | `boolean` | Indicates whether the field is required. |
 | `disabled` | `boolean` | Indicates whether the field is disabled. |
 
 ### Validation
 
-| Property | Type | Description |
+| Prop name | Type | Description |
 | :--- | :--- | :--- |
 | `validating` | `boolean` | Indicates whether the field is being validated at the moment. |
 | `valid` | `boolean` | Indicates whether the field has passed all the validations. |
 | `invalid` | `boolean` | Indicates whether the field has not passed all the validations. |
-| `errors` | `string[]` | Collection of validation errors relative to the fields at the given point of time. |
+| `errors` | `string[]` | Collection of the validation errors relative to the fields at the given point of time. |
 | `validated` | `boolean` | Indicates that the field has been validated, regardless of the validation type and status. |
 | `validatedSync` | `boolean` | Indicates whether the field has been validated synchronously. |
 | `validSync` | `boolean` | Indicates whether the field is valid relatively to its synchronous validation rules. |
@@ -41,7 +39,7 @@ A representation of the field's record has multiple properties reflecting its st
 
 ## Example
 
-Exposed props are automatically available in `this.props` of the component.
+Exposed props can be accessed in `this.props` of your component.
 
 ```jsx
 import React from 'react'
@@ -52,12 +50,10 @@ class CustomField extends React.Component {
     const { fieldProps, fieldState } = this.props
     const { valid, invalid, errors } = fieldState
 
-    return (<input { ...fieldProps } />)
+    return (<input {...fieldProps} />)
   }
 }
 
 export default createField()(CustomField)
 ```
-
-> **Note:** The value of `withImmutable` on [`<FormProvider>`](../../components/formprovider.md) doesn't affect `fieldProps` and `fieldState`. Those are always plain Objects.
 

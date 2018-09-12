@@ -39,7 +39,7 @@ class CustomField extends React.Component {}
 export default createField({
   mapPropsToField: ({ props, fieldRecord, context }) => ({
     ...fieldRecord,
-    customProp: composeByProp(props.someProp)
+    customProp: composeByProp(props.someProp),
   })
 })(CustomField)
 ```
@@ -122,8 +122,8 @@ class Input extends React.Component {
 
     return (
       <input
-        { ...fieldProps }
-        onChange={ this.handleChange } />
+        {...fieldProps}
+        onChange={this.handleChange} />
     )
   }
 }

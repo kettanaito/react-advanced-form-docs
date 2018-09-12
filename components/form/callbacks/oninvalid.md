@@ -8,13 +8,13 @@ Called once the submit is prevented due to invalid validation state of the form.
 
 ```typescript
 type OnInvalid = ({
-  invalidFields: Object[]|Map[], // Unordered list of invalid fields
-  fields: Object|Map, // The state of the fields
+  invalidFields: Object[], // Unordered list of invalid fields
+  fields: Object, // The state of the fields
   form: ReactComponent // Reference to the Form component
 }) => void
 ```
 
-## Usage
+## Example
 
 ```jsx
 import React from 'react'

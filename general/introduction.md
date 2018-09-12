@@ -12,10 +12,10 @@ No boilerplate. No obscure high-order component configurations. No redundant sta
 
 ### Features
 
-* **Boilterplate-free**. Remember tossing tons of configurations for high-order components to forms? No more. Create clean and powerful forms without repeating yourself, without building crazy abstractions.
-* **Immutable**. Rest asured as all the fields are controlled using immutable data structures that makes their updates efficient and side-effect free.
-* [**Composite fields**](https://kettanaito.gitbooks.io/react-advanced-form/docs/getting-started/creating-fields.html). React Advanced Form is _field-centric_. That means you define flexible fields composites and reuse them throughout the entire application. Reflect even the most granular field state changes in the UI to achieve the outmost user experience.
-* [**Intuitive usage**](https://kettanaito.gitbooks.io/react-advanced-form/docs/getting-started/creating-form.html). Place a `Form` component, add some fields and the form is working without extra effort.
+* **Boilerplate-free**. Forget about having kilometers of high-order-components around forms. Create clean and powerful forms without repeating yourself, without building crazy abstractions.
+* **Immutable**. Each field change returns a new field with that change reflected.
+* [**Composite fields**](https://kettanaito.gitbooks.io/react-advanced-form/docs/getting-started/creating-fields.html). React Advanced Form is _field-centric_. That means you define flexible fields and use them to compose any form you need. Reflect even the most granular field state changes in the UI to achieve the outmost user experience.
+* [**Intuitive**](https://kettanaito.gitbooks.io/react-advanced-form/docs/getting-started/creating-form.html). Place a `Form` component, add some fields and the form is working without extra effort.
 
 ```jsx
 // No, this is not a diminished example, this is a completely working form
@@ -60,7 +60,7 @@ Access the field's `value`, `fieldProps`, `fields` and the `form` as the paramet
   required={({ get }) => !!get(['firstName', 'value'])} />
 ```
 
-Get as many data from the sibling fields as needed, and build your logic on that. Embrace the power of reactive programming, which re-evaluates a resolver function whenever the referenced field props update.
+Get as many data from the sibling fields as needed, and build your logic around it. Embrace the power of reactive programming, which re-evaluates a resolver function in real time whenever the referenced field props update.
 
 * [**Field grouping**](https://kettanaito.gitbooks.io/react-advanced-form/docs/components/Field.Group.html). Control the serialized data structure on the layout level by grouping the fields. Nested and split groups are supported.
 
@@ -101,7 +101,6 @@ The layout above will be serialized into the following JSON:
 Make sure to have the following packages installed in your project:
 
 * [React](https://github.com/facebook/react) \(15.0+\)
-* [Immutable](https://github.com/facebook/immutable-js) \(3.8+\)
 
 #### Install
 
@@ -124,7 +123,7 @@ Starting with something new may appear challenging. There is a step-by-step inst
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | 65+ | 57+ | 9+ | 8+ | 41+ | – |
 
-> There is no official support for Internet Explorer. No features are tested to ensure working there. They _may_, or _may not_ work. Microsoft has stopped IE support, and so should you application.
+> There is no official support for Internet Explorer. No features are tested to be working there. They _may_, or _may not_ work. Consider educating the web and dropping support for deprecated browsers.
 
 ### Live examples
 
@@ -139,5 +138,5 @@ Found an issue? Eager to suggest a useful feature? The [Issues](https://github.c
 
 ### License
 
-This project is published under [MIT License](https://github.com/kettanaito/react-advanced-form/blob/master/LICENSE.md). See the license file for more details.
+[MIT License](https://github.com/kettanaito/react-advanced-form/blob/master/LICENSE.md).
 

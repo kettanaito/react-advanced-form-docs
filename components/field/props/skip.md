@@ -2,9 +2,11 @@
 
 ## Specification
 
-* Excludes the field from the `serialized` Object upon any Form serialization.
-* Doesn't affect other field behaviors \(i.e. skipped required fields still prevent form submit when empty/invalid\).
-* Static prop \(**cannot** be controlled\).
+Controls whether to exclude a field during the serialization.
+
+{% hint style="info" %}
+Skipping a field doesn't affect the rest of its behavior \(i.e. validation\).
+{% endhint %}
 
 ## Definition
 
@@ -22,13 +24,13 @@ import { Form } from 'react-advanced-form'
 import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
-  handleSubmit = ({ serialized }) => {
+  handleFormSubmit = ({ serialized }) => {
     console.log(serialized) // { "username": "admin", "password": "123" }
   }
 
   render() {
     return (
-      <Form action={this.handleSubmit}>
+      <Form action={this.handleFormSubmit}>
         <Input
           name="username"
           value="admin"

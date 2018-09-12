@@ -2,20 +2,18 @@
 
 ## Specification
 
-A callback function called when the form becomes dirty.
+A callback function dispatched once when the first value change of a field happens.
 
-## Definition
+## Parameters
 
-```typescript
-type OnFirstChange = ({
-  event: Event, // Reference to the event triggered the change
-  prevValue: any, // The previous value of the field
-  nextValue: any, // The next value of the field
-  fieldProps: Object|Map, // The props of the field which triggered the change
-  fields: Object|Map, // The state of all fields within the form
-  form: ReactComponent // The form component reference
-}) => void
-```
+| Param | Type | Description |
+| :--- | :--- | :--- |
+| `event` | `Event` | Change event reference. |
+| `prevValue` | `any` | Previous value of the changed field. |
+| `nextValue` | `any` | Next value of the changed field. |
+| `fieldProps` | `Object` | Props of the field that triggered the change. |
+| `fields` | `Object` | Reference to all fields in the form. |
+| `form` | `Object` | Form component reference. |
 
 ## Example
 
@@ -31,7 +29,7 @@ export default class Example extends React.Component {
   render() {
     return (
       <Form onFirstChange={this.handleFirstChange}>
-        { /* Fields here */ }
+        {/* Fields here */}
       </Form>
     )
   }

@@ -16,37 +16,6 @@ This is a generic concept implemented in several features of React Advanced Form
 
 Below, there is a list of behaviors applicable to reactive props, regardless of where they are used. For consistency's sake, [Reactive field props](reactive-props.md#reactive-field-props) interface is used in these examples.
 
-### Safe key reference
-
-There is no need to explicitly check for the field's existence in order to reference props of potentially non-existent fields. The interface of reactive props provides safe key reference using Immutable instances.
-
-For example, this is the _**wrong**_ way of declaring a prop subscription:
-
-```jsx
-<Checkbox
-  required={({ get, fields }) => {
-    // the WRONG way of reactive prop declaration
-    const foo = get(['fieldOne']) && get(['fieldOne', 'value'])
-    const bar = fields.fieldTwo && get(['fieldTwo', 'value'])
-    return foo && bar
-  }} />
-```
-
-The _**correct**_ way would be much more clean and simple:
-
-```jsx
-<Checkbox
-  required={({ get }) => {
-    /* "get" checks if "fieldOne" exists automatically */
-    const foo = get(['fieldOne', 'value'])
-    const bar = get(['fieldTwo', 'required'])
-
-    return foo && bar
-  }}>
-```
-
-In case the referenced field, or its prop, doesn't exist, the getter will return `undefined`.
-
 ### Multiple field references
 
 It is possible to reference multiple fields within a single reactive prop resolver function:
@@ -100,9 +69,7 @@ To create a reactive field prop simply pass a function as its value, and use the
 
 ```jsx
 <FieldComponent
-  required={({ get }) => {
-    return get(['path', 'to', 'field"s', 'prop'])
-  }} />
+  required={({ get }) => get(['path', 'to', 'field', 'prop'])} />
 ```
 
 ### Usage

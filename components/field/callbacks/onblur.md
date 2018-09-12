@@ -1,21 +1,25 @@
----
-description: Event handler called when a field loses focus.
----
-
 # onBlur
+
+## Specification
+
+Event handler called when a field loses focus.
 
 ## Definition
 
 ```typescript
-type OnBlurCallback = ({
-  event: Event, // Native event reference
-  fieldProps: Object|Map, // The props of the current field
-  fields: Object|Map, // The state of the fields
-  form: ReactComponent // Reference to the Form component
-}) => void
+type OnBlur = (params) => void
 ```
 
-## Usage
+## Parameters
+
+| Parameter name | Type | Description |
+| :--- | :--- | :--- |
+| `event` | `Event` | Native event reference. |
+| `fieldProps` | `Object` | Props of the current field. |
+| `fields` | `Object` | Reference to all fields of a form. |
+| `form` | `Object` | Form component reference. |
+
+## Example
 
 ```jsx
 import React from 'react'
@@ -23,20 +27,20 @@ import { Form } from 'react-advanced-form'
 import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
-    handleUsernameBlur = ({ event, fieldProps, fields, form }) => {
-        // ...
-    }
+  handleUsernameBlur = ({ event, fieldProps, fields, form }) => {
+    // ...
+  }
 
-    render() {
-        return (
-            <Form>
-                <Input
-                    name="username"
-                    onBlur={this.handleUsernameBlur}
-                    required />
-            </Form>
-        )
-    }
+  render() {
+    return (
+      <Form>
+        <Input
+          name="username"
+          onBlur={this.handleUsernameBlur}
+          required />
+      </Form>
+    )
+  }
 }
 ```
 

@@ -21,7 +21,7 @@ const validationRules = {
     text: ({ value }) => !!value
   },
   name: {
-    username: ({ value, fieldProps, fields, form }) => {
+    username: ({ value, fieldProps, form }) => {
       return (value !== 'admin')
     }
   }
@@ -37,14 +37,14 @@ const formRules = {
    */
   extend: true,
   name: {
-    username: ({ value, fieldProps, fields, form }) => {
+    username: ({ value, fieldProps, form }) => {
       return (value !== 'foo')
     }
   }
 }
 
 export default class App extends React.Component {
-  validateUsername = ({ value, fieldProps, fields, form }) => {
+  validateUsername = ({ value, fieldProps, form }) => {
     return fetch('https://backend.dev/user/validate', {
       method: 'POST',
       body: JSON.stringify({ username: value })
@@ -63,7 +63,7 @@ export default class App extends React.Component {
             required />
           <Input
             name="firstName"
-            rule={({ value, fieldProps, fields, form }) => {
+            rule={({ value, fieldProps, form }) => {
               return (value !== 'foo');
             }}
             asyncRule={...} />

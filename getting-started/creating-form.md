@@ -16,7 +16,7 @@ import React from 'react'
 import { Form } from 'react-advanced-form'
 
 /* Composite field components */
-import { Input, Checkbox } from '../components'
+import { Input, Checkbox } from '../fields'
 
 export default class ExampleForm extends React.Component {
   render() {
@@ -37,5 +37,5 @@ export default class ExampleForm extends React.Component {
 }
 ```
 
-> Note that this is a minimal example. More complex topics like field validation or submit handling will be covered in the next steps of this guide.
+> Note that this is a minimal example. More complex topics like validation or submit handling are described in the next steps of this guide. Taking things one at a time is a key to understanding.
 

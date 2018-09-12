@@ -36,31 +36,31 @@ ReactDOM.render(renderApp, document.getElementById('root'))
 We can also apply our validation schemas to a specific form component. This may be useful in case some validation rules/messages are different for a certain form.
 
 ```jsx
-import React from 'react';
-import { Form } from 'react-advanced-form';
+import React from 'react'
+import { Form } from 'react-advanced-form'
 
-const customRules = {
-  extend: false, // when "true", merges custom and application rules together
+const validationRules = {
+  extend: false, // when "true", merges custom- and application rules together
   type: {
-    password: ({ value }) => anotherValidator(value)
-  }
-};
+    password: ({ value }) => anotherValidator(value),
+  },
+}
 
-const customMessages = {
+const validationMessages = {
   type: {
     password: {
-      invalid: 'I am different than general invalid password message'
-    }
-  }
+      invalid: 'I am different than general invalid password message',
+    },
+  },
 };
 
 export default class ExampleForm extends React.Component {
   render() {
     return (
-      <Form rules={ customRules } messages={ customMessages }>
-        { /* ... */ }
+      <Form rules={validationRules} messages={validationMessages}>
+        {/* ... */}
       </Form>
-    );
+    )
   }
 }
 ```

@@ -7,13 +7,13 @@
 * [Priority & exclusion](rules.md#priority-exclusion)
 * [Named rules](rules.md#named-rules)
 * [Multiple rules](rules.md#multiple-rules)
-* [Referencing fields](rules.md#referencing-fields)
+* [R](rules.md#referencing-fields)eactive resolver
 * [Extending schema](rules.md#extending-schema)
 * [Example](rules.md#example)
 
 ## Introduction
 
-The validation logic is completely decoupled from the view \(React\) part of a form due to proper responsibilities separation. React Advanced Form uses a validation schema to handle field validation. Once the schema is applied to `FormProvider` or `Form` via `rules` prop, children fields begin to abide by the defined validation rules automatically.
+The validation logic is completely decoupled from the view part of a form due to proper separation of concerns. React Advanced Form uses a validation schema to handle field validation. Once the schema is applied to `FormProvider` or `Form` via `rules` prop, children fields begin to abide by the defined validation rules automatically.
 
 ## Validation schema
 
@@ -23,25 +23,25 @@ Validation schema is a plain JavaScript object of the pre-defined structure, whi
 type ValidationSchema = {
   extend?: boolean,
   type?: {
-    [fieldType: string]: RuleDefinition
+    [fieldType: string]: RuleDefinition,
   },
   name?: {
-    [fieldName: string]: RuleDefinition
-  }
+    [fieldName: string]: RuleDefinition,
+  },
 }
 ```
 
 ## Rule definition
 
-To define a new rule a field must be selected first. The latter can be done based on `name` or `type` of the field, both options using the same syntax. Once the field\(s\) is selected, it expects a [resolver function](rules.md#resolvers) as the value.
+Any rule definition starts from selecting a field. Selection is done based on `name` or `type` of the field, both options using the same syntax. Once the field\(s\) is selected, it expects a [resolver function](rules.md#resolvers) as the value.
 
-For example, let's create a rule for the fields with type `text`, saying that the entered value must not equal to `foo`:
+For example, let's create a rule for all fields with the type `text`, declaring that the entered value must not equal to `foo`:
 
 ```javascript
 export default {
   type: {
-    text: ({ value }) => (value !== 'foo')
-  }
+    text: ({ value }) => (value !== 'foo'),
+  },
 }
 ```
 
@@ -54,14 +54,13 @@ Resolver is a function responsible for resolving the next validity state of a fi
 ### Syntax
 
 ```typescript
-type TRuleResolver = ({ value, fieldProps, fields, form, get }) => boolean
+type RuleResolver = ({ get, value, fieldProps, form }) => boolean
 ```
 
 ### Parameters
 
 * `value` - a shorthand reference to the field's value at the moment of resolver execution.
 * `fieldProps` - a reference to the field's props.
-* `fields` - a map of the sibling fields.
 * `form` - a reference to the `<Form>` component.
 * `get` - a getter function to reference [reactive props](../architecture/reactive-props.md#reactive-validation-rules).
 
@@ -104,22 +103,7 @@ And the next field component:
 
 Whenever the value of the field contains anything but numbers, the `schema.name.someField` rule will reject, and `schema.type.number` rule will not even be executed.
 
-## Named rules
-
-Each field selector can accept the map of the `<ruleName, resolver>` shape to list multiple rules relative to the same selector.
-
-```jsx
-export default {
-  type: {
-    password: {
-      capitalLetter: ({ value }) => /[A-Z]/.test(value),
-      oneNumber: ({ value }) => /[0-9]/.test(value)
-    }
-  }
-}
-```
-
-Apart from applying multiple rules to the same field, named rules allow to associate specific messages with each rule based on the rule name. Considering the example above, we can have separate messages for `capitalLetter` and `oneNumber` rules independently. Learn more on how to do that in [Validation messages: Named resolvers](messages.md#named-resolvers) section.
+## 
 
 ## Multiple rules
 
@@ -143,17 +127,17 @@ Multiple type-specific rules are declared in the same way.
 
 With the multiple rules the execution order differs. Named rules of the same selector \(name/type\) are executed in parallel, regardless of the resolving status of their siblings. Considering the example above, `oneNumber` rule will be executed even if `capitalLetter` rejects.
 
-## Referencing fields
+## Reactive resolver
 
-There is a `field` argument property exposed in each resolver function. It allows to reference another fields of the same form, and base the validation logic on their state.
+There is a `get` argument exposed in each rule resolver function. It allows to reference another fields of the same form, and base the validation logic on their state.
 
 Whenever a field is referenced in a resolver, the latter is automatically called each time the referenced field's prop update. Consider the following example:
 
 ```javascript
 {
   name: {
-    confirmPassword: ({ value, fields }) => {
-      return (value === fields.password.value)
+    confirmPassword: ({ get, value }) => {
+      return (value === get(['password', 'value'])
     }
   }
 }
@@ -163,14 +147,16 @@ Based on the declaration above, a `[name="confirmPassword"]` field is valid when
 
 ## Extending schema
 
+Validation schema accepts the `extend: boolean` property that controls how the schema should behave relatively to another rules applied to a form. Based on that property's value the schema can override other rules, or be merged with them.
+
 It is possible to extend or override a validation schema using the `extend` option on the root level of the schema. When set to `true`, the current schema will extend \(deep merge\) any schema of the higher scope \(i.e. the one provided by `FormProvider`\). When set to `false`, the current schema will completely override any higher scope schema.
 
 ```javascript
 const customRules = {
   extend: true, // extend any rules from the higher scope
   name: {
-      myField: ({ value }) => (value !== 'foo')
-  }
+      myFieldName: ({ value }) => (value !== 'foo'),
+  },
 }
 ```
 

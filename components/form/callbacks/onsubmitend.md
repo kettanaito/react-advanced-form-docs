@@ -9,13 +9,13 @@ Called immediately after the submit ended, regardless of the submit status \(on 
 ```typescript
 type OnSubmitEnd = ({
   res: Response, // Accumulated response of the async submit action
-  serialized: Object|Map, // Serialized fields
-  fields: Object|Map, // The state of the fields
+  serialized: Object, // Serialized fields
+  fields: Object, // The state of the fields
   form: ReactComponent // Reference to the Form component
 }) => void
 ```
 
-## Usage
+## Example
 
 ```jsx
 import React from 'react'

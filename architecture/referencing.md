@@ -26,8 +26,7 @@ class MyForm extends React.Component {
 
   render() {
     return (
-      <Form
-        ref={form => this.formRef = form} />
+      <Form ref={form => this.formRef = form} />
     )
   }
 }
@@ -90,7 +89,7 @@ class MyForm extends React.Component {
   render() {
     return (
       <Form>
-        <MyField innerRef={ element => this.fieldElement = element } name="foo" />
+        <MyField innerRef={field => this.fieldElement = field} name="foo" />
       </Form>
     )
   }

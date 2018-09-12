@@ -19,10 +19,9 @@ A good place to start is to ensure you are familiar with the technologies used i
 
 * **Development:**
   * [React](https://reactjs.org/) to power the components
-  * [ImmutableJS](https://facebook.github.io/immutable-js) for variables management
 * **Testing:**
   * [Chai](http://chaijs.com/) as the assertion library
-  * [Mocha](https://mochajs.org/) for plain unit tests
+  * Jest for plain unit tests
   * [Enzyme](http://airbnb.io/enzyme/) for React unit tests
   * [Cypress](https://www.cypress.io/) for integration tests.
 
@@ -121,5 +120,5 @@ Above there are the guidelines for the development contribution, but that isn't 
 * Contribute to the [Official documentation](https://kettanaito.gitbooks.io/react-advanced-form), which is a part of the RAF repository.
 * Star and share React Advanced Form if you find it useful
 
-Each of your contributions counts! Thank you.
+Each of your contributions matters! Thank you.
 

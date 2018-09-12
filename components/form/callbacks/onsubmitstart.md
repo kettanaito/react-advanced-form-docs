@@ -8,13 +8,13 @@ Called immediately on the submit attempt of the valid form. Useful for displayin
 
 ```typescript
 type OnSubmitStart = ({
-  serialized: Object|Map, // Serialized fields
-  fields: Object|Map, // The state of the fields
+  serialized: Object, // Serialized fields
+  fields: Object, // The state of the fields
   form: ReactComponent // Reference to the Form component
 }) => void
 ```
 
-## Usage
+## Example
 
 ```jsx
 import React from 'react'

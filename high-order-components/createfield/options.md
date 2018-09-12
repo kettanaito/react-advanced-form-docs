@@ -1,7 +1,5 @@
 # Options
 
-> This section is related to [`createField`](https://github.com/kettanaito/react-advanced-form/tree/75c444924d87ca8ff76bc096231173e42e717adc/docs/hoc/createField/basics.md) high-order component. Make sure to understand the context in which it is being described.
-
 ## Introduction
 
 Passing options to the `createField()` high-order component allows to control the behavior of the created field. That is extremely useful when implementing the fields with custom logic, or integrating third-party solutions to work with React Advanced Form.
@@ -10,19 +8,11 @@ Passing options to the `createField()` high-order component allows to control th
 You **don't have** to configure any of these options. There are sensible defaults exposed with [Field presets](presets.md), which you can provide as an argument to `createField()`.
 {% endhint %}
 
-## Options list
+## `valuePropName`
 
-* [valuePropName](options.md#valuepropname-string)
-* [initialValue](options.md#initialvalue-any)
-* [allowMultiple](options.md#allowmultiple-boolean)
-* [mapPropsToField](options.md#mappropstofield-props-context-fieldrecord-valuepropname-greater-than-object)
-* [enforceProps](options.md#enforceprops-props-contextprops-greater-than-object)
-* [beforeRegister](options.md#beforeregister-fieldprops-fields-greater-than-fieldprops)
-* [shouldValidateOnMount](options.md#shouldvalidateonmount-props-fieldrecord-valuepropname-context-greater-than-boolean)
-
-## `valuePropName: string`
-
-**Default value:** `"value"`
+| Type | `string` |
+| :--- | :--- |
+| Default value | `"value"` |
 
 Some fields update a prop different from the `value` upon the interaction with them. For example, a checkbox updates its `checked` prop. Provide the prop name to update on field's `onChange` using this option, in case it differs from `value`.
 
@@ -34,7 +24,7 @@ class Checkbox extends React.Component {
   render() {
     const { fieldProps } = this.props
 
-    return (<input { ...fieldProps } />)
+    return (<input {...fieldProps} />)
   }
 }
 
@@ -43,25 +33,42 @@ export default createField({
 })(Checkbox)
 ```
 
-## `initialValue: any`
+## `initialValue`
 
-**Default value:** `''`
+| Type | `any` |
+| :--- | :--- |
+| Default value | `''` |
 
-Allows to specify the initial value for all field instances.
+Specifies the initial value for all field instances.
 
 Useful for the cases when the initial value of the field is different from an empty string. For example, when creating a Datepicker you may want to specify the today's date as the initial value for all datepickers.
 
-## `allowMultiple: boolean`
+## `allowMultiple`
 
-**Default value:** `false`
+| Type | `boolean` |
+| :--- | :--- |
+| Default value | `false` |
 
 Allows multiple instances of the field with the same name within a single form's scope. This affects both form and [Field group](../../components/field.group.md) scopes.
 
 By default, field's `name` serves as the unique identifier, preventing the registration of duplicate fields. However, some field types \(i.e. radio button\) should allow multiple field instances with the same name.
 
-## `mapPropsToField: ({ props, context, fieldRecord, valuePropName }) => Object`
+## `mapPropsToField`
 
-**Default value:** `({ fieldRecord }) => fieldRecord`
+### **Definition**
+
+| Type | `(params) => Object` |
+| :--- | :--- |
+| Default value | `({ fieldRecord }) => fieldRecord` |
+
+### **Parameters**
+
+| Param name | Type | Description |
+| :--- | :--- | :--- |
+| `valuePropName` | `string` |  |
+| `props` | `Object` |  |
+| `fieldRecord` | `Object` |  |
+| `context` | `Object` |  |
 
 Each field has its record stored in the internal state of the `Form` component. That record is composed based on the field's props, but may \(and sometimes must\) be altered to provide proper field functionality.
 
@@ -75,13 +82,13 @@ class Checkbox extends React.Component {
   render() {
     const { fieldProps } = this.props
 
-    return (<input { ...fieldProps } />)
+    return (<input {...fieldProps} />)
   }
 }
 
 export default createField({
   valuePropName: 'checked',
-  mapPropsToField: ({ props, fieldRecord, valuePropName }) => ({
+  mapPropsToField: ({ props  }) => ({
     ...props,
     type: 'checkbox',
     initialValue: props.checked
@@ -89,9 +96,20 @@ export default createField({
 })(Checkbox)
 ```
 
-## `enforceProps: ({ props, contextProps }) => Object`
+## `enforceProps`
 
-**Default value:** `() => ({})`
+### **Definition**
+
+| Type | `(params) => Object` |
+| :--- | :--- |
+| Default value | `() => ({})` |
+
+### **Parameters**
+
+| Param name | Type | Description |
+| :--- | :--- | :--- |
+| `props` | `string` |  |
+| `contextProps` | `Object` |  |
 
 This option allows to provide an Object of props which will override the Field's registration record within the form.
 
@@ -103,46 +121,51 @@ class Checkbox extends React.Component {
   render() {
     const { fieldProps } = this.props
 
-    return (<input { ...fieldProps } />)
+    return (<input {...fieldProps} />)
   }
 }
 
 export default createField({
   valuePropName: 'checked',
-  enforceProps: ({ props, contextProps }) => ({
-    checked: contextProps.get('checked')
+  enforceProps: ({ contextProps }) => ({
+    checked: contextProps.checked
   })
 })(Checkbox)
 ```
 
-> Note that `contextProps` is an instance of [Immutable Map](https://facebook.github.io/immutable-js/docs/#/Map).
+## `beforeRegister`
 
-## `beforeRegister: ({ fieldProps, fields }) => fieldProps`
+### **Definition**
 
-**Default value:**
+| Type | `(params) => Object` |
+| :--- | :--- |
+| Default value | `({ fieldProps }) => fieldProps` |
 
-```javascript
-{
-  beforeRegister({ fieldProps, fields }) {
-    return fieldProps
-  }
-}
-```
+### **Parameters**
+
+| Param name | Type | Description |
+| :--- | :--- | :--- |
+| `fieldProps` | `string` |  |
+| `fields` | `Object` |  |
 
 Applies additional transformation or logic to the field right before it is registered. Allows to completely prevent field registration when `false` is returned from this method.
 
-## `shouldValidateOnMount: ({ props, fieldRecord, valuePropName, context }) => boolean`
+## `shouldValidateOnMount`
 
-**Default value:**
+### Definition
 
-```javascript
-{
-  shouldValidateOnMount({ fieldRecord, valuePropName }) {
-    const fieldValue = fieldRecord[valuePropName]
-    return isset(fieldValue) && (fieldValue !== '')
-  }
-}
-```
+| Type | `(params) => boolean` |
+| :--- | :--- |
+| Default value | `() => false` |
 
-Determines whether to validate the field upon mount.
+### Parameters
+
+| Param name | Type | Description |
+| :--- | :--- | :--- |
+| `valuePropName` | `any` |  |
+| `value` | `any` |  |
+| `fieldRecord` | `string` |  |
+| `context` | `Object` |  |
+
+Determines whether a field should be validated upon mount.
 

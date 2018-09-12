@@ -1,6 +1,6 @@
 # Creating fields
 
-> Code examples in the documentation refer to the `react-advanced-form-addons` prototyping library for the illustrational purposes only. You are recommended to always define your own set of fields that suit your project's needs foremost.
+> Code examples in the documentation refer to the `react-advanced-form-addons` library for the illustrational purposes only. You are recommended to always define your own set of fields that suit your project's needs foremost.
 
 ## Introduction
 

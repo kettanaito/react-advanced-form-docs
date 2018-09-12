@@ -8,12 +8,12 @@ A callback method called once `Form.reset()` is finished. Useful for reseting th
 
 ```typescript
 type OnReset = ({
-  fields: Object|Map, // The state of the fields
+  fields: Object, // The state of the fields
   form: ReactComponent // Reference to the Form component
 }) => void
 ```
 
-## Usage
+## Example
 
 ```jsx
 import React from 'react'

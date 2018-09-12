@@ -2,15 +2,19 @@
 
 ## Specification
 
-* `submit: () => Promise<SubmitState>`
+Performs a manual submit of the current `Form`. Submit function returns a Promise that resolves into different `SubmitState`.
 
-Performs a manual submit of the current `Form`. Submit function returns a Promise which resolves into different `SubmitState` Objects.
+{% hint style="danger" %}
+Manual submit is meant for explicit usage scenarios, and is not a [conventional way](../props/action.md) of submitting your forms. If you are not sure if you need manual submit, then you don't need it.
+{% endhint %}
 
-> **Note:** Manual submit of the form is **not the recommended** way to submit your forms. Use native submit event whenever applicable. Manual submit may be justified in case of complex submit logic \(i.e. submit of multiple independent forms at once\).
+## Definition
 
-You still need to provide `Form.props.action` for internal submit logic to know what suppose to happen on submit.
+```typescript
+type Submit = () => Promise<SubmitState>
+```
 
-## Usage
+## Example
 
 ```jsx
 import React from 'react'
@@ -28,21 +32,25 @@ export default class Example extends React.Component {
     })
   }
 
-    render() {
-        return (
-            <div>
-                <Form
-                    ref={form => this.form = form}
-                    action={this.handleSubmit}>
-                    <Input
-                        name="username"
-                        required />
-                </Form>
+  render() {
+    return (
+      <div>
+        <Form
+          ref={form => this.form = form}
+          action={this.handleSubmit}>
+          <Input
+            name="username"
+            required />
+        </Form>
 
-                <a href="#" onClick={this.handleClick}>Submit manually</a>
-            </div>
-        )
-    }
+        <a href="#" onClick={this.handleClick}>Submit manually</a>
+      </div>
+    )
+  }
 }
 ```
+
+{% hint style="info" %}
+Make sure to provide `Form.props.action` since that will be invoked after calling manual submit of the form.
+{% endhint %}
 

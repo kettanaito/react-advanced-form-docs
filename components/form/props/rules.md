@@ -2,7 +2,7 @@
 
 ## Specification
 
-Cutom validation rules schema applied to the form explicitly.
+Form-specific validation rules schema.
 
 > Providing form-specific rules is designed to extend/rewrite the validation behavior of certian forms. For general usage it is recommended to provide the validation rules and messages through the [`FormProvider`](../../formprovider.md) component to be applied application-wide.
 
@@ -15,22 +15,22 @@ import { Form } from 'react-advanced-form'
 const formRules = {
   extend: true, // merge the current schema with the FormProvider's one
   type: {
-    tel: ({ value }) => customPhoneValidationForThisFormOnly(value)
-  }
+    tel: ({ value }) => customPhoneValidationForThisFormOnly(value),
+  },
 }
 
 export default class Example extends React.Component {
   render() {
     return (
       <Form rules={formRules}>
-        { /* Fields here */ }
+        {/* Fields here */}
       </Form>
     )
   }
 }
 ```
 
-## Useful resources
+## Materials
 
 * [`FormProvider`](../../formprovider.md)
 * [Validation rules](../../../validation/rules.md)

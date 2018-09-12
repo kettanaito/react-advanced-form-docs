@@ -9,13 +9,13 @@ Called immediately in case asynchronous submit action rejects, or fails to resol
 ```typescript
 type OnSubmitFailed = ({
   res: Response, // Accumulated response from the async submit action
-  serialized: Object|Map, // Serialized fields
-  fields: Object|Map, // The state of the fields
+  serialized: Object, // Serialized fields
+  fields: Object, // The state of the fields
   form: ReactComponent // Reference to the Form component
 }) => void
 ```
 
-## Usage
+## Example
 
 ```jsx
 import React from 'react'

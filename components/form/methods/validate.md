@@ -2,18 +2,37 @@
 
 ## Specification
 
-Performs manual validation of the current `Form`.
+Performs manual validation of the referenced `Form`.
 
-> **Note:** Manual form validation is **not recommended**. Internal validation logic of React Advanced Form is enough to cover 99% of scenarios. Don't use manual validation unless you know what you are doing.
+{% hint style="danger" %}
+Always favor conventional form submit via `Button[type="submit"]`. Form validation is obviously included prior to submit action, so there is **no need to explicitly invoke validation**. However, there are use cases to refer to manual validation. Please see those below. 
+{% endhint %}
+
+## Definition
+
+```typescript
+type Validate = () => Promise<boolean>
+```
 
 ## Use cases
 
-Considering the warning note above, there are some use cases when performing manual validation might make sense:
+There are several use cases when using manual validation may be appropriate, as opposed to conventional form submit flow.
 
-1. When submitting multiple forms at once. In this case you need to validate each form independently and then do the submit.
-2. When there is a custom logic which depends on the runtime validation status of the form.
+### Submitting multiple forms at once
 
-## Usage
+In this case you may want to validation each form independently, and perform a submit based on the accumulated validity of all forms.
+
+{% hint style="info" %}
+Consider [`Field.Group`](../../field.group.md) for semantical separation of the form sections. Using field groups validates and submits all the groups automatically, as they are the part of a single form.
+{% endhint %}
+
+### Logic dependent on the runtime validity of a form
+
+You may want to show/hide different UI elements, or perform any subsequent actions based on the validity of a form in the given point of time \(apart of submit\).
+
+## Example
+
+### Simple example
 
 ```jsx
 import React from 'react'
@@ -21,29 +40,35 @@ import { Form } from 'react-advanced-form'
 import { Input } from 'react-advanced-form-addons'
 
 export default class Example extends React.Component {
-    handleClick = () => {
-        this.form.validate().then((isValid) => {
-            //
-        })
-    }
+  handleClick = () => {
+    this.form.validate().then((isFormValid) => {
+      // ...
+    })
+  }
 
-    render() {
-        return (
-            <div>
-                <Form ref={form => this.form = form}>
-                    <Input name="username" required />
-                </Form>
-                <a href="#" onClick={this.handleClick}>Validate</a>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <Form ref={form => this.form = form}>
+          <Input
+            name="username"
+            required />
+        </Form>
+        <a href="#" onClick={this.handleClick}>Validate</a>
+      </div>
+    )
+  }
 }
 ```
 
-`Field.validate()` has asynchronous nature, being a function which returns a Promise. This means you can use it with `async/await` as well:
+### Using async/await
+
+Since validate function returns a Promise, you can use async/await to retrieve the validity of a form in a single line:
 
 ```javascript
-const isValid = await this.form.validate()
+handleClick = async () => {
+  const isFormValid = await this.form.validate()
+}
 ```
 
 

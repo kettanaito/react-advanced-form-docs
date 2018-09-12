@@ -33,7 +33,7 @@ export default {
   general: {
     missing: 'Please provide the required field',
     invalid: 'The value you provided is invalid'
-  }
+  },
 }
 ```
 
@@ -45,16 +45,16 @@ export default {
 
   type: {
     email: {
-      missing: 'Please provide an e-mail'
-    }
+      missing: 'Please provide an e-mail',
+    },
   },
 
   name: {
     confirmPassword: {
       missing: 'Please confirm the password',
-      invalid: 'The passwords do not match'
-    }
-  }
+      invalid: 'The passwords do not match',
+    },
+  },
 }
 ```
 
@@ -75,10 +75,10 @@ export default {
     password: {
       rule: {
         capitalLetter: 'Please include at least one capital letter',
-        oneNumber: 'Please include at least one number'
-      }
-    }
-  }
+        oneNumber: 'Please include at least one number',
+      },
+    },
+  },
 }
 ```
 
@@ -87,8 +87,8 @@ Rule-specific messages have the following format:
 ```typescript
 {
   rule: {
-    [ruleName: string]: MessageResolver
-  }
+    [ruleName: string]: MessageResolver,
+  },
 }
 ```
 
@@ -105,9 +105,9 @@ export default {
 
   name: {
     confirmPassword: {
-      invalid: ({ value }) => `The "${value}" is not a correct password`
-    }
-  }
+      invalid: ({ value }) => `The "${value}" is not a correct password`,
+    },
+  },
 }
 ```
 
@@ -121,14 +121,14 @@ Take a look at the example below.
 // app/validation-messages.js
 export default {
   general: {
-    missing: 'abc'
+    missing: 'abc',
   },
 
   type: {
     password: {
-      invalid: 'foo'
-    }
-  }
+      invalid: 'foo',
+    },
+  },
 }
 ```
 

@@ -1,17 +1,40 @@
 # Getting started
 
-## Overview
-
-* [Rules](getting-started.md#rules)
-* [Messages](getting-started.md#messages)
-
 ## Introduction
+
+React Advanced Form is using a single validation format—the validation schema. Any form in your application can be influenced by three levels of validation rules: \(PHRASE THIS BETTER\)
+
+* Application-wide validation
+* Form-specific validation
+* Rule-specific validation
+
+...
 
 Validation is the essential part of any form. React Advanced Form offers flexible, multi-layer vaidation system to suit any needs.
 
 This section is meant to give a quick overview of how to start with the validation in your forms, as well as giving some features of what to expect from the validation experience.
 
 Please see the respective sections of "Validation" documentation for more detailed information.
+
+## Validation schema
+
+> Explain what validation schema is and what for.
+
+## Defining rules
+
+> Explain how to define validation rules. "name" and "type" selectors. Favor functional composition.
+
+
+
+## Validation messages
+
+> Explain how validation messages work. Highlight similarity in definition to validation rules.
+
+=====
+
+=====
+
+=====
 
 ## Rules
 

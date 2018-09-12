@@ -39,7 +39,7 @@ import isEmail from 'validator/lib/isEmail'
 
 export default {
   type: {
-    email: ({ value, fieldProps, fields, form }) => isEmail(value)
+    email: ({ get, value, fieldProps, form }) => isEmail(value)
   }
 }
 ```
@@ -54,8 +54,8 @@ export default {
   ...
 
   name: {
-    confirmPassword: ({ value, fieldProps, fields, form }) => {
-      return (value === fields.userPassword.value)
+    confirmPassword: ({ get, value, fieldProps, form }) => {
+      return (value === get(['userPassword', 'value'])
     }
   }
 }
@@ -63,7 +63,7 @@ export default {
 
 The rule above implies that `[name="confirmPassword"]` field is valid only when its value equals to the value of `[name="userPassword"]` field of the same form.
 
-**Any rule resolver which references another fields using the** `fields` **Object gets automatically re-resolved once the referenced fields update.** For example, our `[name="confirmPassword"]` field will be re-validated any time the `value` prop of `fields.userPassword` changes, out of the box. This ensures real time responsiveness of validation in our form. Read more in [Referencing fields](../validation/rules.md#referencing-fields)
+**Any rule resolver which references another fields using the** `get` **function gets automatically re-resolved once the referenced fields update.** For example, our `[name="confirmPassword"]` field will be re-validated any time the `value` prop of `fields.userPassword` changes, out of the box. This ensures real time responsiveness of validation in our form. Read more in [Referencing fields](../validation/rules.md#referencing-fields)
 
 ### Multiple rules
 
@@ -97,7 +97,7 @@ We can use a `rule` prop of any field to achieve that:
 ```jsx
 <Input
   name="userName"
-  rule={({ value, fieldProps, fields, form }) => {
+  rule={({ value, fieldProps, form }) => {
     return value.test(/[a-z]/)
   }}
   required />

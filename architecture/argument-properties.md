@@ -35,12 +35,12 @@ Adopting this approach grants the following benefits:
 ```javascript
 // Common
 function foo(a, b, c) {
-  return c; // only "c" argument is needed
+  return c // only "c" argument is needed
 }
 
 // Object-as-an-argument
 function foo({ c }) {
-  return c;
+  return c
 }
 ```
 
@@ -58,14 +58,14 @@ function handleFieldFocus({ event, field }) {}
 
 ```javascript
 // common
-const dynamicArgs = [4, true];
+const dynamicArgs = [4, true]
 
 function foo(...dynamicArgs) {}
 
 // Object-as-argument
 const dynamicArgs = {
   arg1: 4,
-  arg2: true
+  arg2: true,
 }
 
 function foo(dynamicArgs) {}
