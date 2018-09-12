@@ -1,12 +1,5 @@
 # createField
 
-* [Specification](./#specification)
-* [Declaration](./#declaration)
-* [Options](options.md)
-* [Presets](presets.md)
-* [Exposed props](exposed-props.md)
-* [Custom event handlers](./#custom-event-handlers)
-
 ## Specification
 
 A high-order component which enhances the provided custom component \(`WrappedComponent`\) to behave as React Advanced Form field. When being wrapped, all component interactions are handled by the parent `Form` automatically, exposing the internal field props and field state to the wrapped component.

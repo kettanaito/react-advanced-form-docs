@@ -4,10 +4,9 @@
 
 ## General
 
-* [Introduction](general/introduction.md)
-* [FAQ](general/faq.md)
 * [Migration guides](general/migration/README.md)
   * [1.4.x → 1.5.x](general/migration/1.4.x-1.5.x.md)
+* [FAQ](general/faq.md)
 
 ## Getting started
 
@@ -25,6 +24,17 @@
 * [Referencing](architecture/referencing.md)
 * [Field lifecycle](architecture/field-lifecycle.md)
 * [Reactive props](architecture/reactive-props.md)
+
+## Validation
+
+* [Getting started](validation/getting-started.md)
+* [Behavior](validation/behavior.md)
+* [Validation schema](validation/schema/README.md)
+  * [Rule definition](validation/schema/rule-definition.md)
+  * [Reactive rules](validation/schema/reactive-rules.md)
+* [Logic](validation/logic.md)
+* [Rules](validation/rules.md)
+* [Messages](validation/messages.md)
 
 ## High-order components
 
@@ -68,17 +78,6 @@
     * [onFocus](components/field/callbacks/onfocus.md)
     * [onChange](components/field/callbacks/onchange.md)
     * [onBlur](components/field/callbacks/onblur.md)
-
-## Validation
-
-* [Getting started](validation/getting-started.md)
-* [Behavior](validation/behavior.md)
-* [Validation schema](validation/schema/README.md)
-  * [Rule definition](validation/schema/rule-definition.md)
-  * [Reactive rules](validation/schema/reactive-rules.md)
-* [Logic](validation/logic.md)
-* [Rules](validation/rules.md)
-* [Messages](validation/messages.md)
 
 ## Developers
 

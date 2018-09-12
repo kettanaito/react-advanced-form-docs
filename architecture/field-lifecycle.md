@@ -1,7 +1,5 @@
 # Field lifecycle
 
-## Introduction
-
 The field lifecycle is a common term which describes the behavior of the field component from its mounting up to its unmounting within the `Form` component.
 
 Mentioned lifecycle events are handled by React Advanced Form _automatically_. This section bears rather an informational character, since understanding how technology works allows you to use it the most efficient way.

@@ -1,6 +1,6 @@
 # Handle submit
 
-In the end, it's all about sending the gathered data somewhere. We will take the most common scenario – sending the serialized form data to the remote end-point.
+In the end, it's all about sending the gathered data somewhere. Let's implement the most common scenario—sending the serialized form data to a remote end-point.
 
 ## Implementation
 

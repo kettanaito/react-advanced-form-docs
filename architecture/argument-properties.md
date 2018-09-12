@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Each callback function in React Advanced Form uses an "_Object as argument_" approach, meaning that it exposes an argument Object with the set of fixed properties. Take a look at the example:
+Each callback function in React Advanced Form uses an "Object as argument" approach, meaning that it exposes an argument Object with the set of fixed properties. Take a look at the example:
 
 ```jsx
 export default class Example extends React.Component {

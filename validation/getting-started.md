@@ -1,7 +1,5 @@
 # Getting started
 
-## Introduction
-
 React Advanced Form is using a single validation format—the validation schema. Any form in your application can be influenced by three levels of validation rules: \(PHRASE THIS BETTER\)
 
 * Application-wide validation

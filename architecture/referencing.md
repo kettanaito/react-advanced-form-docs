@@ -5,7 +5,7 @@
 * [Field reference](referencing.md#field)
 * [Nested element node](referencing.md#nested-element-node)
 
-## General
+## Reference types
 
 There are two kinds of referencing - _component_ and _element_ references.
 

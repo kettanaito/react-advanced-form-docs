@@ -6,9 +6,9 @@
 
 ## Specification
 
-> This is a highly experimental technology and it may change, or be removed in the future. Follow the release notes for more information.
+> This is a highly experimental technology and it may change, or be removed in the future. Follow the release notes to stay in tune.
 
-_Reactive prop_ - is a field's prop, which value is resolved automatically using the live subscriptions system. The latter allows to subscribe to props changes of another fields, and re-evaluate the reactive prop's resolver whenever the referenced props update.
+**Reactive prop** - is a field's prop, which value is resolved automatically using the live subscriptions system. The latter allows to subscribe to props changes of another fields, and re-evaluate the reactive prop's resolver whenever the referenced props update.
 
 This is a generic concept implemented in several features of React Advanced Form. Those are listed below in this section. Each feature may utilize this concept in a different way, although the interface strives to be unified.
 
