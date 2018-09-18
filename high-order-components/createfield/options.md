@@ -2,10 +2,10 @@
 
 ## Introduction
 
-Passing options to the `createField()` high-order component allows to control the behavior of the created field. That is extremely useful when implementing the fields with custom logic, or integrating third-party solutions to work with React Advanced Form.
+Passing options to the `createField()` high-order component allows to control the behavior of the created field. That is extremely useful when implementing custom field logic, or integrating third-party solutions to work with React Advanced Form.
 
 {% hint style="info" %}
-You **don't have** to configure any of these options. There are sensible defaults exposed with [Field presets](presets.md), which you can provide as an argument to `createField()`.
+You **don't have** to configure any of these options. There are sensible defaults exposed with [Field presets](presets.md), which you can provide as the argument to `createField()`.
 {% endhint %}
 
 ## `valuePropName`
@@ -49,7 +49,7 @@ Useful for the cases when the initial value of the field is different from an em
 | :--- | :--- |
 | Default value | `false` |
 
-Allows multiple instances of the field with the same name within a single form's scope. This affects both form and [Field group](../../components/field.group.md) scopes.
+Allows multiple instances of the field with the same name within a single form's scope. This affects both form and [Field group](../../components/field-group.md) scopes.
 
 By default, field's `name` serves as the unique identifier, preventing the registration of duplicate fields. However, some field types \(i.e. radio button\) should allow multiple field instances with the same name.
 

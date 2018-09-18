@@ -7,17 +7,13 @@
 
 ## Peer dependencies
 
-React Advanced Form asks you to install \(or have\) the following [peer dependencies](https://nodejs.org/en/blog/npm/peer-dependencies/) in your application:
+Make sure to have the following [peer dependencies](https://nodejs.org/en/blog/npm/peer-dependencies/) installed in your application:
 
 * [React](https://github.com/facebook/react) \(15.0+\)
 
-```bash
-npm install react --save
-```
+## React Advanced Form
 
-## Library
-
-In the end, install React Advanced Form itself by running the following command:
+Install the library using the following command:
 
 ```bash
 npm install react-advanced-form --save

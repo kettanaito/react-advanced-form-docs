@@ -23,7 +23,7 @@ There are several use cases when using manual validation may be appropriate, as 
 In this case you may want to validation each form independently, and perform a submit based on the accumulated validity of all forms.
 
 {% hint style="info" %}
-Consider [`Field.Group`](../../field.group.md) for semantical separation of the form sections. Using field groups validates and submits all the groups automatically, as they are the part of a single form.
+Consider [`Field.Group`](../../field-group.md) for semantical separation of the form sections. Using field groups validates and submits all the groups automatically, as they are the part of a single form.
 {% endhint %}
 
 ### Logic dependent on the runtime validity of a form

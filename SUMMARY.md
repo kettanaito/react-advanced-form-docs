@@ -28,13 +28,10 @@
 ## Validation
 
 * [Getting started](validation/getting-started.md)
-* [Behavior](validation/behavior.md)
 * [Validation schema](validation/schema/README.md)
   * [Rule definition](validation/schema/rule-definition.md)
-  * [Reactive rules](validation/schema/reactive-rules.md)
-* [Logic](validation/logic.md)
-* [Rules](validation/rules.md)
-* [Messages](validation/messages.md)
+  * [Reactive rule](validation/schema/reactive-rule.md)
+* [Validation messages](validation/messages.md)
 
 ## High-order components
 
@@ -45,7 +42,7 @@
 
 ## Components
 
-* [FormProvider](components/formprovider.md)
+* [FormProvider](components/form-provider.md)
 * [Form](components/form/README.md)
   * [Props](components/form/props/README.md)
     * [innerRef](components/form/props/innerref.md)
@@ -68,7 +65,7 @@
     * [onSubmitted](components/form/callbacks/onsubmitted.md)
     * [onSubmitFailed](components/form/callbacks/onsubmitfailed.md)
     * [onSubmitEnd](components/form/callbacks/onsubmitend.md)
-* [Field.Group](components/field.group.md)
+* [Field.Group](components/field-group.md)
 * [Field](components/field/README.md)
   * [Props](components/field/props/README.md)
     * [rule](components/field/props/rule.md)
@@ -82,7 +79,6 @@
 ## Developers
 
 * [Contributing](developers/contributing.md)
-* [Testing](developers/testing.md)
 
 ## Recipes
 

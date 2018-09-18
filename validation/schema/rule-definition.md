@@ -1,10 +1,12 @@
 # Rule definition
 
-## Resolvers
+In React Advanced Form writing validation rules is about declaring resolver functions and applying them to a define set of fields.
+
+## Resolver
 
 Resolver is a function that returns the next validity of the associated field.
 
-Resolver is explicitly analyzed apart from the rest validation context because it is a single independent unit of validation and should be treated as such during the composition of a validation schema.
+Resolver is explicitly analyzed aside from the rest of validation context because it is a single independent unit of validation, and should be treated as such during the composition of a validation schema.
 
 ### Definition
 
@@ -16,10 +18,9 @@ type RuleResolver = (params) => boolean
 
 | Parameter name | Type | Description |
 | :--- | :--- | :--- |
-| `get` | `Function` | ... |
+| `get` | `Function` | [Reactive props](../../architecture/reactive-props.md) getter function. |
 | `value` | `any` | The value of a field. |
-| `fieldProps` | `Object` | Props of the current field. |
-| `fields` | `Object` | Reference to all fields of a form. |
+| `fieldProps` | `Object` | Props of a field. |
 | `form` | `Object` | Form component reference. |
 
 ### Resolver example
@@ -29,7 +30,7 @@ type RuleResolver = (params) => boolean
  * A simple resolver that takes the value of a field
  * and resolves when it is more than 6 characters long.
  */
-const validatePassword = ({ get, value, fieldProps, fields, form }) => {
+const validatePassword = ({ get, value, fieldProps, form }) => {
   return value.length > 6
 }
 ```
@@ -38,12 +39,12 @@ const validatePassword = ({ get, value, fieldProps, fields, form }) => {
 It is a good practice to write [high-order resolvers](../../recepies/reducing-boilerplate.md). Favor functional composition.
 {% endhint %}
 
-## Selectors
+## Selector
 
-Validation is about applying resolvers to the selected field\(s\). It is possible to select the fields based on the next selectors:
+Selector is a key path of `[propName, propValue]` that defines the application scope of a single or multiple resolvers. The following selectors are supported:
 
-* `type` — selects fields by their type
-* `name` — selects field by its name
+* `type` — selects fields by their type,
+* `name` — selects fields by their name.
 
 ### Example
 
@@ -65,9 +66,9 @@ export default {
 
 > INCLUDE LINK TO SELECTORS PRIORITY OF EXECUTION.
 
-## Multiple rules
+## Multiple resolvers
 
-Each field selector can accept multiple resolvers to be applied in parallel. To do so, pass an Object with the shape `{ [ruleName: string]: ResolverFunction }` as a value of that selector.
+Each field selector can have multiple resolvers applied in parallel by accepting an Object of the shape `{[ruleName: string]: RuleResolver}` as its value.
 
 ```jsx
 export default {
@@ -82,10 +83,10 @@ export default {
 ```
 
 {% hint style="info" %}
-Sibling resolvers execute in parallel and are **not** exclusive.
+Sibling resolvers are executed in parallel and are **not** exclusive.
 {% endhint %}
 
-Including unique rule name allows to associate the rule with its validation message. Using example above, we can have different error messages for `capitalLetter` and `oneNumber` rules.
+Having unique rule names allows to associate the rule with its validation message. Using example above, we can have different error messages for `capitalLetter` and `oneNumber` rules.
 
 \*\*\*\*[**Read more on that**](../../getting-started/validation-messages.md#specific-messages)**.**
 

@@ -59,7 +59,7 @@ The form above serializes into the following JSON:
 
 ### Nested groups
 
-It is possible to nest field groups. Nested field groups name paths are going to be merged the same way as the [Split groups](field.group.md#split-groups). That allows to nest and split groups at the same time.
+It is possible to nest field groups. Nested field groups name paths are going to be merged the same way as the [Split groups](field-group.md#split-groups). That allows to nest and split groups at the same time.
 
 ```jsx
 import React from 'react'

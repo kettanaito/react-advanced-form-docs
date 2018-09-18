@@ -15,6 +15,14 @@ type InitialValues = {
 }
 ```
 
+## Priority
+
+There are multiple way to affect initial value of a field. The first value found in the list below will be used as the initial value for a field \(sorted by priority\):
+
+1. `Form.props.initialValues`
+2. `Field.props.initialValue`
+3. `FieldClass.initialValue`
+
 ## Example
 
 ```jsx

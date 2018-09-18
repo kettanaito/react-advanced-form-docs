@@ -15,7 +15,7 @@ The key focus of a form design is getting rid of obscure configurations and achi
 | `ref` | `Function` | Getter function for the `<Form>` component. |
 | [`innerRef`](props/innerref.md) | `Function` | Getter function for the `form` element. |
 | [`action`](props/action.md) | `Function<Promise>` | Submit action handler. |
-| [`rules`](props/rules.md) | [`ValidationRules`](../../validation/rules.md) | Form-specific validation rules. |
+| [`rules`](props/rules.md) | [`ValidationRules`]() | Form-specific validation rules. |
 | [`messages`](props/messages.md) | [`ValidationMessages`](../../validation/messages.md) | Form-specific validation messages. |
 
 ### Callbacks
@@ -81,7 +81,7 @@ export default class Example extends React.Component {
 ```
 
 {% hint style="info" %}
-You can use [`FormProvider`](../formprovider.md) to specify application-wide validation rules and messages, or you can pass them to a specific Form using [`rules`](props/rules.md) and [`messages`](props/messages.md) props respectively.
+You can use [`FormProvider`](../form-provider.md) to specify application-wide validation rules and messages, or you can pass them to a specific Form using [`rules`](props/rules.md) and [`messages`](props/messages.md) props respectively.
 {% endhint %}
 
 

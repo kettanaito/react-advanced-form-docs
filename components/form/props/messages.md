@@ -4,7 +4,7 @@
 
 Form-specific validation messages.
 
-> Providing form-specific validation messages is designed to extend/rewrite the messages applied application-wide. For general usage it is recommended to pass the validation messages to the [`FormProvider`](../../formprovider.md) component to be applied application-wide.
+> Providing form-specific validation messages is designed to extend/rewrite the messages applied application-wide. For general usage it is recommended to pass the validation messages to the [`FormProvider`](../../form-provider.md) component to be applied application-wide.
 
 ## Example
 
@@ -34,6 +34,6 @@ export default class Example extends React.Component {
 
 ## Materials
 
-* [`FormProvider`](../../formprovider.md)
+* [`FormProvider`](../../form-provider.md)
 * [Validation messages](../../../validation/messages.md)
 

@@ -1,6 +1,6 @@
 # Exposed props
 
-Wrapping a React component in `createField` high-order component automatically exposes the properties listed below. These props can be used for field styling and custom logic or behavior.
+Wrapping a React component in `createField` high-order component automatically exposes the properties listed below. These properties can be used for field styling and custom logic or behavior.
 
 ## Props list
 

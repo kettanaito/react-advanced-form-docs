@@ -22,7 +22,6 @@ A good place to start is to ensure you are familiar with the technologies used i
 * **Testing:**
   * [Chai](http://chaijs.com/) as the assertion library
   * Jest for plain unit tests
-  * [Enzyme](http://airbnb.io/enzyme/) for React unit tests
   * [Cypress](https://www.cypress.io/) for integration tests.
 
 ## General agreements
@@ -89,7 +88,7 @@ Development process generally consist of the following steps:
 
 **IT IS MANDATORY TO COVER YOUR CHANGES WITH THE CORRESPONDING TESTS.**
 
-Depending on the character of your changes, it may be a unit test\(s\), integration test\(s\), or both. Please read more on the [Testing guidelines](testing.md), as well as some test examples in the respective section of the documentation.
+Depending on the character of your changes, it may be a unit test\(s\), integration test\(s\), or both.
 
 ### Commit the changes
 

@@ -23,5 +23,7 @@ export default class Example extends React.Component {
 }
 ```
 
-See more information under the [Referencing](../../../architecture/referencing.md#inner-reference).
+{% hint style="info" %}
+Read more on how to reference components and elements under [Referencing](../../../architecture/referencing.md#inner-reference).
+{% endhint %}
 

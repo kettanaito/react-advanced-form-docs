@@ -4,7 +4,7 @@
 
 Form-specific validation rules schema.
 
-> Providing form-specific rules is designed to extend/rewrite the validation behavior of certian forms. For general usage it is recommended to provide the validation rules and messages through the [`FormProvider`](../../formprovider.md) component to be applied application-wide.
+> Providing form-specific rules is designed to extend/rewrite the validation behavior of certian forms. For general usage it is recommended to provide the validation rules and messages through the [`FormProvider`](../../form-provider.md) component to be applied application-wide.
 
 ## Example
 
@@ -32,6 +32,6 @@ export default class Example extends React.Component {
 
 ## Materials
 
-* [`FormProvider`](../../formprovider.md)
-* [Validation rules](../../../validation/rules.md)
+* [`FormProvider`](../../form-provider.md)
+* [Validation rules]()
 

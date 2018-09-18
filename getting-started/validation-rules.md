@@ -1,6 +1,6 @@
 # Validation rules
 
-**Spec:** [Validation rules](../validation/rules.md)
+**Spec:** [Validation rules]()
 
 ## Introduction
 
@@ -8,7 +8,7 @@ One of the purposes of the form is to ensure the expected format of the entered 
 
 This part is going to focus on how to declare a validation schema and write the rules. We are going apply the validation rules and messages to the forms in the next part.
 
-It is highly recommended to read the [Validation rules](../validation/rules.md) documentation, which has more profound explanation on how the validation works.
+It is highly recommended to read the [Validation rules]() documentation, which has more profound explanation on how the validation works.
 
 ## Implementation
 
@@ -63,7 +63,7 @@ export default {
 
 The rule above implies that `[name="confirmPassword"]` field is valid only when its value equals to the value of `[name="userPassword"]` field of the same form.
 
-**Any rule resolver which references another fields using the** `get` **function gets automatically re-resolved once the referenced fields update.** For example, our `[name="confirmPassword"]` field will be re-validated any time the `value` prop of `fields.userPassword` changes, out of the box. This ensures real time responsiveness of validation in our form. Read more in [Referencing fields](../validation/rules.md#referencing-fields)
+**Any rule resolver which references another fields using the** `get` **function gets automatically re-resolved once the referenced fields update.** For example, our `[name="confirmPassword"]` field will be re-validated any time the `value` prop of `fields.userPassword` changes, out of the box. This ensures real time responsiveness of validation in our form. Read more in [Referencing fields]()
 
 ### Multiple rules
 

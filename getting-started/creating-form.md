@@ -1,13 +1,6 @@
 # Creating form
 
-## Introduction
-
-React Advanced Form is field-centric. That means that it treats each form as a composite component containing various [field components](https://github.com/kettanaito/react-advanced-form/tree/75c444924d87ca8ff76bc096231173e42e717adc/docs/getting-started/creating-fields/README.md).
-
-## Implementation
-
-1. Import and use a `<Form>` component directly from `react-advanced-form` library.
-2. Use necessary field components as the children of the form, no matter the depth or nature \(static/dynamic\).
+React Advanced form treats any form as a composition of fields. Therefore, creating a form is a trivial procedure of rendering [field components](creating-fields.md) as the `<Form/>`'s children. Make sure you have field components defined before proceeding with this step.
 
 ## Example
 
@@ -37,5 +30,5 @@ export default class ExampleForm extends React.Component {
 }
 ```
 
-> Note that this is a minimal example. More complex topics like validation or submit handling are described in the next steps of this guide. Taking things one at a time is a key to understanding.
+> Note that this is a minimal example. More complex topics like validation or submit handling are described in the next steps of this guide. Take things one at a time.
 

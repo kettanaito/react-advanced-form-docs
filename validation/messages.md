@@ -1,12 +1,4 @@
-# Messages
-
-* [Selectors](messages.md#selectors)
-* [Resolvers](messages.md#resolvers)
-  * [Generic states](messages.md#generic-states)
-  * [Named resolvers](messages.md#named-resolvers)
-* [Fallbacks](messages.md#fallbacks)
-  * [Fallback sequence](messages.md#fallback-sequence)
-  * [Fallback example](messages.md#fallback-example)
+# Validation messages
 
 ## Selectors
 
@@ -53,7 +45,7 @@ There are multiple generic states provided within each resolver by default.
 
 ### Named resolvers
 
-It is possible to define named resolvers corresponding to the [named validation rules](rules.md#named-rules). These resolvers are defined under the `rule` key of the main resolver.
+It is possible to define named resolvers corresponding to the [named validation rules](). These resolvers are defined under the `rule` key of the main resolver.
 
 ```javascript
 export default {

@@ -1,9 +1,5 @@
 # Reactive props
 
-* [Specification](reactive-props.md#specification)
-* [Reactive field props](reactive-props.md#reactive-field-props)
-* [Reactive validation rules](reactive-props.md#reactive-validation-rules)
-
 ## Specification
 
 > This is a highly experimental technology and it may change, or be removed in the future. Follow the release notes to stay in tune.
@@ -68,8 +64,7 @@ To create a reactive field prop simply pass a function as its value, and use the
 ### Syntax
 
 ```jsx
-<FieldComponent
-  required={({ get }) => get(['path', 'to', 'field', 'prop'])} />
+<Input required={({ get }) => get(['path', 'to', 'field', 'prop'])} />
 ```
 
 ### Usage
@@ -105,8 +100,8 @@ export default {
        * equals to "userPassword" field "value" prop.
        */
       return value === get(['userPassword', 'value'])
-    }
-  }
+    },
+  },
 }
 ```
 

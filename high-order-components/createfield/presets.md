@@ -2,7 +2,7 @@
 
 Presets contain pre-defined `createField` [options](options.md) relevant to the respective field type. Those options ensure proper field behavior as well as automatically map essential form element's props \(i.e. `placeholder`, `multiselect`, etc.\) from the wrapped component to the actual form element.
 
-Presets are designed for seamless integration of common field types. For the completely custom fields you may want to consider writing your own presets or extending the existing ones.
+Presets are designed for seamless integration of common field types. For the custom fields you may want to consider writing your own presets or extending the existing ones.
 
 ## Presets list
 

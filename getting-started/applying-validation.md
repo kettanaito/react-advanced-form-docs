@@ -1,10 +1,6 @@
 # Applying validation
 
-## Introduction
-
-When we have both [validation rules](validation-rules.md) and [messages](validation-messages.md) defined, we need to apply them to see the working result.
-
-## Implementation
+Once we have both [validation rules](validation-rules.md) and [messages](validation-messages.md) defined, we need to apply them to see the working result.
 
 There are multiple ways to apply the validation to the forms in our application. Each of them may be suitable in different situations.
 
@@ -22,13 +18,13 @@ import { FormProvider } from 'react-advanced-form'
 import validationRules from './validation-rules'
 import validationMessages from 'validation-messages'
 
-const renderApp = () => (
+const App = () => (
   <FormProvider rules={validationRules} messages={validationMessages}>
     <Root />
   </FormProvider>
 )
 
-ReactDOM.render(renderApp, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
 ### Form-wide

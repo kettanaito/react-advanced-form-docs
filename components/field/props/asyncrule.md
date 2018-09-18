@@ -5,7 +5,7 @@
 Asynchronous rule of the field applied as the top priority validation _after_ its sibling [`Field.props.rule`](rule.md) resolves. Executed on field blur.
 
 * `asyncRule` is designed for on blur asynchronous validation of the fields.
-* `asyncRule` is designed for precise unique field validation, and cannot be declared in the general [Validation rules](../../../validation/rules.md).
+* `asyncRule` is designed for precise unique field validation, and cannot be declared in the general [Validation rules]().
 * `asyncRule` must always return the specified `AsyncRulePayload` Object.
 * `asyncRule` will not be called if it has been previously resolved and the value of the field has not changed.
 

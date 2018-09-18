@@ -12,11 +12,10 @@ No boilerplate. No obscure high-order component configurations. No redundant sta
 
 ### Features
 
-* **Boilerplate-free**. 
-  * Forget about having kilometers of high-order-components around forms. Create clean and powerful forms without repeating yourself, without crazy abstractions.
+* **Boilerplate-free**. Forget about having kilometers of high-order-components around forms. Create clean and powerful forms without repeating yourself, without crazy abstractions.
 * **Immutable**. Each field change returns a new field with that change reflected.
 * [**Composite fields**](https://kettanaito.gitbooks.io/react-advanced-form/docs/getting-started/creating-fields.html). React Advanced Form is _field-centric_. That means you define flexible fields composites and reuse them throughout the entire application. Reflect even the most granular field state changes in the UI to achieve the outmost user experience.
-* [**Intuitive usage**](https://kettanaito.gitbooks.io/react-advanced-form/docs/getting-started/creating-form.html). Place a `Form` component, add some fields and the form is working without extra effort.
+* \*\*\*\*[**Prototyping speed**](getting-started/creating-form.md). Build production-ready forms at a speed of a prototype.
 
 ```jsx
 // No, this is not a diminished example, this is a completely working form
@@ -33,18 +32,18 @@ export default {
   type: {
     password: {
       capitalLetter: ({ value }) => /[A-Z]/.test(value),
-      oneNumber: ({ value }) => /[0-9]/.test(value)
-    }
+      oneNumber: ({ value }) => /[0-9]/.test(value),
+    },
   },
   name: {
-    confirmPassword: ({ value, get }) => {
+    confirmPassword: ({ get, value }) => {
       /**
        * The "confirmPassword" field will be re-validated
        * whenever the "value" prop of "userPassword" field updates.
        */
-      return value === get(["userPassword", "value"]);
-    }
-  }
+      return value === get(["userPassword", "value"])
+    },
+  },
 };
 ```
 
@@ -124,7 +123,7 @@ Starting with something new may appear challenging. There is a step-by-step inst
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | 65+ | 57+ | 9+ | 8+ | 41+ | – |
 
-> There is no official support for Internet Explorer. No features are tested to ensure working there. They _may_, or _may not_ work. Consider educating the web and deprecating support for obsolete browsers.
+> There is no official support for Internet Explorer. There is no testing conducted for that browser. Consider educating the web and deprecating support for obsolete browsers.
 
 ### Live examples
 
