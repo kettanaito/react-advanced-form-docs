@@ -1,14 +1,5 @@
 # Contributing
 
-* [Technologies](contributing.md#technologies)
-* [General agreements](contributing.md#general-agreements)
-  * [Versioning](contributing.md#versioning)
-  * [Naming conventions](contributing.md#naming-conventions)
-  * [Git workflow](contributing.md#git-workflow)
-* [Getting started](contributing.md#getting-started)
-* [Commands](contributing.md#commands)
-* [Other contributions](contributing.md#other-contributions)
-
 ## Foreword
 
 First of all, thank you for deciding to contribute to React Advanced Form! It is only by the power of the community we can achieve great results.
