@@ -82,7 +82,7 @@ Whenever another field's prop is referenced using the `get` method, a live subsc
 
 Reactive props resolver is never assigned as a value of the reactive prop. Instead, it is copied and executed whenever the referenced prop updates, consequentially updating the prop, which is connected to the resolver.
 
-> **Note:** It is possible to reference any props from the [Field's state](../high-order-components/createfield/exposed-props.md#field-state) \(i.e. `value`, `valid`, `validSync`, and many more\).
+> **Note:** It is possible to reference any props from the [Field's state](../hoc/create-field/exposed-props.md#field-state) \(i.e. `value`, `valid`, `validSync`, and many more\).
 
 ## Reactive validation rules
 

@@ -26,7 +26,7 @@ Registration, or field record – is an Object of props which propagates to the 
 
 ### Changing field record
 
-It is possible to affect the registraional record when creating your custom components, or integrating third-party solutions, using [`mapPropsToField`](../high-order-components/createfield/#mapPropsToField) option of the [`createField()`](../high-order-components/createfield/) high-order component:
+It is possible to affect the registraional record when creating your custom components, or integrating third-party solutions, using [`mapPropsToField`](../hoc/create-field/#mapPropsToField) option of the [`createField()`](../hoc/create-field/) high-order component:
 
 ```jsx
 import React from 'react'

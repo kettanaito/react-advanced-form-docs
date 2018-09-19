@@ -35,10 +35,10 @@
 
 ## High-order components
 
-* [createField](high-order-components/createfield/README.md)
-  * [Options](high-order-components/createfield/options.md)
-  * [Field presets](high-order-components/createfield/presets.md)
-  * [Exposed props](high-order-components/createfield/exposed-props.md)
+* [createField](hoc/create-field/README.md)
+  * [Options](hoc/create-field/options.md)
+  * [Field presets](hoc/create-field/presets.md)
+  * [Exposed props](hoc/create-field/exposed-props.md)
 
 ## Components
 

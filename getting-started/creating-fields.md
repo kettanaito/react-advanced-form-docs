@@ -41,9 +41,9 @@ There are a few important things happening in the snippet above:
 
 ---
 
-To declare a field you need to create a React component and wrap it in the `createField` high-order component. By doing so, the field can automatically access such information as its validation status, error messages, and much more \(see the full list of [Exposed props](../high-order-components/createfield/exposed-props.md)\).
+To declare a field you need to create a React component and wrap it in the `createField` high-order component. By doing so, the field can automatically access such information as its validation status, error messages, and much more \(see the full list of [Exposed props](../hoc/create-field/exposed-props.md)\).
 
-Fields will often require to use additional [Field presets](../high-order-components/createfield/presets.md) as the argument to the high-order component. Those presets automatically remap essential form elements' props relevant to the field type, and ensure the proper functionality of the fields.
+Fields will often require to use additional [Field presets](../hoc/create-field/presets.md) as the argument to the high-order component. Those presets automatically remap essential form elements' props relevant to the field type, and ensure the proper functionality of the fields.
 
 Read the documentation on how to use [`createField`](https://github.com/kettanaito/react-advanced-form/tree/75c444924d87ca8ff76bc096231173e42e717adc/docs/hoc/createField/basics.md), and see the [Examples](creating-fields.md#examples) below for a more practical overview.
 
