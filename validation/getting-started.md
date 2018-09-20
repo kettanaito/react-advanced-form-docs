@@ -1,14 +1,20 @@
 # Getting started
 
-The biggest difference when switching to React Advanced Form validation is that it diverges from a conventional single `validate` function and uses a dedicated **validation schema** to determine the next validity state of the fields.
+The biggest difference when switching to React Advanced Form validation is that it diverges from a conventional single `validate` function and uses a dedicated **Validation schema** to determine the next validity state of the fields.
 
 ## Validation types
 
 Any field supports synchronous and asynchronous validation, and any combination of those.
 
-{% hint style="info" %}
+{% hint style="success" %}
 React Advanced Form comes with a smart multi-layer validation logic built-in. Learn more on the [Priority & Exclusion](schema/#priority-and-exclusion) of the validation rules.
 {% endhint %}
+
+## Validation schema
+
+The majority of validation rules reside in the dedicated Validation schema. It is a good place to start declaring validation of forms in your application.
+
+{% page-ref page="schema/" %}
 
 ## Applying validation
 
@@ -17,16 +23,6 @@ There are multiple ways to apply validation to a field \(listed by priority, fro
 * [Field-specific](../components/field/props/rule.md) rules,
 * [Form-specific](../components/form/props/rules.md) rules,
 * [Application-wide](../components/form-provider.md) rules.
-
-## Validation schema
-
-{% hint style="info" %}
-Heart and soul of validation is the [Validation schema](schema/).
-{% endhint %}
-
-## Validation messages
-
-> Explain how validation messages work. Highlight similarity in definition to validation rules.
 
 ## === Messages
 

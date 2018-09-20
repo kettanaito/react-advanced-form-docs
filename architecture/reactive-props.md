@@ -50,7 +50,7 @@ To illustrate this, consider the next scenario:
   required={({ get }) => !!get(['fieldThree', 'value'])} />
 <Input
   name="fieldThree"
-  initialValue="doe" />
+  value="doe" />
 ```
 
 By the time `fielTwo.props.required` reactive prop is evaluated, the referenced `fieldThree` doesn't exist yet. Once the referenced field has been mounted, the resolver function \(`fieldTwo.props.required`\) is re-evaluated, and the value of `required` prop is updated according to the resolver logic \(to `true` in the example above\).
@@ -86,24 +86,9 @@ Reactive props resolver is never assigned as a value of the reactive prop. Inste
 
 ## Reactive validation rules
 
-The concept of reactive props is applicable to synchronous validation rules as well. Just as with the [Reactive field props](reactive-props.md#reactive-field-props), whenever another field's prop is referenced within a synchronous validation rule declaration, the latter is re-evaluated each time the referenced prop updates.
+The concept of reactive props is applicable to synchronous validation rules as well. Just as with the [Reactive field props](reactive-props.md#reactive-field-props), whenever another field's prop is referenced within a synchronous validation rule declaration, the latter is re-evaluated each time the referenced props update.
 
-### Syntax
+{% page-ref page="../validation/schema/reactive-rule.md" %}
 
-```javascript
-export default {
-  name: {
-    confirmPassword: ({ value, get }) => {
-      /**
-       * This reads as:
-       * The "confirmPassword" field is valid only when its value
-       * equals to "userPassword" field "value" prop.
-       */
-      return value === get(['userPassword', 'value'])
-    },
-  },
-}
-```
-
-> The syntax for type-specific validation rules is identical.
+### 
 

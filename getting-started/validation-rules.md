@@ -111,7 +111,7 @@ The value of the `rule` prop is exactly the same resolver function you would pro
 
 Similar to the [Explicit `rule` prop](validation-rules.md#explicit-rule), asynchronous rules do not reside in the global validation schema.
 
-To create an asynchronous rule we need to use the [`asyncRule`](../components/field/props/asyncrule.md) prop on the exact field we want to validate. As an example, let's validate the user e-mail address using asynchronous validation:
+To create an asynchronous rule we need to use the [`asyncRule`](../components/field/props/async-rule.md) prop on the exact field we want to validate. As an example, let's validate the user e-mail address using asynchronous validation:
 
 ```jsx
 import React from 'react'

@@ -1,10 +1,5 @@
 # Referencing
 
-* [General](referencing.md#general)
-* [Form reference](referencing.md#form)
-* [Field reference](referencing.md#field)
-* [Nested element node](referencing.md#nested-element-node)
-
 ## Reference types
 
 There are two kinds of referencing - _component_ and _element_ references.
@@ -68,7 +63,9 @@ class MyForm extends React.Component {
   render() {
     return (
       <Form>
-        <MyField ref={field => this.fieldRef = field} name="foo" />
+        <MyField
+          ref={field => this.fieldRef = field}
+          name="foo" />
       </Form>
     )
   }
@@ -89,7 +86,9 @@ class MyForm extends React.Component {
   render() {
     return (
       <Form>
-        <MyField innerRef={field => this.fieldElement = field} name="foo" />
+        <MyField
+          innerRef={field => this.fieldElement = field}
+          name="foo" />
       </Form>
     )
   }

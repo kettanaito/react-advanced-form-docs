@@ -25,6 +25,14 @@ type OnChange = (params) => void
 | `fields` | `Object` | Reference to all fields of a form. |
 | `form` | `Object` | Form component reference. |
 
+## Default behavior
+
+By default, `onChange` behaves as a callback method, allowing you to base your external logic based on the field updates. This doesn't change the controlled flow of the field.
+
+The same onChange method can be used as the handler when working with controlled fields. In that case it is responsible for updating the data source used for setting a value on the field.
+
+{% page-ref page="../../../architecture/controlled-fields.md" %}
+
 ## Example
 
 ```jsx

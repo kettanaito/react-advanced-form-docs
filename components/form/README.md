@@ -13,7 +13,7 @@ The key focus of a form design is getting rid of obscure configurations and achi
 | Prop name | Type | Description |
 | :--- | :--- | :--- |
 | `ref` | `Function` | Getter function for the `<Form>` component. |
-| [`innerRef`](props/innerref.md) | `Function` | Getter function for the `form` element. |
+| [`innerRef`](props/inner-ref.md) | `Function` | Getter function for the `form` element. |
 | [`action`](props/action.md) | `Function<Promise>` | Submit action handler. |
 | [`rules`](props/rules.md) | [`ValidationRules`]() | Form-specific validation rules. |
 | [`messages`](props/messages.md) | [`ValidationMessages`](../../validation/messages.md) | Form-specific validation messages. |

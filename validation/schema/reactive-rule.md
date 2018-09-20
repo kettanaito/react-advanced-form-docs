@@ -1,20 +1,35 @@
 # Reactive rule
 
-## Reactive resolver
+Any validation resolver may become reactive. This means that it is being re-evaluated anytime the field prop references established in its declaration change.
 
-There is a `get` argument exposed in each rule resolver function. It allows to reference another fields of the same form, and base the validation logic on their state.
+## Definition
 
-Whenever a field is referenced in a resolver, the latter is automatically called each time the referenced field's prop update. Consider the following example:
+```typescript
+type Get = (FieldPath) => any
+type FieldPath = string[]
+```
 
+## Declaration
+
+Use `get` function from the resolver parameters to reference other fields' props.
+
+{% code-tabs %}
+{% code-tabs-item title="validation/rules.js" %}
 ```javascript
-{
+export default {
   name: {
     confirmPassword: ({ get, value }) => {
-      return (value === get(['password', 'value'])
+      return value === get(['password', 'value'])
     }
   }
 }
 ```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
 
-Based on the declaration above, a `[name="confirmPassword"]` field is valid when its `value` equals to the `value` prop of the `[name="password"]` sibling field. By referencing another field, `confirmPassword` field is re-validated _each time_ when the `value` prop of `password` field updates.
+The resolver above marks `confirmPassword` field as valid whenever its `value` equals to the value of the `password` field. This rule is automatically re-evaluated in real time whenever the values of either fields update.
+
+{% hint style="success" %}
+Use reactive rules when the validity of a field depends on some props of another field\(s\).
+{% endhint %}
 

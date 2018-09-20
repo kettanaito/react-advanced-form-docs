@@ -48,9 +48,9 @@ export default createField({
 
 Core part of the field lifecycle is the events handling. By default, the next events are handled by the form automatically:
 
-* [`Field.props.onFocus`](../components/field/callbacks/onfocus.md)
-* [`Field.props.onChange`](../components/field/callbacks/onchange.md)
-* [`Field.props.onBlur`](../components/field/callbacks/onblur.md)
+* [`Field.props.onFocus`](../components/field/callbacks/on-focus.md)
+* [`Field.props.onChange`](../components/field/callbacks/on-change.md)
+* [`Field.props.onBlur`](../components/field/callbacks/on-blur.md)
 
 State updates are invoked and maintained internally within the `Form` component, and require no developer's interference.
 

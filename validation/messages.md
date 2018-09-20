@@ -41,7 +41,7 @@ There are multiple generic states provided within each resolver by default.
 | :--- | :--- |
 | `missing` | Resolves for the empty required field. |
 | `invalid` | Resolvers for the field with unexpected value when there are no higher specificity resolvers present. |
-| `async` | Resolves for the [asynchronous validation](../components/field/props/asyncrule.md) of the field. |
+| `async` | Resolves for the [asynchronous validation](../components/field/props/async-rule.md) of the field. |
 
 ### Named resolvers
 

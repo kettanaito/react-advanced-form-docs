@@ -59,7 +59,7 @@ Validation resolvers are executed with the following priority relevant to the ap
    2. `schema.name[fieldName]`
    3. `schema.type[fieldType]`
 2. Asynchronous validation:
-   1. [`Field.props.asyncRule`](../../components/field/props/asyncrule.md)
+   1. [`Field.props.asyncRule`](../../components/field/props/async-rule.md)
 
 {% hint style="info" %}
 Each of these application levels is exclusive, meaning that when it rejects \(returns `false` as the next validity state\), the succeeding validators will **not** be executed.
