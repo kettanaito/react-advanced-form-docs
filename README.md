@@ -12,8 +12,8 @@ No boilerplate. No obscure high-order component configurations. No redundant sta
 
 ### Features
 
-* **Boilerplate-free**. Forget about having kilometers of high-order-components around forms. Create clean and powerful forms without repeating yourself, without crazy abstractions.
-* **Immutable**. Each field change returns a new field with that change reflected.
+* **Changing expectations**. Trust and expect a form to do more than just rendering the fields. Our features are designed to handle cumbersome use cases with clean and performant code.
+* **Immutable**. Each interaction or update is a pure function that produces the next state of a field.
 * [**Composite fields**](https://kettanaito.gitbooks.io/react-advanced-form/docs/getting-started/creating-fields.html). React Advanced Form is _field-centric_. That means you define flexible fields composites and reuse them throughout the entire application. Reflect even the most granular field state changes in the UI to achieve the outmost user experience.
 * \*\*\*\*[**Prototyping speed**](getting-started/creating-form.md). Build production-ready forms at a speed of a prototype.
 
@@ -62,45 +62,44 @@ Access the field's `value`, `fieldProps`, `fields` and the `form` as the paramet
 
 Get as many data from the sibling fields as needed, and build your logic on that. Embrace the power of reactive programming, which re-evaluates a resolver function whenever the referenced field props update.
 
-* [**Field grouping**](https://kettanaito.gitbooks.io/react-advanced-form/docs/components/Field.Group.html). Control the serialized data structure on the layout level by grouping the fields. Split and nest groups as you wish.
+* [**Field grouping**](https://kettanaito.gitbooks.io/react-advanced-form/docs/components/Field.Group.html). Control the serialized data structure on the layout level by grouping the fields. Take advantage of split and nested groups.
 
 ```jsx
-<Field.Group name="primaryInfo">
-  <Input name="username" value="john.maverick" />
-  <Input name="password" type="password" value="secret" />
+<Input name="companyName" value="Google" />
+
+<Field.Group name="billingAddress">
+  <Input name="firstName" value="John" />
+  <Input name="lastName" value="Maverick" />
 </Field.Group>
 
 <Checkbox name="termsAndConditions" checked />
 
-<Field.Group name="primaryInfo">
-  <Input name="firstName" value="John" />
-  <Input name="lastName" value="Maverick" />
+<Field.Group name="deliveryAddress">
+  <Input name="firstName" value="Catheline" />
+  <Input name="lastName" value="McCoy" />
 </Field.Group>
 ```
 
-The layout above will be serialized into the following JSON:
+The layout above serializes into the following JSON:
 
 ```javascript
 {
-  "primaryInfo": {
-    "username": "john.maverick",
-    "password": "secret",
+  "companyName": "Google",
+  "billingAddress": {
     "firstName": "John",
     "lastName": "Maverick"
   },
-  "termsAndConditions": true
+  "termsAndConditions": true,
+  "deliveryAddress": {
+    "firstName": "Catheline",
+    "lastName": "McCoy"
+  }
 }
 ```
 
-* **Third-party fields integration**. Love a third-party field library? Connect it to React Advanced Form and enjoy the benefits of both! Use exposed `createField` high-order component to create a field out of any component.
+* **Third-party fields integration**. React Advanced Form can be used with **any** third-party fields library by using powerful [`createField`](hoc/create-field/) API.
 
 ### Getting started
-
-#### Peer dependencies
-
-Make sure to have the following packages installed in your project:
-
-* [React](https://github.com/facebook/react) \(15.0+\)
 
 #### Install
 
@@ -108,9 +107,13 @@ Make sure to have the following packages installed in your project:
 npm install react-advanced-form --save
 ```
 
+> Make sure to have [React](https://github.com/facebook/react) \(15.0+\) installed in your project.
+
 #### Guidelines
 
-Starting with something new may appear challenging. There is a step-by-step instructions on how to [Get started with React Advanced Form](https://kettanaito.gitbooks.io/react-advanced-form/docs/getting-started/installation.html), which ensure easy and clear integration process.
+Starting with something new may appear challenging. There is a step-by-step instructions on how to get started with React Advanced Form, which ensure easy and clear integration process.
+
+{% page-ref page="getting-started/installation.md" %}
 
 ### Resources
 
@@ -133,10 +136,4 @@ Starting with something new may appear challenging. There is a step-by-step inst
 ### Contributing
 
 Any of your contributions are highly appreciated. See the [Contribution guidelines](https://kettanaito.gitbooks.io/react-advanced-form/docs/CONTRIBUTING.html) to get to know the process better. Moreover, development isn't the only way to contribute, there are [many more](https://kettanaito.gitbooks.io/react-advanced-form/docs/CONTRIBUTING.html#other-contributions).
-
-Found an issue? Eager to suggest a useful feature? Use the [Issues](https://github.com/kettanaito/react-advanced-form/issues) tab for your feedback. Just make sure you're not duplicating the existing tickets. If you feel lucky, you can even submit a [Pull request](https://github.com/kettanaito/react-advanced-form/pulls) with the changes.
-
-### License
-
-[MIT License](https://github.com/kettanaito/react-advanced-form/blob/master/LICENSE.md).
 
