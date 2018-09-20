@@ -74,7 +74,7 @@ Whenever the resolver cannot resolve it would attempt to grab the closest resolv
 3. General resolver for the next level selector.
 4. General resolver for the general selector.
 
-### Fallback example
+### Example
 
 Consider the following validation messages:
 

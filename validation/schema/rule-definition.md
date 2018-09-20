@@ -46,6 +46,17 @@ Selector is a key path of `[propName, propValue]` that defines the application s
 * `type` — selects fields by their type,
 * `name` — selects fields by their name.
 
+### Priority
+
+Selectors are executed in a certain order \(from highest to lowest\):
+
+1. `name[fieldName]` / `name[fieldName][ruleName]`
+2. `type[fieldType]` / `type[fieldType][ruleName]`
+
+{% hint style="warning" %}
+Each selector \(`name` and `type`\) is exclusive, meaning that when any of its resolvers reject, the next selector will not be called.  This does not apply to sibling rules in [multiple resolvers](rule-definition.md#multiple-resolvers).
+{% endhint %}
+
 ### Example
 
 ```javascript
@@ -64,8 +75,6 @@ export default {
 }
 ```
 
-> INCLUDE LINK TO SELECTORS PRIORITY OF EXECUTION.
-
 ## Multiple resolvers
 
 Each field selector can have multiple resolvers applied in parallel by accepting an Object of the shape `{[ruleName: string]: RuleResolver}` as its value.
@@ -82,7 +91,7 @@ export default {
 }
 ```
 
-{% hint style="info" %}
+{% hint style="warning" %}
 Sibling resolvers are executed in parallel and are **not** exclusive.
 {% endhint %}
 

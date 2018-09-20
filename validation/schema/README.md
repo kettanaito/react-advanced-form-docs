@@ -2,9 +2,9 @@
 
 ## Specification
 
-Validation schema is a plain Object of a defined shape that consists of selectors and resolvers associated with them.
+Validation schema is a plain JavaScript Object of a defined shape that consists of selectors and resolvers associated with them.
 
-* \*\*\*\*[**Selector**](rule-definition.md#selector) is a key path targeting the field\(s\),
+* \*\*\*\*[**Selector**](rule-definition.md#selector) is a key path that selects the field\(s\),
 * \*\*\*\*[**Resolver**](rule-definition.md#resolver) is a pure function that returns the next validity state of the field\(s\).
 
 ## Definition
@@ -61,11 +61,11 @@ Validation resolvers are executed with the following priority relevant to the ap
 2. Asynchronous validation:
    1. [`Field.props.asyncRule`](../../components/field/props/async-rule.md)
 
-{% hint style="info" %}
+{% hint style="warning" %}
 Each of these application levels is exclusive, meaning that when it rejects \(returns `false` as the next validity state\), the succeeding validators will **not** be executed.
 {% endhint %}
 
-## Applying the schema
+## Applying schema
 
 ### Application-wide {#application-wide}
 
@@ -77,13 +77,13 @@ Each of these application levels is exclusive, meaning that when it rejects \(re
 
 ## Extending schema
 
-It is possible to extend or override a validation schema using the `extend` option on the root level of the schema. When set to `true`, the current schema will extend \(deep merge\) any schema of the higher scope \(i.e. the one provided by `FormProvider`\). When set to `false`, the current schema will completely override any higher scope schema.
+A validation schema may be extended or overridden using its root-level `extend` option. Once set to `true`, the current schema will be deep merged with any schema from the higher scope \(i.e. the one from `FormProvider`\). When set to `false`, the current schema will override any higher scope schema.
 
 ```javascript
 const customRules = {
   extend: true, // extend any rules from the higher scope
   name: {
-      myField: ({ value }) => (value !== 'foo'),
+    myField: ({ value }) => (value !== 'foo'),
   },
 }
 ```
