@@ -18,11 +18,11 @@ All fields are controlled by default in the state model of React Advanced Form. 
 
 ### Default update model
 
-...
+![Digram illustrating default field update model.](../.gitbook/assets/raf-update-model-1.png)
 
 ### Custom update model
 
-...
+![Diagram illustrates custom field update model.](../.gitbook/assets/raf-update-model-page-2-1.png)
 
 ## Example
 
