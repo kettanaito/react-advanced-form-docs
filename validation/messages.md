@@ -1,8 +1,48 @@
 # Validation messages
 
+## Specification
+
+Validation messages reside in the separate schema, decoupled from the validation logic. The reasons for the decoupling are the following:
+
+* Establish a clear separation of concerns.
+* Prevent from garbaging complex validation rules with the messages.
+* Have a single validation schema associated with any amount of localized messages schema.
+
+## Resolver
+
+Any message can be a plain string, or a resolver function that returns a string.
+
+Resolvers are useful when a validation message derives not only from the field's validity, but also from its state, fields or a form. This way you can include the current value of a field in the error message, for example.
+
+### Definition
+
+```typescript
+type MessageResolver = string | (params) => string
+```
+
+### Parameters
+
+| Parameter name | Type | Description |
+| :--- | :--- | :--- |
+| `value` | `any` | The value of a field. |
+| `fieldProps` | `Object` | Props of a field. |
+| `fields` | `Object` | State of all fields. |
+| `form` | `Object` | Form component reference. |
+| `extra` | `Object` | Extra parameters passed in the async validation payload. |
+
+## Message types
+
+Validation messages schema supports the following message types:
+
+| Type | Description |
+| :--- | :--- |
+| `missing` | A message for an empty required field. |
+| `invalid` | A message for an invalid field. |
+| `async` | A message corresponding to the invalid [asynchronous validation](../components/field/props/async-rule.md). |
+
 ## Selectors
 
-Selectors are used to map the [message resolvers](messages.md#resolvers) to the relevant field\(s\).
+Selectors are used to associate [message resolvers](messages.md#resolvers) to the relevant field\(s\).
 
 | Selector | Description |
 | :--- | :--- |
@@ -19,33 +59,9 @@ type ValidationMessages = {
 }
 ```
 
-## Resolvers
+## Named resolvers
 
-Resolver is an Object which maps the rule name to its actual message, or another resolver.
-
-```typescript
-type MessageResolver = {
-  rule?: {
-    [ruleName: string]: Message,
-  },
-}
-
-type Message = string | ({ fieldProps, fields, form, ...extra }) => string
-```
-
-### Generic states
-
-There are multiple generic states provided within each resolver by default.
-
-| Generic state | Description |
-| :--- | :--- |
-| `missing` | Resolves for the empty required field. |
-| `invalid` | Resolvers for the field with unexpected value when there are no higher specificity resolvers present. |
-| `async` | Resolves for the [asynchronous validation](../components/field/props/async-rule.md) of the field. |
-
-### Named resolvers
-
-It is possible to define named resolvers corresponding to the [named validation rules](). These resolvers are defined under the `rule` key of the main resolver.
+It is possible to associate validation rules with the specific validation messages. To do that, provide the `{ ruleName: message }` map as the value of the `rule` key in the respective selector:
 
 ```javascript
 export default {
@@ -61,7 +77,7 @@ export default {
 }
 ```
 
-> **Note:** Named resolver _must_ have the corresponding validation rule with the same name in order to resolve. Otherwise, the closest validation message will be returned by the resolver. Considering the example above, if `minLength` rule doesn't exist and the `type=["password"]` field is invalid, the closest `invalid` resolver will be used \(which is `type.password.invalid` in this case\).
+> **Note:** Named resolver must have the corresponding validation rule with the same name in order to resolve. Otherwise, the closest validation message will be returned by the resolver. Considering the example above, if `minLength` rule doesn't exist and the `type=["password"]` field is invalid, the closest `invalid` resolver will be used \(which is `type.password.invalid` in this case\).
 
 ## Fallbacks
 
@@ -69,10 +85,13 @@ Whenever the resolver cannot resolve it would attempt to grab the closest resolv
 
 ### Fallback sequence
 
-1. Named resolver for the same level selector.
-2. General resolver for the same level selector.
-3. General resolver for the next level selector.
-4. General resolver for the general selector.
+Here is the resolver paths \(listed by priority, from highest to lowest\):
+
+1. `messages.name[fieldName][ruleName]`
+2. `messages.name[fieldName].invalid` / `messages.name[fieldName].missing`
+3. `messages.type[fieldType][ruleName]`
+4. `messages.type[fieldType]invalid` / `messages.type[fieldType].missing`
+5. `messages.general.invalid` / `messages.general.missing`
 
 ### Example
 

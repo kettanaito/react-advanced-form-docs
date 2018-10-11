@@ -1,6 +1,10 @@
 # Creating form
 
-React Advanced form treats any form as a composition of fields. Therefore, creating a form is a trivial procedure of rendering [field components](creating-fields.md) as the `<Form/>`'s children. Make sure you have field components defined before proceeding with this step.
+React Advanced form treats any form as a composition of fields. Therefore, creating a form is a trivial procedure of rendering field components as the form's children.
+
+{% hint style="warning" %}
+Make sure you have [field components defined](creating-fields.md) before proceeding with this step.
+{% endhint %}
 
 ## Example
 
@@ -8,7 +12,7 @@ React Advanced form treats any form as a composition of fields. Therefore, creat
 import React from 'react'
 import { Form } from 'react-advanced-form'
 
-/* Composite field components */
+/* Fields */
 import { Input, Checkbox } from '../fields'
 
 export default class ExampleForm extends React.Component {
@@ -29,6 +33,4 @@ export default class ExampleForm extends React.Component {
   }
 }
 ```
-
-> Note that this is a minimal example. More complex topics like validation or submit handling are described in the next steps of this guide. Take things one at a time.
 

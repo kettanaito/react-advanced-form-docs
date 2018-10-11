@@ -16,7 +16,7 @@ The following parameters are exposed to the `rule` when it is a function:
 
 | Parameter name | Type | Description |
 | :--- | :--- | :--- |
-| `get` |  |  |
+| `get` | `Function` | [Reactive props](../../../architecture/reactive-props.md) getter function. |
 | `value` | `any` | The current value of the field. |
 | `fieldProps` | `Object` | Props of the current field. |
 | `fields` | `Object` | Map of all fields. |

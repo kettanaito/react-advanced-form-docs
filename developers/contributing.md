@@ -1,7 +1,5 @@
 # Contributing
 
-## Foreword
-
 First of all, thank you for deciding to contribute to React Advanced Form! It is only by the power of the community we can achieve great results.
 
 ## Technologies

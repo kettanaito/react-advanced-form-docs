@@ -11,6 +11,7 @@ Validation schema is a plain JavaScript Object of a defined shape that consists 
 
 ```typescript
 type ValidationSchema = {
+  extend?: boolean,
   type?: {
     [fieldType: string]: Resolvable,
   },
@@ -69,28 +70,60 @@ Each of these application levels is exclusive, meaning that when it rejects \(re
 
 ### Application-wide {#application-wide}
 
-...
+```jsx
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { FormProvider } from 'react-advanced-form'
+import Root from './Root'
+import validationRules from './validation/rules'
+
+const App = () => (
+  <FormProvider rules={validationRules}>
+    <Root />
+  </FormProvider>
+)
+
+ReactDOM.render(<App />, document.getElementById('root'))
+```
 
 ### Form-wide
 
-...
+```jsx
+import React from 'react'
+import { Form } from 'react-advanced-form'
 
-## Extending schema
+const validationRules = {
+  extend: true,
+  name: {
+    username: ({ value }) => !blacklist.includes(value),
+  },
+}
 
-A validation schema may be extended or overridden using its root-level `extend` option. Once set to `true`, the current schema will be deep merged with any schema from the higher scope \(i.e. the one from `FormProvider`\). When set to `false`, the current schema will override any higher scope schema.
+export default class ExampleForm extends React.Component {
+  render() {
+    return (
+      <Form rules={validationRules}>
+        {/* Fields */}
+      </Form>
+    )
+  }
+}
+```
+
+## Extending a schema
+
+A validation schema may be extended or overridden using a root-level `extend` option.
+
+Once set to `true`, the current schema is deep merged with any higher scope schema \(i.e. the one from `FormProvider`\). When set to `false`, the current schema will override any higher scope schema.
 
 ```javascript
-const customRules = {
+const validationRules = {
   extend: true, // extend any rules from the higher scope
   name: {
     myField: ({ value }) => (value !== 'foo'),
   },
 }
 ```
-
-## Example
-
-> Include an example of the validation schema.
 
 
 

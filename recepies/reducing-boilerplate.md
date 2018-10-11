@@ -1,7 +1,5 @@
 # Utilizing functions
 
-React Advanced Form encourages to use pure and high-order functions to significantly reduce repetition.
-
 ## High-order validators
 
 Consider writing a set of pure high-order validator functions that accept optional set of parameters and always return a validator function expected by React Advanced Form:
@@ -27,16 +25,16 @@ Use the `minLength` function parametrically whenever necessary:
 import minLength from './validators/minLength'
 
 const validationRules = {
-    type: {
-        tel: {
-            minLength: minLength(8)
-        }
+  type: {
+    tel: {
+      minLength: minLength(8),
     },
-    name: {
-        firstName: {
-            minLength: minLength(2)
-        }
-    }
+  },
+  name: {
+    firstName: {
+      minLength: minLength(2),
+    },
+  },
 }
 ```
 {% endcode-tabs-item %}

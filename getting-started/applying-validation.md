@@ -1,14 +1,14 @@
 # Applying validation
 
-Once we have both [validation rules](validation-rules.md) and [messages](validation-messages.md) defined, we need to apply them to see the working result.
+Once we have both [validation rules](validation-rules.md) and [messages](validation-messages.md) defined, we can to apply them to see the working result.
 
-There are multiple ways to apply the validation to the forms in our application. Each of them may be suitable in different situations.
+There are multiple ways to apply the validation to the forms in our application. Either of them are suitable in different situations.
 
-### Application-wide
+## Application-wide
 
-We can use a `FormProvider` component to apply the validation rules and message application-wide. That imples that all the forms in our application will abide by the defined rules automatically.
+We can use a `FormProvider` component to apply the validation rules and message application-wide. That implies that all the forms in the application abide by the defined rules, which is what you want in most of the cases.
 
-We need to introduce a `FormProvider` on the root level of your application. This is the place where you may already have another providers \(i.e. Redux, Apollo\).
+Render a `FormProvider` on the root level of your application, close to other providers you may have \(for example, from Redux or Apollo\).
 
 ```jsx
 // app/index.js
@@ -27,9 +27,9 @@ const App = () => (
 ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
-### Form-wide
+## Form-wide
 
-We can also apply our validation schemas to a specific form component. This may be useful in case some validation rules/messages are different for a certain form.
+A validation schema can be applied to a specific form. By doing so, it can [extend or override](../validation/schema/#extending-a-schema) the application-wide schema on demand.
 
 ```jsx
 import React from 'react'

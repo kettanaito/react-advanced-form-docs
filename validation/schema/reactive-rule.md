@@ -5,8 +5,7 @@ Any validation resolver may become reactive. This means that it is being re-eval
 ## Definition
 
 ```typescript
-type Get = (FieldPath) => any
-type FieldPath = string[]
+type Get = (fieldPropPath: string[]) => any
 ```
 
 ## Declaration

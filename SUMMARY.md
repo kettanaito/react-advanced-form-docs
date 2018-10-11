@@ -4,6 +4,9 @@
 
 ## General
 
+* [Comparison](general/comparison/README.md)
+  * [Compared to Formik](general/comparison/formik.md)
+  * [Compared to Final form](general/comparison/final-form.md)
 * [Migration guides](general/migration/README.md)
   * [1.4.x → 1.5.x](general/migration/1.4.x-1.5.x.md)
 * [FAQ](general/faq.md)

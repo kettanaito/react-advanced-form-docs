@@ -4,8 +4,8 @@
 
 Controls whether to exclude a field during the serialization.
 
-{% hint style="info" %}
-Skipping a field doesn't affect the rest of its behavior \(i.e. validation\).
+{% hint style="warning" %}
+Skipping a field doesn't affect its other behavior \(i.e. validation\).
 {% endhint %}
 
 ## Definition
