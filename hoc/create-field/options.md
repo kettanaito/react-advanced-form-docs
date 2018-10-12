@@ -88,8 +88,8 @@ class Checkbox extends React.Component {
 
 export default createField({
   valuePropName: 'checked',
-  mapPropsToField: ({ props  }) => ({
-    ...props,
+  mapPropsToField: ({ fieldRecord }) => ({
+    ...fieldRecord,
     type: 'checkbox',
     initialValue: props.checked
   })
