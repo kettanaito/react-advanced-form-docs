@@ -3,15 +3,15 @@
 ## Favor uncontrolled
 
 {% hint style="info" %}
-This is a topic about [Controlled fields](https://reactjs.org/docs/forms.html#controlled-components).
+This topic is about [Controlled fields](https://reactjs.org/docs/forms.html#controlled-components).
 {% endhint %}
 
 Making something controlled comes with the expense of maintaining it. The more things you maintain, the more responsibility is delegated to your logic. This delegation is often unnecessary, making you do the job without getting the benefits out of it. Pay for what benefits you.
 
-Most of the time people make fields controlled in order to access their value or state during certain form events \(i.e. validation, serialization, submit\). React Advanced Form is aware of those scenarios and exposes you a field's value and its entire state in the parameters of [**all** **form callback methods**](../components/form/callbacks/).
+Most of the time people make a field controlled in order to access its value or state during certain form events \(i.e. validation, serialization, submit\). React Advanced Form is aware of those scenarios and exposes you a field's value and its entire state in the parameters of [**all** **form callback methods**](../components/form/callbacks/).
 
 {% hint style="success" %}
-React Advanced Form allows you to have controlled fields, but gives you a friendly notice that you may not need that.
+**React Advanced Form supports controlled fields pattern**. This is but a friendly notice that you may not need it.
 {% endhint %}
 
 ## When to use controlled fields
@@ -47,9 +47,13 @@ import { Input } from 'react-advanced-form-addons'
 
 export default Example extends React.Component {
   state = {
+    /* Source of truth */
     username: 'admin',
   }
   
+  /**
+   * Custom handler of source of truth change.
+   */
   handleUsernameChange = ({ nextValue }) => {
     this.setState({ username: nextValue })
   }
@@ -61,6 +65,7 @@ export default Example extends React.Component {
       <Form>
         <Input
           name="username"
+          /* Pass state property as the value */
           value={username}
           onChange={this.handleUsernameChange}
           required />

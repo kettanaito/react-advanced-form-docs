@@ -68,7 +68,7 @@ Each of these application levels is exclusive, meaning that when it rejects \(re
 
 ## Applying schema
 
-### Application-wide {#application-wide}
+### Application-wide <a id="application-wide"></a>
 
 ```jsx
 import React from 'react'
