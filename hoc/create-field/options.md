@@ -39,9 +39,31 @@ export default createField({
 | :--- | :--- |
 | Default value | `''` |
 
-Specifies the initial value for all field instances.
+Specifies the initial value of all field instances.
 
 Useful for the cases when the initial value of the field is different from an empty string. For example, when creating a Datepicker you may want to specify the today's date as the initial value for all datepickers.
+
+## `mapValue`
+
+| Type | `any` |
+| :--- | :--- |
+| Default value | `(value) => value` |
+
+A transformer function to map a field's value on essential value updates.
+
+```jsx
+import { createField } from 'react-advanced-form'
+
+export default createField({
+  mapValue: (value) => {
+    return dateFns.parse(value)
+  },
+})
+```
+
+{% hint style="info" %}
+This affects indirect value updates \(i.e. receiving next "value" prop, resetting or clearing a field\). This has no effect when native "onChange" is dispatched.
+{% endhint %}
 
 ## `allowMultiple`
 
@@ -168,4 +190,32 @@ Applies additional transformation or logic to the field right before it is regis
 | `context` | `Object` |  |
 
 Determines whether a field should be validated upon mount.
+
+## `serialize`
+
+### Definition
+
+| Type | `(params) => any` |
+| :--- | :--- |
+| Default value | `(value) => value` |
+
+### Parameters
+
+| Param name | Type | Description |
+| :--- | :--- | :--- |
+| `value` | `any` | Original serialized value of a field. |
+
+A custom serialization transformer function applied during the field's serialization.
+
+```jsx
+export default createField({
+  serialize(value) {
+    return dateFns.format(value, 'MM/DD/YYYY')
+  },
+})
+```
+
+{% hint style="info" %}
+Note that `serialize` works **complementary** with [`Form.props.onSerialize`](../../components/form/callbacks/onserialize.md), and it executed before the form-wide serialization transformer.
+{% endhint %}
 
