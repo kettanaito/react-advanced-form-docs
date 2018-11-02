@@ -29,7 +29,7 @@ class Checkbox extends React.Component {
 }
 
 export default createField({
-  valuePropName: 'checked'
+  valuePropName: 'checked',
 })(Checkbox)
 ```
 
@@ -39,9 +39,34 @@ export default createField({
 | :--- | :--- |
 | Default value | `''` |
 
-Specifies the initial value of all field instances.
+Initial value of all field instances.
 
 Useful for the cases when the initial value of the field is different from an empty string. For example, when creating a Datepicker you may want to specify the today's date as the initial value for all datepickers.
+
+## `assertValue`
+
+| Type | `(params) => boolean` |
+| :--- | :--- |
+| Default value | `({ value }) => !!value` |
+
+A predicate function stating that a field contains some value.
+
+Useful for describing a proper validation behavior for a custom field where its value is represented using a complex instance \(i.e. Object\).
+
+```jsx
+export default createField({
+  valuePropName: 'range',
+  mapValue: (value) => ({
+    from: value[0],
+    to: value[1],
+  }),
+  assertValue: (range) => {
+    return range.from || range.to
+  },
+})
+```
+
+In the example above, we have created a field that accepts an array of integers as its `value`, and transforms it into the `{ from, to }` Object to be stored in the field's state. In order to have a proper validation logic, such as validation on mount, we need to supply a custom predicate that describes when our field has some actual value. 
 
 ## `mapValue`
 
@@ -49,7 +74,7 @@ Useful for the cases when the initial value of the field is different from an em
 | :--- | :--- |
 | Default value | `(value) => value` |
 
-A transformer function to map a field's value on essential value updates.
+A transformer function that maps a field's value on external value updates.
 
 ```jsx
 import { createField } from 'react-advanced-form'
@@ -62,7 +87,7 @@ export default createField({
 ```
 
 {% hint style="info" %}
-This affects indirect value updates \(i.e. receiving next "value" prop, resetting or clearing a field\). This has no effect when native "onChange" is dispatched.
+This only affects external value updates \(i.e. receiving next "value" prop, resetting or clearing a field\). This has no effect when the native "onChange" callback is dispatched.
 {% endhint %}
 
 ## `allowMultiple`
@@ -73,7 +98,7 @@ This affects indirect value updates \(i.e. receiving next "value" prop, resettin
 
 Allows multiple instances of the field with the same name within a single form's scope. This affects both form and [Field group](../../components/field-group.md) scopes.
 
-By default, field's `name` serves as the unique identifier, preventing the registration of duplicate fields. However, some field types \(i.e. radio button\) should allow multiple field instances with the same name.
+By default, field's `name` serves as the unique identifier, preventing the registration of duplicate fields. However, some field types \(i.e. radio button, or your custom fields\) may render multiple field instances with the same name.
 
 ## `mapPropsToField`
 
@@ -103,7 +128,6 @@ import { createField } from 'react-advanced-form'
 class Checkbox extends React.Component {
   render() {
     const { fieldProps } = this.props
-
     return (<input {...fieldProps} />)
   }
 }
@@ -113,8 +137,8 @@ export default createField({
   mapPropsToField: ({ fieldRecord }) => ({
     ...fieldRecord,
     type: 'checkbox',
-    initialValue: props.checked
-  })
+    initialValue: props.checked,
+  }),
 })(Checkbox)
 ```
 
@@ -142,7 +166,6 @@ import { createField } from 'react-advanced-form'
 class Checkbox extends React.Component {
   render() {
     const { fieldProps } = this.props
-
     return (<input {...fieldProps} />)
   }
 }
@@ -150,8 +173,8 @@ class Checkbox extends React.Component {
 export default createField({
   valuePropName: 'checked',
   enforceProps: ({ contextProps }) => ({
-    checked: contextProps.checked
-  })
+    checked: contextProps.checked,
+  }),
 })(Checkbox)
 ```
 
@@ -178,14 +201,16 @@ Applies additional transformation or logic to the field right before it is regis
 
 | Type | `(params) => boolean` |
 | :--- | :--- |
-| Default value | `() => false` |
+| Default value | [`assertValue`](options.md#assertvalue) |
+
+By default, `shouldValidateOnMount` equals to the `assertValue` predicate function.
 
 ### Parameters
 
 | Param name | Type | Description |
 | :--- | :--- | :--- |
-| `valuePropName` | `any` |  |
-| `value` | `any` |  |
+| `[valuePropName]` | `any` |  |
+| `valuePropName` | `string` |  |
 | `fieldRecord` | `string` |  |
 | `context` | `Object` |  |
 
@@ -216,6 +241,6 @@ export default createField({
 ```
 
 {% hint style="info" %}
-Note that `serialize` works **complementary** with [`Form.props.onSerialize`](../../components/form/callbacks/onserialize.md), and it executed before the form-wide serialization transformer.
+Note that `serialize` works **complementary** with [`Form.props.onSerialize`](../../components/form/callbacks/onserialize.md), and it executed before the form-wide serialization.
 {% endhint %}
 
