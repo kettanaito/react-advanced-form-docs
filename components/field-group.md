@@ -14,9 +14,7 @@ Beware that grouping the fields affects how you reference them in the serialized
 | :--- | :--- | :--- |
 | `name` | `string` | The name of the field group. All the fields wrapped in `Field.Group` will be available by the following reference path: `[...groupNames, fieldName]`. |
 
-## Example
-
-### Basic
+## Basic
 
 ```jsx
 import React from 'react'
@@ -28,12 +26,8 @@ export default class Example extends React.Component {
     return (
       <Form>
         <Field.Group name="primaryInfo">
-          <Input
-            name="username"
-            value="admin" />
-          <Input
-            name="firstName"
-            value="John" />
+          <Input name="username" value="admin" />
+          <Input name="firstName" value="John" />
         </Field.Group>
 
         <Input name="city" value="London" />
@@ -47,42 +41,33 @@ The form above serializes into the following JSON:
 
 ```javascript
 {
-  "city": 'London',
+  "city": "London",
   "primaryInfo": {
-    "username": 'admin',
-    "firstName": 'John'
+    "username": "admin",
+    "firstName": "John"
   }
 }
 ```
 
-> **Tip:** `Field.Group` allows you to have multiple fields with _the same name_ under one Form, as long as there are no same names within one group \(root, or custom field groups\).
+> **Tip:** `Field.Group` allows you to have multiple fields with _the same name_ in a single Form, as long as there are no namespace collision within one group.
 
-### Nested groups
+## Nested groups
 
-It is possible to nest field groups. Nested field groups name paths are going to be merged the same way as the [Split groups](field-group.md#split-groups). That allows to nest and split groups at the same time.
+Nested `Field.Group` components cascade by their names as their appear in the tree:
 
 ```jsx
 import React from 'react'
 import { Form, Field } from 'react-advanced-form'
-import { Inpu } from 'react-advanced-form-addons'
+import { Input } from 'react-advanced-form-addons'
 
-export default class NestedGroups extends React.Component {
+export default class Example extends React.Component {
   render() {
-    return (
+    return(
       <Form>
-        <Field.Group name="primaryInfo">
-          <Input
-            name="email"
-            type="email"
-            value="john@maverick.com" />
-
-          <Field.Group name="billingAddress">
-            <Input
-              name="firstName"
-              value="John" />
-            <Input
-              name="lastName"
-              value="Maverick" />
+        <Field.Group name="first">
+          <Input name="fieldOne" value="foo" />
+          <Field.Group name="second">
+            <Input name="fieldOne" value="bar" />
           </Field.Group>
         </Field.Group>
       </Form>
@@ -91,21 +76,24 @@ export default class NestedGroups extends React.Component {
 }
 ```
 
-Will be serialized into the following JSON:
+Serializes into the following JSON:
 
 ```javascript
 {
-  "primaryInfo": {
-    "email": "john@maverick.com",
-    "billingAddress": {
-      "firstName": "John",
-      "lastName": "Maverick"
+  "first": {
+    "fieldOne": "foo",
+    "second": {
+      "fieldOne": "bar"
     }
   }
 }
 ```
 
-### Split groups
+{% hint style="warning" %}
+Escaping of cascading is not currently supported.
+{% endhint %}
+
+## Split groups
 
 One of the benefits of `Field.Group` is an ability to have multiple groups with the same name, which will group the elements under one property upon the serialization. This is particularly useful when UI was not, or cannot be designed according to the data structure expected by the remote end-point.
 
@@ -118,40 +106,24 @@ export default class Example extends React.Component {
   render() {
     return (
       <Form>
-        <Input
-          name="email"
-          value="admin@site.com" />
+        <Input name="email" value="admin@site.com" />
 
-        <h3>Billing address</h3>
         <Field.Group name="billingAddress">
-          <Input
-            name="firstName"
-            value="John" />
-          <Input
-            name="lastName"
-            value="Maverick" />
+          <Input name="firstName" value="John" />
+          <Input name="lastName" value="Maverick" />
         </Field.Group>
 
-        <h3>Delivery address</h3>
         <Field.Group name="billingAddress">
-          <Input
-            name="firstName"
-            value="Kate" />
-          <Input
-            name="lastName"
-            value="Rosewood" />
+          <Input name="firstName" value="Kate" />
+          <Input name="lastName" value="Rosewood" />
         </Field.Group>
 
-        <h3>Contact details</h3>
         <Field.Group name="billingAddress">
-          <Input
-            name="phoneNumber"
-            value="123456789" />
+          <Input name="phoneNumber" value="123456789" />
         </Field.Group>
+        
         <Field.Group name="deliverAddress">
-          <Input
-            name="address"
-            value="Baker st." />
+          <Input name="address" value="Baker st." />
         </Field.Group>
       </Form>
     )
@@ -159,7 +131,7 @@ export default class Example extends React.Component {
 }
 ```
 
-The layout above will serialize into the following JSON:
+Serialize into the following JSON:
 
 ```javascript
 {
