@@ -1,6 +1,6 @@
 # Generating a form
 
-Certain implementations rely on generating a form based on some data \(i.e. a JSON\). You can use React Advanced Form and generate the forms dynamically, however, there is no pre-built solution provided by the form solution.
+Certain implementations rely on generating a form based on some data \(i.e. a JSON\). You can use React Advanced Form and generate the forms dynamically, however, there is no pre-built solution exposed to you.
 
 ### Reasoning
 
