@@ -20,7 +20,7 @@ const Input = (props) => {
    * "fieldState" contains the current state of a field.
    */
   const { fieldProps, fieldState } = props
-  const { errors } = fieldState
+  const { touched, errors } = fieldState
   
   return (
     <div className="input">
@@ -28,7 +28,7 @@ const Input = (props) => {
       <input {...fieldProps} />
       
       {/* Render input errors underneath */}
-      {errors && errors.map((error) => (
+      {touched && errors && errors.map((error) => (
         <div className="text--red">{error}</div>
       ))}
     </div>
