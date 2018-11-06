@@ -80,11 +80,12 @@
     * [onChange](components/field/callbacks/on-change.md)
     * [onBlur](components/field/callbacks/on-blur.md)
 
+## Recipes
+
+* [Generating a form](recepies/generating-a-form.md)
+* [Utilizing functions](recepies/reducing-boilerplate.md)
+
 ## Developers
 
 * [Contributing](developers/contributing.md)
-
-## Recipes
-
-* [Utilizing functions](recepies/reducing-boilerplate.md)
 
