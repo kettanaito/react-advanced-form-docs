@@ -13,6 +13,7 @@ Beware that grouping the fields affects how you reference them in the serialized
 | Prop name | Type | Description |
 | :--- | :--- | :--- |
 | `name` | `string` | The name of the field group. All the fields wrapped in `Field.Group` will be available by the following reference path: `[...groupNames, fieldName]`. |
+| `exact` | `boolean` | Determines whether the group names inheritance should be omitted. |
 
 ## Basic
 
@@ -149,5 +150,53 @@ Serialize into the following JSON:
 }
 ```
 
+## Exact groups
 
+It is possible to opt-out the [Nested groups](field-group.md#nested-groups) behavior by providing the `exact` prop to the `Field.Group` that needs to be escaped. The nesting of the field group then has no effect over the serialized path.
+
+```jsx
+import React from 'react'
+import { Form, Field } from 'react-advanced-form'
+import { Input } from 'react-advanced-form-addons'
+
+export default class Example extends React.Component {
+  render() {
+    return (
+      <Form>
+        <Field.Group name="billingAddress">
+          <Input name="firstName" value="John" />
+          <Input name="lastName" value="Maverick" />
+          
+          <Field.Group exact name="userInfo">
+            <Input name="phoneNumber" value="+123" />
+          </Field.Group>
+        </Field.Group>
+
+        <Field.Group name="userInfo">
+          <Input name="firstName" value="Kate" />
+          <Input name="lastName" value="Rosewood" />
+        </Field.Group>
+      </Form>
+    )
+  }
+}
+```
+
+Serializes into the following JSON:
+
+```javascript
+{
+  "billingAddress": {
+    "firstName": "John",
+    "lastName": "Maverick"
+    // no "userInfo" sub-group
+  },
+  "userInfo": {
+    "firstName": "Kate",
+    "lastName": "Rosewood",
+    // exact "userInfo" was merged as split groups
+    "phoneNumber": "+123"
+  }
+}
+```
 
