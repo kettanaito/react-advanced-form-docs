@@ -55,6 +55,7 @@
     * [rules](components/form/props/rules.md)
     * [messages](components/form/props/messages.md)
   * [Methods](components/form/methods/README.md)
+    * [setValues\(\)](components/form/methods/setvalues.md)
     * [setErrors\(\)](components/form/methods/set-errors.md)
     * [reset\(\)](components/form/methods/reset.md)
     * [validate\(\)](components/form/methods/validate.md)

@@ -1,8 +1,8 @@
 # setErrors\(\)
 
-## Specification
+Applies the given error messages to the selected fields.
 
-Method responsible for setting the error messages to the provided fields. Accepts the delta fields object, where each field path is associated with the respective error messages. Validates any affected fields as invalid.
+Accepts the delta fields object, where each field path is associated with the respective error messages. Validates any affected field as invalid.
 
 {% hint style="info" %}
 Providing explicit `null` as error message value removes the error message, and restores the previous validity state of a field.
@@ -16,10 +16,7 @@ type SetErrors = (fieldsDelta: FieldsDelta) => Object
 type Errors = string[] | string | null
 
 type FieldsDelta = {
-  [fieldName?]: Errors,
-  [groupName?]: {
-    [fieldName?]: Errors,
-  },
+  [fieldName?]: Errors | FieldsDelta,
 }
 ```
 
