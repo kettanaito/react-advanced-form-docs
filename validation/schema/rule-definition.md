@@ -41,7 +41,7 @@ It is a good practice to write [high-order resolvers](../../recepies/reducing-bo
 
 ## Selector
 
-Selector is a key path of `[propName, propValue]` that defines the application scope of a single or multiple resolvers. The following selectors are supported:
+Selector is a key path of `[propName, propValue]` that defines the application scope of a single or multiple validation resolvers. Think of it as a CSS selector, that controls which elements \(fields\) are effected by the specified rules \(validation\). The following selectors are supported:
 
 * `type` — selects fields by their type,
 * `name` — selects fields by their name.

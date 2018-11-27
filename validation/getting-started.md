@@ -53,9 +53,7 @@ Please note that `valid` and `invalid` states are not interchangeable, thus:
 
 This value separation is crucial for initial validity state. When a field is mounted, it is neither valid, nor invalid, thus the values of both properties are set to `false`. Further field interactions update the validity state correspondingly.
 
-{% hint style="info" %}
-Read more on the [props exposed by `createField`](../hoc/create-field/exposed-props.md#props-list).
-{% endhint %}
+{% page-ref page="../hoc/create-field/exposed-props.md" %}
 
 ## Backwards compatible
 
