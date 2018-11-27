@@ -34,6 +34,29 @@ Validation is a communication between your system and a user. Converse clearly w
 
 {% page-ref page="messages.md" %}
 
+## Validity state
+
+The result of a validation is reflected in the validity state. It contains two properties:
+
+* `valid` \(boolean\)
+* `invalid` \(boolean\)
+
+Those properties can be accessed on the `fieldProps` in a field component declaration and various callback methods. We recommend to base the validation UI based on the validity state.
+
+{% hint style="warning" %}
+Please note that `valid` and `invalid` states are not interchangeable, thus:
+{% endhint %}
+
+```javascript
+!fieldProps.valid !== fieldProps.invalid
+```
+
+This value separation is crucial for initial validity state. When a field is mounted, it is neither valid, nor invalid, thus the values of both properties are set to `false`. Further field interactions update the validity state correspondingly.
+
+{% hint style="info" %}
+Read more on the [props exposed by `createField`](../hoc/create-field/exposed-props.md#props-list).
+{% endhint %}
+
 ## Backwards compatible
 
 We are using a specific validation format—[validation schema](schema/). It is, however, a plain Object that can be used even without React Advanced Form.

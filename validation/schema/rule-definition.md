@@ -45,6 +45,7 @@ Selector is a key path of `[propName, propValue]` that defines the application s
 
 * `type` — selects fields by their type,
 * `name` — selects fields by their name.
+* `fieldGroup` — selects the fields under the specified field group path.
 
 ### Priority
 
@@ -92,12 +93,81 @@ export default {
 ```
 
 {% hint style="warning" %}
-Sibling resolvers are executed in parallel and are **not** exclusive.
+Sibling resolvers are executed in parallel, and are _not_ exclusive.
 {% endhint %}
 
 Having unique rule names allows to associate the rule with its validation message. Using example above, we can have different error messages for `capitalLetter` and `oneNumber` rules.
 
 \*\*\*\*[**Read more on that**](../../getting-started/validation-messages.md#specific-messages)**.**
+
+## Grouped fields
+
+Apart from less specific selectors \(type/name\), it is also possible to select fields based on their field group\(s\). Include the field groups key path in the schema as a value of the `fieldGroup` key:
+
+```jsx
+export default {
+  fieldGroup: {
+    billingAddress: {
+      /* Same generic type/name selectors available under a group */
+      type: {},
+      name: {
+        [...]: () => {},
+      },
+      /* Nested field groups are supported */
+      paymentInfo: {
+        name: {
+          bankAccount: ({ value }) => validateBankAccount(value),
+        },
+      },
+    },
+    deliveryAddress: {
+      name: {
+        country: ({ value }) => isSupportedCountry(value),
+      },
+    },
+  },
+}
+```
+
+```jsx
+import React from 'react'
+import { Form, Field } from 'react-advanced-form'
+import { Input, Select } from './fields'
+import validationRules from './validationRules'
+
+export default class FormExample extends React.Component {
+  render() {
+    return (
+      <Form rules={validationRules}>
+        <Input name="..." />
+        
+        <Field.Group name="billingAddress">
+          {/* Not selected in the validation schema */}
+          <Select name="country">
+            <option value="de">Germany</option>
+            <option value="gb">United Kingdom</option>
+          </Select>
+            
+          <Field.Group name="paymentInfo">
+            <Input name="bankAccount" />
+          </Field.Group>
+        </Field.Group>
+        
+        <Field.Group name="deliveryAddress">
+          <Select name="country">
+            <option value="de">Germany</option>
+            <option value="gb">United Kingdom</option>
+          </Select>
+        </Field.Group>
+      </Form>
+    )
+  }
+}
+```
+
+{% hint style="info" %}
+Learn more about [Field grouping](../../components/field-group.md).
+{% endhint %}
 
 
 
