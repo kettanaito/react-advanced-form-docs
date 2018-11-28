@@ -6,12 +6,20 @@ Anything new emerges from the discontent with the present. The motivation for cr
 
 ## Overview
 
-|   | Any form solution | React Advanced Form |
+|   | React Advanced Form | Another solution |
 | :--- | :--- | :--- |
-| **Design** | Form is a central point of implementation. | Field-centric. Any form is a composition of fields. |
-| **Spectrum** | Focuses on simple use cases in favor of being smaller. | Focuses on complex use cases and has more responsibility in favor of maintainable code. |
-| **Validation** | Doesn't include any validation algorithms. Delegates the logic to a developer.  | Includes smart multi-layer validation. Extendable, pluggable with any third-party validation library. |
-| **Size** | Smaller. Requires extra code for any deviating use case. | **Bigger**. Close to no extra code for a scenario of any complexity. |
+| **Focus** | Field-centric. Treats any form as a composition of fields. | Form is usually a central point of implementation. |
+| **Motivation** | Focuses on complex use cases, and has more responsibility in favor of maintainable code. | Focuses on simple use cases in favor of being smaller. |
+| **Validation** | Includes smart multi-layer validation. Extendable, composable, pluggable with any third-party validation library. | Doesn't include any validation algorithms. Delegates the logic to a developer.  |
+| **Size** | **Bigger**. Close to no extra code for a scenario of any complexity. | **Smaller**. Requires extra code for any deviating use case. |
+
+## Bundle size
+
+We are transparent about the cost of adding a new dependency into your application. Regardless of any future optimizations, React Advanced Form will most likely remain _bigger_ than any other form package.
+
+Choosing a package is a question of balance between the dependency size you introduce, and the features you get shipped. A smaller library that requires to write additional code to cover basic scenarios has much bigger effect on the size of your application, than deciding on a heavier solution that results into less code on your side.
+
+Please see the minified bundle size comparison with popular form solutions below.
 
 ## Examples
 
