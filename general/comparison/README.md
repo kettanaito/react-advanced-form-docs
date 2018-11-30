@@ -21,6 +21,13 @@ Choosing a package is a question of balance between the dependency size you intr
 
 Please see the minified bundle size comparison with popular form solutions below.
 
+| Package name | Bundle size \(minified\) |
+| :--- | :--- |
+| `react-advanced-form` | ![](https://badgen.net/bundlephobia/min/react-advanced-form) |
+| `redux-form` | ![](https://badgen.net/bundlephobia/min/redux-form) |
+| `formik` | ![](https://badgen.net/bundlephobia/min/formik) |
+| `final-form` | ![](https://badgen.net/bundlephobia/min/final-form) |
+
 ## Examples
 
 There are three incrementally complex scenarios implemented using different form solutions to give you an overview of what to expect from React Advanced Form.
