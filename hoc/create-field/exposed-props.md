@@ -19,6 +19,7 @@ Object representing a field's state.
 
 | Prop name | Type | Description |
 | :--- | :--- | :--- |
+| `touched` | `boolean` | Indicates whether the field has been interacted with. |
 | `required` | `boolean` | Indicates whether the field is required. |
 | `disabled` | `boolean` | Indicates whether the field is disabled. |
 | `skip` | `boolean` | Indicates whether the field should be skipped during any serialization process. Read more about [`Field.props.skip`](../../components/field/props/skip.md). |
