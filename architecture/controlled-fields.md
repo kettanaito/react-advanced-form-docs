@@ -1,22 +1,22 @@
 # Controlled fields
 
-## Favor uncontrolled
+## Introduction
 
 {% hint style="info" %}
-This topic is about [Controlled fields](https://reactjs.org/docs/forms.html#controlled-components).
+This topic concerns [Controlled fields](https://reactjs.org/docs/forms.html#controlled-components) pattern.
 {% endhint %}
 
-Making something controlled comes with the expense of maintaining it. The more things you maintain, the more responsibility is delegated to your logic. This delegation is often unnecessary, making you do the job without getting the benefits out of it. Pay for what benefits you.
+Let me begin by saying that React Advanced Form doesn't argue against controlled fields as such, and generally supports it \(moreover, all fields are controlled internally\). The point of this section is to explain when such pattern is needed, and when you won't benefit out of it.
 
-Most of the time people make a field controlled in order to access its value or state during certain form events \(i.e. validation, serialization, submit\). React Advanced Form is aware of those scenarios and exposes you a field's value and its entire state in the parameters of [**all** **form callback methods**](../components/form/callbacks/).
+## Favor uncontrolled
 
-{% hint style="success" %}
-**React Advanced Form supports controlled fields pattern**. This is but a friendly notice that you may not need it.
-{% endhint %}
+Making something controlled comes with the expense of maintenance. The more things you maintain, the more responsibility is delegated to your logic. This delegation is often unnecessary, making you do the job without getting the benefits out of it. Pay for what benefits you.
+
+Most of the time people make a field controlled in order to access its value or state during certain form events \(i.e. validation, serialization, submit\). React Advanced Form treats those events as essentials, and exposes references to a field's state, the entire fields, and a form in [**all** **form callback methods**](../components/form/callbacks/).
 
 ## When to use controlled fields
 
-We suggest using controlled fields when you need to have a custom logic based on a field's state that happens outside the common form events.
+* When you need to access a field's state in events that happen outside of a form, i.e. interactions with some UI elements \(**which you can also do using** [**form reference**](referencing.md#component-reference)\);
 
 ## Internals
 
@@ -26,7 +26,7 @@ This model is called "uncontrolled" in regards to the end developer not being re
 
 ![Digram illustrates uncontrolled field update model.](../.gitbook/assets/raf-update-model-1.png)
 
-### Controlled update model
+### Field update model
 
 Controlled field implies that the end developer provides an explicit `onChange` handler responsible for updating the data source of a field's value.
 
@@ -38,7 +38,7 @@ As you can see, even with the controlled field the only source of truth for a fi
 
 ## Example
 
-Making a field controlled in React Advanced Form is the same as anywhere else: provide the `value` prop and the `onChange` handler.
+You can make a field controlled in React Advanced Form the same you would do anywhere else: provide the `value` prop and the `onChange` handler to a field.
 
 ```jsx
 import React from 'react'
@@ -52,7 +52,7 @@ export default Example extends React.Component {
   }
   
   /**
-   * Custom handler of source of truth change.
+   * Update the state based on the next value of the field.
    */
   handleUsernameChange = ({ nextValue }) => {
     this.setState({ username: nextValue })
@@ -65,8 +65,9 @@ export default Example extends React.Component {
       <Form>
         <Input
           name="username"
-          /* Pass state property as the value */
+          /* Provide state property as the field's value */
           value={username}
+          /* Provide change handler that updates the state */
           onChange={this.handleUsernameChange}
           required />
       </Form>
@@ -76,6 +77,6 @@ export default Example extends React.Component {
 ```
 
 {% hint style="info" %}
-Read more on a field's [`onChange`](../components/field/callbacks/on-change.md) method and its parameters.
+Read more on a field's [`onChange`](../components/field/callbacks/on-change.md) method and its parameters. You can access much more than just the next field's value.
 {% endhint %}
 
