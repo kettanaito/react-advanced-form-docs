@@ -13,7 +13,7 @@ Beware that grouping the fields affects how you reference them in the serialized
 | Prop name | Type | Description |
 | :--- | :--- | :--- |
 | `name` | `string` | The name of the field group. All the fields wrapped in `Field.Group` will be available by the following reference path: `[...groupNames, fieldName]`. |
-| `exact` | `boolean` | Determines whether the group names inheritance should be omitted. |
+| `exact` | `boolean` | Prevents group names concatenation due to inheritance. |
 
 ## Basic
 

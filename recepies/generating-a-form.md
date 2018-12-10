@@ -1,10 +1,10 @@
 # Generating a form
 
-Certain implementations rely on generating a form based on some data \(i.e. a JSON\). You can use React Advanced Form and generate the forms dynamically, however, there is no pre-built solution exposed to you.
+Generating forms based on some data \(i.e. JSON\) is quite common. You can generate React Advanced Form components, but there is no API exposed for such purpose.
 
-### Reasoning
+## Reasoning
 
-Assuming the logic of the fields/form generation should not be a form's concern. Writing a simple generating function that returns React components \(fields\) is a rather trivial procedure.
+Form shouldn't be concerned with the generation logic. Writing a simple generating function that returns React components \(form or fields\) is rather simple.
 
 ```jsx
 import * as fields from './fields'
