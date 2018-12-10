@@ -15,9 +15,9 @@ Anything new emerges from the discontent with the present. The motivation for cr
 
 ## Bundle size
 
-We are transparent about the cost of adding a new dependency into your application. Regardless of any future optimizations, React Advanced Form will most likely remain _bigger_ than any other form package.
+We are transparent about the cost of adding a new dependency to your application. Regardless of possible optimizations, React Advanced Form will most likely remain **bigger** than any other form solution out there.
 
-Choosing a package is a question of balance between the dependency size you introduce, and the features you get shipped. A smaller library that requires to write additional code to cover basic scenarios has much bigger effect on the size of your application, than deciding on a heavier solution that results into less code on your side.
+Choosing a package is a question of balance between its size and the features you get. A smaller library that requires to write more code to cover basic scenarios has much bigger effect on the size of your application than a heavier one that results into less code on your side.
 
 Please see the minified bundle size comparison with popular form solutions below.
 
