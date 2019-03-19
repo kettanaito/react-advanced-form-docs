@@ -2,10 +2,10 @@
 
 ## Introduction
 
-Passing options to the `createField()` high-order component allows to control the behavior of the created field. That is extremely useful when implementing custom field logic, or integrating third-party solutions to work with React Advanced Form.
+Passing options to the `createField()` high-order component allows to control the behavior of the created field. That is extremely useful when implementing custom fields, or integrating third-party solutions to work with React Advanced Form.
 
 {% hint style="info" %}
-You **don't have** to configure any of these options. There are sensible defaults exposed with [Field presets](presets.md), which you can provide as the argument to `createField()`.
+You **don't have** to configure any of these options. Please use the defaults exposed with [Field presets](presets.md), unless you're customizing a field's behavior on purpose.
 {% endhint %}
 
 ## `valuePropName`
@@ -20,12 +20,9 @@ Some fields update a prop different from the `value` upon the interaction with t
 import React from 'react'
 import { createField } from 'react-advanced-form'
 
-class Checkbox extends React.Component {
-  render() {
-    const { fieldProps } = this.props
-
-    return (<input {...fieldProps} />)
-  }
+const Checkbox = (props) => {
+  const { fieldProps } = props
+  return (<input {...fieldProps} />)
 }
 
 export default createField({
@@ -39,9 +36,21 @@ export default createField({
 | :--- | :--- |
 | Default value | `''` |
 
-Initial value of all field instances.
+Initial value of all instances of a field. Useful for cases when the initial value of a field is different from an empty string.
 
-Useful for the cases when the initial value of the field is different from an empty string. For example, when creating a Datepicker you may want to specify the today's date as the initial value for all datepickers.
+```jsx
+export default createField({
+  /**
+   * Set initial value to the current date
+   * instead of an empty string (default).
+   */
+  initialValue: Date.now(),
+})(Datepicker)
+```
+
+{% hint style="info" %}
+Note that `initialValue` is then mapped using `mapValue` option.
+{% endhint %}
 
 ## `assertValue`
 
@@ -63,7 +72,7 @@ export default createField({
   assertValue: (range) => {
     return range.from || range.to
   },
-})
+})(RangeInput)
 ```
 
 In the example above, we have created a field that accepts an array of integers as its `value`, and transforms it into the `{ from, to }` Object to be stored in the field's state. In order to have a proper validation logic, such as validation on mount, we need to supply a custom predicate that describes when our field has some actual value. 
@@ -74,7 +83,7 @@ In the example above, we have created a field that accepts an array of integers 
 | :--- | :--- |
 | Default value | `(value) => value` |
 
-A transformer function that maps a field's value on external value updates.
+Maps a "raw" field's value into its representative in the field's state.
 
 ```jsx
 import { createField } from 'react-advanced-form'
@@ -83,11 +92,11 @@ export default createField({
   mapValue: (value) => {
     return dateFns.parse(value)
   },
-})
+})(Datepicker)
 ```
 
 {% hint style="info" %}
-This only affects external value updates \(i.e. receiving next "value" prop, resetting or clearing a field\). This has no effect when the native "onChange" callback is dispatched.
+This only affects external value updates \(i.e. receiving next `value` prop, resetting or clearing a field\). This has no effect when the native `onChange` callback is dispatched.
 {% endhint %}
 
 ## `allowMultiple`
@@ -96,9 +105,9 @@ This only affects external value updates \(i.e. receiving next "value" prop, res
 | :--- | :--- |
 | Default value | `false` |
 
-Allows multiple instances of the field with the same name within a single form's scope. This affects both form and [Field group](../../components/field-group.md) scopes.
+Allows multiple instances of a field with the same name within a single form's scope. This affects both form and [Field group](../../components/field-group.md) scopes.
 
-By default, field's `name` serves as the unique identifier, preventing the registration of duplicate fields. However, some field types \(i.e. radio button, or your custom fields\) may render multiple field instances with the same name.
+By default, field's name is the unique identifier that prevents the registration of duplicate fields. However, some field types \(i.e. radio button, or your custom field\) may want to render multiple field components with the same name.
 
 ## `mapPropsToField`
 
@@ -112,24 +121,20 @@ By default, field's `name` serves as the unique identifier, preventing the regis
 
 | Param name | Type | Description |
 | :--- | :--- | :--- |
-| `valuePropName` | `string` |  |
-| `props` | `Object` |  |
-| `fieldRecord` | `Object` |  |
+| `valuePropName` | `string` | Value prop name of a field. |
+| `props` | `Object` | Raw field component's props. |
+| `fieldRecord` | `Object` | Reference to the field's record in the form's state. |
 | `context` | `Object` |  |
 
 Each field has its record stored in the internal state of the `Form` component. That record is composed based on the field's props, but may \(and sometimes must\) be altered to provide proper field functionality.
-
-To change the initial values of the field record pass this option to the `createField` as follows:
 
 ```jsx
 import React from 'react'
 import { createField } from 'react-advanced-form'
 
-class Checkbox extends React.Component {
-  render() {
-    const { fieldProps } = this.props
-    return (<input {...fieldProps} />)
-  }
+const Checkbox = (props) => {
+  const { fieldProps } = props
+  return (<input {...fieldProps} />)
 }
 
 export default createField({
@@ -154,20 +159,18 @@ export default createField({
 
 | Param name | Type | Description |
 | :--- | :--- | :--- |
-| `props` | `string` |  |
-| `contextProps` | `Object` |  |
+| `props` | `string` | Raw field component's props. |
+| `contextProps` | `Object` | Field record in a form's state. |
 
-This option allows to provide an Object of props which will override the Field's registration record within the form.
+Allows enforcing an Object of props which will override the Field's registration record within the form.
 
 ```jsx
 import React from 'react'
 import { createField } from 'react-advanced-form'
 
-class Checkbox extends React.Component {
-  render() {
-    const { fieldProps } = this.props
-    return (<input {...fieldProps} />)
-  }
+const Checkbox = (props) => {
+  const { fieldProps } = props
+  return (<input {...fieldProps} />)
 }
 
 export default createField({
@@ -190,10 +193,46 @@ export default createField({
 
 | Param name | Type | Description |
 | :--- | :--- | :--- |
-| `fieldProps` | `string` |  |
-| `fields` | `Object` |  |
+| `fieldProps` | `string` | Original field props. |
+| `fields` | `Object` | Reference to all fields. |
 
 Applies additional transformation or logic to the field right before it is registered. Allows to completely prevent field registration when `false` is returned from this method.
+
+#### Modifying field's record
+
+```jsx
+export default createField({
+  beforeRegister: ({ fieldProps, fields }) => {
+    return {
+      ...fieldProps,
+      /**
+       * Add a custom property "customProp"
+       * on the field's record in the state.
+       */
+      customProp: 'foo',
+    }
+  }
+})(FieldComponent)
+```
+
+#### Preventing field registration
+
+Returns `false` from `beforeRegister` method to prevent a field from registering its record in the parent form's state.
+
+```jsx
+export default createField({
+  beforeRegister: ({ fieldProps, fields }) => {
+    const inputProps = fieldProps.getRef().props
+    
+    /* Prevent field registration if it has "foo" prop */
+    if (inputProps.hasOwnProperty('foo')) {
+      return null
+    }
+    
+    return fieldProps
+  }
+})(FieldComponent)
+```
 
 ## `shouldValidateOnMount`
 
@@ -203,15 +242,15 @@ Applies additional transformation or logic to the field right before it is regis
 | :--- | :--- |
 | Default value | [`assertValue`](options.md#assertvalue) |
 
-By default, `shouldValidateOnMount` equals to the `assertValue` predicate function.
+Determines whether a field should be validated upon mounting, if it has value \(its `assertValue` resolves\).
 
 ### Parameters
 
 | Param name | Type | Description |
 | :--- | :--- | :--- |
-| `[valuePropName]` | `any` |  |
-| `valuePropName` | `string` |  |
-| `fieldRecord` | `string` |  |
+| `[valuePropName]` | `any` | Dynamic key that is value prop name, with value being a field's value. |
+| `valuePropName` | `string` | Value prop name of a field. |
+| `fieldRecord` | `string` | Reference to a field's record in a form's state. |
 | `context` | `Object` |  |
 
 Determines whether a field should be validated upon mount.
@@ -230,17 +269,25 @@ Determines whether a field should be validated upon mount.
 | :--- | :--- | :--- |
 | `value` | `any` | Original serialized value of a field. |
 
-A custom serialization transformer function applied during the field's serialization.
+Returns the next serialization payload of a field.
+
+Useful to provide transformations to a field's value upon form serialization.
 
 ```jsx
 export default createField({
+  /**
+   * Let's say we have a Datepicker component that
+   * stores his value as a DateFNS instance. We can
+   * format its value into a date string when
+   * the field is serialized.
+   */
   serialize(value) {
     return dateFns.format(value, 'MM/DD/YYYY')
   },
-})
+})(Datepicker)
 ```
 
 {% hint style="info" %}
-Note that `serialize` works **complementary** with [`Form.props.onSerialize`](../../components/form/callbacks/onserialize.md), and it executed before the form-wide serialization.
+Note that `serialize` works **complementary** with [`Form.props.onSerialize`](../../components/form/callbacks/onserialize.md), and it executed _before_ the form's serialization transformer.
 {% endhint %}
 
